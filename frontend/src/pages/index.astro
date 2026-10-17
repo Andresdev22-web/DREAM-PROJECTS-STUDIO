@@ -1,0 +1,637 @@
+
+---
+import "../style/global.css";
+import { Icon } from "astro-icon/components";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#09090b" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Beware of the Rat | Crea mundos con nosotros</title>
+
+    <meta
+      name="description"
+      content="Beware of the Rat es un equipo de desarrollo de juegos de Roblox. Buscamos colaboradores creativos, con o sin experiencia, para crear grandes proyectos juntos."
+    />
+
+    <meta
+      name="keywords"
+      content="Beware of the Rat, Roblox, Roblox Studio, Luau, desarrollo de videojuegos, reclutamiento, game development"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 antialiased selection:bg-red-500 selection:text-white">
+
+    <!-- Navegación -->
+    <header class="sticky top-0 z-50 border-b border-white/5 bg-zinc-950/85 backdrop-blur-xl">
+      <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+
+        <a href="#inicio" class="group flex items-center gap-3">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 transition group-hover:bg-red-500/20">
+            <Icon name="lucide:rat" class="h-6 w-6" />
+          </div>
+
+          <div>
+            <span class="block text-sm font-extrabold tracking-tight text-white">
+              BEWARE OF THE RAT
+            </span>
+            <span class="block text-[10px] tracking-[0.2em] text-zinc-500">
+              ROBLOX GAME STUDIO
+            </span>
+          </div>
+        </a>
+
+        <div class="hidden items-center gap-7 text-sm text-zinc-400 md:flex">
+          <a href="#nosotros" class="transition hover:text-white">Nosotros</a>
+          <a href="#areas" class="transition hover:text-white">Áreas</a>
+          <a href="#requisitos" class="transition hover:text-white">Requisitos</a>
+          <a href="#proceso" class="transition hover:text-white">Proceso</a>
+        </div>
+
+        <a
+          href="#postulacion"
+          class="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-500"
+        >
+          Únete al equipo
+          <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+        </a>
+
+      </nav>
+    </header>
+
+    <main id="inicio">
+
+      <!-- Hero -->
+      <section class="relative isolate overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10">
+          <div class="absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[130px]"></div>
+          <div class="absolute right-0 top-64 h-72 w-72 rounded-full bg-orange-500/5 blur-[100px]"></div>
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+        </div>
+
+        <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 sm:px-8 sm:py-32 lg:grid-cols-[1.1fr_0.9fr]">
+
+          <div>
+            <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/5 px-3 py-1.5 text-xs font-medium text-red-300">
+              <span class="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
+              RECLUTAMIENTO DE COLABORADORES
+            </div>
+
+            <h1 class="max-w-3xl text-5xl font-black leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl">
+              No solo juegues.
+              <span class="mt-2 block text-red-500">Crea algo</span>
+              <span class="block">extraordinario.</span>
+            </h1>
+
+            <p class="mt-7 max-w-xl text-base leading-8 text-zinc-400 sm:text-lg">
+              En <strong class="text-zinc-200">Beware of the Rat</strong>
+              creamos experiencias para Roblox y buscamos personas con ideas,
+              creatividad y ganas de construir algo grande. No importa si estás
+              comenzando o ya tienes experiencia: queremos conocer tu potencial.
+            </p>
+
+            <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#postulacion"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-0.5 hover:bg-red-500"
+              >
+                Quiero colaborar
+                <Icon name="lucide:arrow-right" class="h-5 w-5" />
+              </a>
+
+              <a
+                href="#areas"
+                class="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-6 py-3.5 font-semibold text-zinc-300 transition hover:border-zinc-700 hover:bg-zinc-900 hover:text-white"
+              >
+                Explorar oportunidades
+                <Icon name="lucide:compass" class="h-5 w-5" />
+              </a>
+            </div>
+
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-500">
+              <span class="flex items-center gap-2">
+                <Icon name="lucide:check-circle-2" class="h-4 w-4 text-red-400" />
+                Principiantes bienvenidos
+              </span>
+              <span class="flex items-center gap-2">
+                <Icon name="lucide:users" class="h-4 w-4 text-red-400" />
+                Trabajo en equipo
+              </span>
+            </div>
+          </div>
+
+          <!-- Panel visual -->
+          <div class="relative mx-auto w-full max-w-lg">
+            <div class="absolute -inset-5 rounded-[2rem] bg-red-600/10 blur-3xl"></div>
+
+            <div class="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/80 shadow-2xl shadow-black/40">
+
+              <div class="flex items-center justify-between border-b border-zinc-800 px-5 py-4">
+                <div class="flex items-center gap-2">
+                  <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                </div>
+                <span class="font-mono text-xs text-zinc-500">team.workspace</span>
+              </div>
+
+              <div class="p-6 sm:p-8">
+                <div class="mb-7 flex items-center justify-between">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-red-400">
+                      Our philosophy
+                    </p>
+                    <h2 class="mt-2 text-2xl font-bold text-white">
+                      Built together.
+                    </h2>
+                  </div>
+
+                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 text-red-400">
+                    <Icon name="lucide:blocks" class="h-6 w-6" />
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <div class="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
+                      <Icon name="lucide:code-2" class="h-5 w-5" />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="font-semibold text-zinc-100">Developers</p>
+                      <p class="mt-1 text-xs text-zinc-500">Ideas converted into gameplay</p>
+                    </div>
+                    <Icon name="lucide:check" class="h-5 w-5 text-emerald-400" />
+                  </div>
+
+                  <div class="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
+                      <Icon name="lucide:palette" class="h-5 w-5" />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="font-semibold text-zinc-100">Artists & Builders</p>
+                      <p class="mt-1 text-xs text-zinc-500">Worlds with their own identity</p>
+                    </div>
+                    <Icon name="lucide:check" class="h-5 w-5 text-emerald-400" />
+                  </div>
+
+                  <div class="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400">
+                      <Icon name="lucide:lightbulb" class="h-5 w-5" />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="font-semibold text-zinc-100">New talent</p>
+                      <p class="mt-1 text-xs text-zinc-500">Potential is worth discovering</p>
+                    </div>
+                    <Icon name="lucide:check" class="h-5 w-5 text-emerald-400" />
+                  </div>
+                </div>
+
+                <div class="mt-6 rounded-xl border border-red-500/15 bg-red-500/5 p-4">
+                  <p class="text-sm leading-6 text-zinc-300">
+                    <span class="font-bold text-red-400">Our rule:</span>
+                    Good ideas matter. Communication, responsibility and teamwork
+                    make them possible.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="absolute -bottom-5 -right-3 rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 shadow-xl sm:-right-6">
+              <div class="flex items-center gap-3">
+                <Icon name="lucide:gamepad-2" class="h-6 w-6 text-red-400" />
+                <div>
+                  <p class="text-xs font-bold text-white">CREATE. BUILD. PLAY.</p>
+                  <p class="mt-1 text-[10px] text-zinc-500">Your next chapter starts here.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Separador -->
+      <div class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
+      </div>
+
+      <!-- Nosotros -->
+      <section id="nosotros" class="scroll-mt-24 py-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+
+          <div class="mx-auto mb-14 max-w-2xl text-center">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
+              Quiénes somos
+            </p>
+
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Detrás de cada juego,
+              <span class="text-red-500">hay un equipo.</span>
+            </h2>
+
+            <p class="mt-5 leading-7 text-zinc-400">
+              Beware of the Rat es un equipo centrado en la creación de experiencias
+              dentro de Roblox. Trabajamos para convertir conceptos e ideas en
+              juegos que las personas quieran explorar, disfrutar y recordar.
+            </p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-3">
+
+            <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 transition hover:border-red-500/30">
+              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+                <Icon name="lucide:rocket" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-white">Grandes ideas</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Queremos experimentar, aprender y crear experiencias originales
+                que tengan identidad propia.
+              </p>
+            </article>
+
+            <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 transition hover:border-red-500/30">
+              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+                <Icon name="lucide:users" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-white">Trabajo colaborativo</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Cada integrante aporta algo diferente. Escuchamos ideas,
+                compartimos conocimientos y resolvemos problemas juntos.
+              </p>
+            </article>
+
+            <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 transition hover:border-red-500/30">
+              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+                <Icon name="lucide:trending-up" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-white">Crecimiento real</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Buscamos construir un equipo en el que sus integrantes puedan
+                mejorar sus habilidades y participar en proyectos significativos.
+              </p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Áreas de colaboración -->
+      <section id="areas" class="scroll-mt-24 border-y border-zinc-900 bg-zinc-900/20 py-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+
+          <div class="mb-12 max-w-2xl">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
+              Oportunidades
+            </p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Encuentra tu lugar en el equipo.
+            </h2>
+            <p class="mt-5 leading-7 text-zinc-400">
+              No todos los juegos se construyen de la misma manera.
+              Estas son algunas de las áreas en las que puedes aportar.
+              Si tienes otra habilidad, también queremos conocerla.
+            </p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
+              <div class="flex items-center justify-between">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 text-orange-400">
+                  <Icon name="lucide:code-2" class="h-6 w-6" />
+                </div>
+                <span class="rounded-full border border-zinc-800 px-2.5 py-1 text-[10px] font-medium text-zinc-400">
+                  Luau
+                </span>
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-white">Scripting</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Programación de mecánicas, sistemas de juego, interfaces funcionales,
+                herramientas y lógica mediante Luau.
+              </p>
+              <p class="mt-5 text-xs font-medium text-red-400">Desarrollo y programación</p>
+            </article>
+
+            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+                <Icon name="lucide:mountain" class="h-6 w-6" />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-white">Building</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Construcción de mapas, escenarios, estructuras y entornos que
+                den vida al universo de cada juego.
+              </p>
+              <p class="mt-5 text-xs font-medium text-red-400">Construcción de mundos</p>
+            </article>
+
+            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
+                <Icon name="lucide:palette" class="h-6 w-6" />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-white">UI/UX Design</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Diseño de menús, HUD, inventarios, pantallas y experiencias
+                visuales claras y agradables para los jugadores.
+              </p>
+              <p class="mt-5 text-xs font-medium text-red-400">Diseño de interfaces</p>
+            </article>
+
+            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
+                <Icon name="lucide:box" class="h-6 w-6" />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-white">Modelado 3D</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Creación de objetos, accesorios, props y recursos visuales
+                para enriquecer nuestros juegos.
+              </p>
+              <p class="mt-5 text-xs font-medium text-red-400">Assets y modelado</p>
+            </article>
+
+            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
+                <Icon name="lucide:clapperboard" class="h-6 w-6" />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-white">Animación y VFX</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Animaciones de personajes, efectos visuales y detalles
+                que hagan que el gameplay se sienta vivo.
+              </p>
+              <p class="mt-5 text-xs font-medium text-red-400">Movimiento y efectos</p>
+            </article>
+
+            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-yellow-400">
+                <Icon name="lucide:gamepad-2" class="h-6 w-6" />
+              </div>
+              <h3 class="mt-5 text-lg font-bold text-white">Game Design y Testing</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Proponer mecánicas, probar versiones, encontrar errores
+                y ayudar a mejorar la experiencia de juego.
+              </p>
+              <p class="mt-5 text-xs font-medium text-red-400">Ideas, pruebas y calidad</p>
+            </article>
+
+          </div>
+
+          <div class="mt-7 rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5 sm:p-6">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-zinc-800 text-zinc-300">
+                <Icon name="lucide:sparkles" class="h-6 w-6" />
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-white">¿Tu talento no aparece en la lista?</h3>
+                <p class="mt-2 text-sm leading-6 text-zinc-400">
+                  También valoramos la música, el sonido, la escritura, la creación
+                  de historias, la gestión de proyectos y otras habilidades útiles.
+                </p>
+              </div>
+              <a href="#postulacion" class="inline-flex items-center gap-2 text-sm font-semibold text-red-400 transition hover:text-red-300">
+                Cuéntanos tu idea
+                <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Requisitos -->
+      <section id="requisitos" class="scroll-mt-24 py-24">
+        <div class="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
+              Lo que valoramos
+            </p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              No necesitas saberlo todo para comenzar.
+            </h2>
+            <p class="mt-5 leading-7 text-zinc-400">
+              Las habilidades se desarrollan con práctica. Lo que buscamos
+              es una actitud que permita aprender, avanzar y trabajar de manera
+              saludable con los demás.
+            </p>
+
+            <a href="#postulacion" class="mt-7 inline-flex items-center gap-2 font-semibold text-red-400 transition hover:text-red-300">
+              Postularme ahora
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+          </div>
+
+          <div class="space-y-4">
+
+            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+              <Icon name="lucide:check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+              <div>
+                <h3 class="font-bold text-white">Ganas de aprender</h3>
+                <p class="mt-2 text-sm leading-6 text-zinc-400">
+                  Si eres principiante, puedes postularte. La curiosidad y
+                  la disposición para mejorar son importantes.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+              <Icon name="lucide:messages-square" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+              <div>
+                <h3 class="font-bold text-white">Comunicación responsable</h3>
+                <p class="mt-2 text-sm leading-6 text-zinc-400">
+                  Mantener al equipo informado, preguntar cuando haya dudas
+                  y avisar con tiempo si no puedes continuar una tarea.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+              <Icon name="lucide:calendar-check" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+              <div>
+                <h3 class="font-bold text-white">Compromiso realista</h3>
+                <p class="mt-2 text-sm leading-6 text-zinc-400">
+                  No esperamos disponibilidad las 24 horas. Sí valoramos
+                  acordar objetivos realistas y cumplirlos o comunicar
+                  a tiempo cualquier dificultad.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+              <Icon name="lucide:handshake" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+              <div>
+                <h3 class="font-bold text-white">Respeto y colaboración</h3>
+                <p class="mt-2 text-sm leading-6 text-zinc-400">
+                  Aceptar comentarios constructivos, respetar el trabajo
+                  de los demás y contribuir a un ambiente de equipo positivo.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Proceso -->
+      <section id="proceso" class="scroll-mt-24 border-y border-zinc-900 bg-zinc-900/20 py-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+
+          <div class="mx-auto mb-14 max-w-2xl text-center">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
+              Cómo participar
+            </p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Tres pasos para empezar.
+            </h2>
+            <p class="mt-5 leading-7 text-zinc-400">
+              Queremos conocerte, descubrir qué te interesa y encontrar
+              la mejor manera de que puedas aportar.
+            </p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-3">
+
+            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
+              <span class="font-mono text-sm font-bold text-red-400">01 / CONÓCENOS</span>
+              <div class="my-5 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-900 text-white">
+                <Icon name="lucide:users" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-white">Únete a la comunidad</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Entra a nuestro Discord y conoce al equipo, los proyectos
+                y las oportunidades disponibles.
+              </p>
+            </article>
+
+            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
+              <span class="font-mono text-sm font-bold text-red-400">02 / CUÉNTANOS</span>
+              <div class="my-5 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-900 text-white">
+                <Icon name="lucide:clipboard-list" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-white">Presenta tu perfil</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Dinos qué sabes hacer, qué te gustaría aprender y cuánto
+                tiempo puedes dedicar de forma realista.
+              </p>
+            </article>
+
+            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
+              <span class="font-mono text-sm font-bold text-red-400">03 / COLABORA</span>
+              <div class="my-5 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-900 text-white">
+                <Icon name="lucide:rocket" class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-white">Empieza a crear</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-400">
+                Si encontramos una buena oportunidad para ti, hablaremos
+                de las tareas, expectativas y siguientes pasos.
+              </p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="postulacion" class="scroll-mt-24 py-24">
+        <div class="mx-auto max-w-5xl px-5 sm:px-8">
+          <div class="relative isolate overflow-hidden rounded-3xl border border-red-500/20 bg-zinc-900 p-8 text-center sm:p-14">
+
+            <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.18),transparent_65%)]"></div>
+
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 text-red-400">
+              <Icon name="lucide:rat" class="h-8 w-8" />
+            </div>
+
+            <p class="mt-7 text-xs font-bold uppercase tracking-[0.25em] text-red-400">
+              Tu historia comienza aquí
+            </p>
+
+            <h2 class="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-5xl">
+              El próximo gran juego podría empezar contigo.
+            </h2>
+
+            <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-400">
+              Si tienes experiencia, queremos ver lo que sabes hacer.
+              Si estás empezando, queremos conocer tus ganas de aprender.
+              Comparte tus ideas, descubre nuevas oportunidades y ayúdanos
+              a construir algo que valga la pena.
+            </p>
+
+            <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+              <a
+                href="https://discord.gg/TU_INVITACION"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-7 py-4 font-bold text-white transition hover:bg-red-500"
+              >
+                <Icon name="lucide:message-circle" class="h-5 w-5" />
+                Unirme al Discord
+                <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+              </a>
+
+              <a
+                href="#areas"
+                class="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950/50 px-7 py-4 font-semibold text-zinc-300 transition hover:border-zinc-600 hover:text-white"
+              >
+                Ver áreas de trabajo
+              </a>
+            </div>
+
+            <p class="mt-6 text-xs leading-5 text-zinc-500">
+              No necesitas ser un experto. Necesitas ganas de aprender,
+              comunicarte y construir junto a los demás.
+            </p>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-900 bg-zinc-950 py-8">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-center sm:px-8 md:flex-row md:text-left">
+
+        <a href="#inicio" class="flex items-center gap-2 text-sm font-bold text-zinc-300 transition hover:text-white">
+          <Icon name="lucide:rat" class="h-5 w-5 text-red-400" />
+          BEWARE OF THE RAT
+        </a>
+
+        <p class="text-xs text-zinc-500">
+          Creado con pasión, construido en equipo.
+        </p>
+
+        <a href="#inicio" class="inline-flex items-center gap-2 text-xs text-zinc-500 transition hover:text-white">
+          Volver arriba
+          <Icon name="lucide:arrow-up" class="h-3.5 w-3.5" />
+        </a>
+
+      </div>
+
+      <div class="mx-auto mt-7 max-w-6xl border-t border-zinc-900 px-5 pt-5 text-center sm:px-8">
+        <p class="text-xs text-zinc-600">
+          © {new Date().getFullYear()} Beware of the Rat. Todos los derechos reservados.
+          Roblox es una marca de Roblox Corporation.
+        </p>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+</style>

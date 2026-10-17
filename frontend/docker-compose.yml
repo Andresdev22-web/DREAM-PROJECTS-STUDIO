@@ -1,0 +1,20 @@
+name: bewareOfTheRat
+
+services:
+  frontend:
+    build: .
+    container_name: bewareOfTheRat_app
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bewareOfTheRat.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.bewareOfTheRat.entrypoints=${ENTRYPOINT}"
+      # Comentar la linea de abajo si estas en local y descomentarla si estas en produccion
+      - "traefik.http.routers.bewareOfTheRat.tls.certresolver=${CERTRESOLVER}"
+      - "traefik.http.services.bewareOfTheRat.loadbalancer.server.port=80"
+
+networks:
+  web:
+    external: true
