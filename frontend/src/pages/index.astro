@@ -1,7 +1,116 @@
-
 ---
 import "../style/global.css";
 import { Icon } from "astro-icon/components";
+
+// ==========================================
+// CONFIGURACIÓN DE CONTENIDO (FÁCIL EDICIÓN)
+// ==========================================
+
+const siteConfig = {
+  name: "DREAM PROJECTS STUDIO",
+  subtitle: "ROBLOX GAME STUDIO",
+  description: "Estudio profesional de desarrollo en Roblox. Ofrecemos servicios corporativos de creación de juegos y reclutamos talento técnico con experiencia comprobada.",
+};
+
+// Enlaces de navegación superior
+const navLinks = [
+  { name: "Nosotros", href: "#nosotros" },
+  { name: "Servicios B2B", href: "#servicios" },
+  { name: "Empleo", href: "#areas" },
+  { name: "Requisitos", href: "#requisitos" },
+  { name: "Proceso", href: "#proceso" },
+];
+
+// Servicios ofrecidos para empresas (B2B)
+const servicesData = [
+  {
+    title: "Experiencias y Juegos a Medida",
+    description: "Creamos mundos, simuladores y activaciones interactivas personalizadas dentro de Roblox para marcas y empresas.",
+    icon: "lucide:gamepad-2",
+    badge: "Corporativo"
+  },
+  {
+    title: "Programación en Luau Avanzado",
+    description: "Desarrollo de lógica compleja, optimización de rendimiento, sistemas de guardado y conexión con APIs externas.",
+    icon: "lucide:code-2",
+    badge: "Técnico"
+  },
+  {
+    title: "Diseño de Mundos y Mapas 3D",
+    description: "Construcción de escenarios inmersivos, optimización de mallas y diseño visual con identidad propia.",
+    icon: "lucide:mountain",
+    badge: "Visual"
+  }
+];
+
+// Áreas de contratación (Exige experiencia y compromiso)
+const hiringAreas = [
+  {
+    title: "Scripting (Luau)",
+    description: "Programación de sistemas de juego, interfaces funcionales y lógica de alta eficiencia en Roblox Studio.",
+    icon: "lucide:code-2",
+    iconBg: "bg-orange-500/10",
+    iconColor: "text-orange-400",
+    tag: "Nivel Medio/Alto",
+    requirement: "Experiencia demostrable y portafolio activo."
+  },
+  {
+    title: "Building / Mapas",
+    description: "Construcción de entornos detallados, manejo de iluminación y optimización de rendimiento para experiencias fluidas.",
+    icon: "lucide:mountain",
+    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-400",
+    tag: "Nivel Medio",
+    requirement: "Dominio de Roblox Studio y modelado básico."
+  },
+  {
+    title: "UI/UX & Modelado 3D",
+    description: "Diseño de interfaces limpias (HUDs, menús, tiendas) y recursos visuales adaptados a la plataforma.",
+    icon: "lucide:palette",
+    iconBg: "bg-purple-500/10",
+    iconColor: "text-purple-400",
+    tag: "Nivel Medio",
+    requirement: "Experiencia previa requerida."
+  }
+];
+
+// Requisitos indispensables (Compromiso y experiencia)
+const requirementsData = [
+  {
+    title: "Experiencia previa comprobable",
+    description: "No aceptamos perfiles desde cero (0 base). Requerimos que ya domines tu área de trabajo y tengas proyectos previos.",
+    icon: "lucide:check-circle-2"
+  },
+  {
+    title: "Compromiso y responsabilidad real",
+    description: "Buscamos personas serias que cumplan con los plazos acordados y mantengan una comunicación constante.",
+    icon: "lucide:calendar-check"
+  },
+  {
+    title: "Trabajo en equipo profesional",
+    description: "Capacidad para aceptar retroalimentación constructiva y colaborar activamente en proyectos complejos.",
+    icon: "lucide:handshake"
+  }
+];
+
+// Pasos del proceso
+const processSteps = [
+  {
+    step: "01",
+    title: "Contacto inicial",
+    description: "Únete a nuestro canal de comunicación o escríbenos para detallar si buscas servicios o postularte."
+  },
+  {
+    step: "02",
+    title: "Evaluación de perfil",
+    description: "Revisamos tu portafolio técnico (si buscas empleo) o las necesidades de tu empresa (si buscas servicios)."
+  },
+  {
+    step: "03",
+    title: "¡Manos a la obra!",
+    description: "Definimos los objetivos, plazos y comenzamos a construir el proyecto de manera profesional."
+  }
+];
 ---
 
 <!doctype html>
@@ -12,18 +121,9 @@ import { Icon } from "astro-icon/components";
     <meta name="theme-color" content="#09090b" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>Beware of the Rat | Crea mundos con nosotros</title>
+    <title>{siteConfig.name} | Desarrollo de Juegos & Servicios B2B</title>
 
-    <meta
-      name="description"
-      content="Beware of the Rat es un equipo de desarrollo de juegos de Roblox. Buscamos colaboradores creativos, con o sin experiencia, para crear grandes proyectos juntos."
-    />
-
-    <meta
-      name="keywords"
-      content="Beware of the Rat, Roblox, Roblox Studio, Luau, desarrollo de videojuegos, reclutamiento, game development"
-    />
-
+    <meta name="description" content={siteConfig.description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
 
@@ -37,29 +137,23 @@ import { Icon } from "astro-icon/components";
           <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 transition group-hover:bg-red-500/20">
             <Icon name="lucide:rat" class="h-6 w-6" />
           </div>
-
           <div>
-            <span class="block text-sm font-extrabold tracking-tight text-white">
-              BEWARE OF THE RAT
-            </span>
-            <span class="block text-[10px] tracking-[0.2em] text-zinc-500">
-              ROBLOX GAME STUDIO
-            </span>
+            <span class="block text-sm font-extrabold tracking-tight text-white">{siteConfig.name}</span>
+            <span class="block text-[10px] tracking-[0.2em] text-zinc-500">{siteConfig.subtitle}</span>
           </div>
         </a>
 
         <div class="hidden items-center gap-7 text-sm text-zinc-400 md:flex">
-          <a href="#nosotros" class="transition hover:text-white">Nosotros</a>
-          <a href="#areas" class="transition hover:text-white">Áreas</a>
-          <a href="#requisitos" class="transition hover:text-white">Requisitos</a>
-          <a href="#proceso" class="transition hover:text-white">Proceso</a>
+          {navLinks.map((link) => (
+            <a href={link.href} class="transition hover:text-white">{link.name}</a>
+          ))}
         </div>
 
         <a
-          href="#postulacion"
+          href="#contacto"
           class="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-500"
         >
-          Únete al equipo
+          Iniciar Proyecto / Unirse
           <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
         </a>
 
@@ -81,28 +175,25 @@ import { Icon } from "astro-icon/components";
           <div>
             <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/5 px-3 py-1.5 text-xs font-medium text-red-300">
               <span class="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
-              RECLUTAMIENTO DE COLABORADORES
+              ESTUDIO PROFESIONAL EN ROBLOX & B2B
             </div>
 
             <h1 class="max-w-3xl text-5xl font-black leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl">
-              No solo juegues.
-              <span class="mt-2 block text-red-500">Crea algo</span>
-              <span class="block">extraordinario.</span>
+              Creamos mundos.
+              <span class="mt-2 block text-red-500">Impulsamos</span>
+              <span class="block">tu marca.</span>
             </h1>
 
             <p class="mt-7 max-w-xl text-base leading-8 text-zinc-400 sm:text-lg">
-              En <strong class="text-zinc-200">Beware of the Rat</strong>
-              creamos experiencias para Roblox y buscamos personas con ideas,
-              creatividad y ganas de construir algo grande. No importa si estás
-              comenzando o ya tienes experiencia: queremos conocer tu potencial.
+              Ofrecemos <strong class="text-zinc-200">servicios corporativos de desarrollo en Roblox</strong> para empresas y reclutamos <strong class="text-zinc-200">talento con experiencia y compromiso</strong> para nuestros equipos técnicos.
             </p>
 
             <div class="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#postulacion"
+                href="#servicios"
                 class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-0.5 hover:bg-red-500"
               >
-                Quiero colaborar
+                Contratar Servicios B2B
                 <Icon name="lucide:arrow-right" class="h-5 w-5" />
               </a>
 
@@ -110,111 +201,46 @@ import { Icon } from "astro-icon/components";
                 href="#areas"
                 class="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-6 py-3.5 font-semibold text-zinc-300 transition hover:border-zinc-700 hover:bg-zinc-900 hover:text-white"
               >
-                Explorar oportunidades
-                <Icon name="lucide:compass" class="h-5 w-5" />
+                Postularme al equipo
+                <Icon name="lucide:users" class="h-5 w-5" />
               </a>
             </div>
 
             <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-500">
               <span class="flex items-center gap-2">
                 <Icon name="lucide:check-circle-2" class="h-4 w-4 text-red-400" />
-                Principiantes bienvenidos
+                Exigimos experiencia media/avanzada
               </span>
               <span class="flex items-center gap-2">
-                <Icon name="lucide:users" class="h-4 w-4 text-red-400" />
-                Trabajo en equipo
+                <Icon name="lucide:briefcase" class="h-4 w-4 text-red-400" />
+                Enfoque corporativo y profesional
               </span>
             </div>
           </div>
 
-          <!-- Panel visual -->
+          <!-- Panel visual informativo -->
           <div class="relative mx-auto w-full max-w-lg">
             <div class="absolute -inset-5 rounded-[2rem] bg-red-600/10 blur-3xl"></div>
 
-            <div class="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/80 shadow-2xl shadow-black/40">
-
-              <div class="flex items-center justify-between border-b border-zinc-800 px-5 py-4">
-                <div class="flex items-center gap-2">
-                  <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
-                </div>
-                <span class="font-mono text-xs text-zinc-500">team.workspace</span>
+            <div class="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/80 shadow-2xl shadow-black/40 p-6 sm:p-8">
+              <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6">
+                <span class="font-mono text-xs text-zinc-500">studio.services & hiring</span>
+                <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
               </div>
 
-              <div class="p-6 sm:p-8">
-                <div class="mb-7 flex items-center justify-between">
-                  <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-red-400">
-                      Our philosophy
-                    </p>
-                    <h2 class="mt-2 text-2xl font-bold text-white">
-                      Built together.
-                    </h2>
-                  </div>
-
-                  <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 text-red-400">
-                    <Icon name="lucide:blocks" class="h-6 w-6" />
-                  </div>
+              <div class="space-y-4">
+                <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+                  <p class="text-xs font-semibold uppercase text-red-400">Servicios B2B</p>
+                  <p class="mt-1 text-sm font-bold text-white">Desarrollo de experiencias para marcas</p>
                 </div>
-
-                <div class="space-y-3">
-                  <div class="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
-                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
-                      <Icon name="lucide:code-2" class="h-5 w-5" />
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <p class="font-semibold text-zinc-100">Developers</p>
-                      <p class="mt-1 text-xs text-zinc-500">Ideas converted into gameplay</p>
-                    </div>
-                    <Icon name="lucide:check" class="h-5 w-5 text-emerald-400" />
-                  </div>
-
-                  <div class="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
-                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
-                      <Icon name="lucide:palette" class="h-5 w-5" />
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <p class="font-semibold text-zinc-100">Artists & Builders</p>
-                      <p class="mt-1 text-xs text-zinc-500">Worlds with their own identity</p>
-                    </div>
-                    <Icon name="lucide:check" class="h-5 w-5 text-emerald-400" />
-                  </div>
-
-                  <div class="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
-                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400">
-                      <Icon name="lucide:lightbulb" class="h-5 w-5" />
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <p class="font-semibold text-zinc-100">New talent</p>
-                      <p class="mt-1 text-xs text-zinc-500">Potential is worth discovering</p>
-                    </div>
-                    <Icon name="lucide:check" class="h-5 w-5 text-emerald-400" />
-                  </div>
-                </div>
-
-                <div class="mt-6 rounded-xl border border-red-500/15 bg-red-500/5 p-4">
-                  <p class="text-sm leading-6 text-zinc-300">
-                    <span class="font-bold text-red-400">Our rule:</span>
-                    Good ideas matter. Communication, responsibility and teamwork
-                    make them possible.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="absolute -bottom-5 -right-3 rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 shadow-xl sm:-right-6">
-              <div class="flex items-center gap-3">
-                <Icon name="lucide:gamepad-2" class="h-6 w-6 text-red-400" />
-                <div>
-                  <p class="text-xs font-bold text-white">CREATE. BUILD. PLAY.</p>
-                  <p class="mt-1 text-[10px] text-zinc-500">Your next chapter starts here.</p>
+                <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+                  <p class="text-xs font-semibold uppercase text-red-400">Colaboración</p>
+                  <p class="mt-1 text-sm font-bold text-white">Reclutamiento activo con experiencia</p>
                 </div>
               </div>
             </div>
-
           </div>
+
         </div>
       </section>
 
@@ -223,182 +249,88 @@ import { Icon } from "astro-icon/components";
         <div class="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
       </div>
 
-      <!-- Nosotros -->
-      <section id="nosotros" class="scroll-mt-24 py-24">
+      <!-- Servicios B2B (Para Empresas) -->
+      <section id="servicios" class="scroll-mt-24 py-24">
         <div class="mx-auto max-w-6xl px-5 sm:px-8">
 
           <div class="mx-auto mb-14 max-w-2xl text-center">
             <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
-              Quiénes somos
+              Soluciones para Empresas
             </p>
-
             <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Detrás de cada juego,
-              <span class="text-red-500">hay un equipo.</span>
+              Lleva tu marca al siguiente nivel en <span class="text-red-500">Roblox</span>.
             </h2>
-
             <p class="mt-5 leading-7 text-zinc-400">
-              Beware of the Rat es un equipo centrado en la creación de experiencias
-              dentro de Roblox. Trabajamos para convertir conceptos e ideas en
-              juegos que las personas quieran explorar, disfrutar y recordar.
+              Ofrecemos servicios de desarrollo a medida para corporaciones y agencias que buscan posicionarse dentro de la plataforma con altos estándares de calidad y rendimiento.
             </p>
           </div>
 
-          <div class="grid gap-5 md:grid-cols-3">
-
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 transition hover:border-red-500/30">
-              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
-                <Icon name="lucide:rocket" class="h-6 w-6" />
-              </div>
-              <h3 class="text-lg font-bold text-white">Grandes ideas</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Queremos experimentar, aprender y crear experiencias originales
-                que tengan identidad propia.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 transition hover:border-red-500/30">
-              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
-                <Icon name="lucide:users" class="h-6 w-6" />
-              </div>
-              <h3 class="text-lg font-bold text-white">Trabajo colaborativo</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Cada integrante aporta algo diferente. Escuchamos ideas,
-                compartimos conocimientos y resolvemos problemas juntos.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 transition hover:border-red-500/30">
-              <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
-                <Icon name="lucide:trending-up" class="h-6 w-6" />
-              </div>
-              <h3 class="text-lg font-bold text-white">Crecimiento real</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Buscamos construir un equipo en el que sus integrantes puedan
-                mejorar sus habilidades y participar en proyectos significativos.
-              </p>
-            </article>
-
+          <div class="grid gap-6 md:grid-cols-3">
+            {servicesData.map((service) => (
+              <article class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 transition hover:border-red-500/40 hover:-translate-y-1 flex flex-col justify-between">
+                <div>
+                  <div class="mb-5 flex items-center justify-between">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+                      <Icon name={service.icon} class="h-6 w-6" />
+                    </div>
+                    <span class="rounded-full border border-zinc-800 px-2.5 py-1 text-[10px] font-medium text-zinc-400">
+                      {service.badge}
+                    </span>
+                  </div>
+                  <h3 class="text-lg font-bold text-white">{service.title}</h3>
+                  <p class="mt-3 text-sm leading-7 text-zinc-400">{service.description}</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-zinc-800/50">
+                  <a href="#contacto" class="text-xs font-semibold text-red-400 hover:text-red-300 inline-flex items-center gap-1">
+                    Solicitar información <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
+
         </div>
       </section>
 
-      <!-- Áreas de colaboración -->
+      <!-- Áreas de Contratación (Empleo con Experiencia) -->
       <section id="areas" class="scroll-mt-24 border-y border-zinc-900 bg-zinc-900/20 py-24">
         <div class="mx-auto max-w-6xl px-5 sm:px-8">
 
           <div class="mb-12 max-w-2xl">
             <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
-              Oportunidades
+              Bolsa de Trabajo
             </p>
             <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Encuentra tu lugar en el equipo.
+              Únete a nuestro equipo técnico.
             </h2>
             <p class="mt-5 leading-7 text-zinc-400">
-              No todos los juegos se construyen de la misma manera.
-              Estas son algunas de las áreas en las que puedes aportar.
-              Si tienes otra habilidad, también queremos conocerla.
+              Buscamos colaboradores con <span class="text-white font-semibold">experiencia previa y compromiso real</span>. No aceptamos perfiles sin base (0 experiencia), ya que trabajamos bajo plazos y estándares profesionales.
             </p>
           </div>
 
-          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-
-            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
-              <div class="flex items-center justify-between">
-                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 text-orange-400">
-                  <Icon name="lucide:code-2" class="h-6 w-6" />
+          <div class="grid gap-6 md:grid-cols-3">
+            {hiringAreas.map((area) => (
+              <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${area.iconBg} ${area.iconColor}`}>
+                      <Icon name={area.icon} class="h-6 w-6" />
+                    </div>
+                    <span class="rounded-full border border-red-500/20 bg-red-500/5 px-2.5 py-1 text-[10px] font-medium text-red-400">
+                      {area.tag}
+                    </span>
+                  </div>
+                  <h3 class="mt-5 text-lg font-bold text-white">{area.title}</h3>
+                  <p class="mt-3 text-sm leading-7 text-zinc-400">{area.description}</p>
                 </div>
-                <span class="rounded-full border border-zinc-800 px-2.5 py-1 text-[10px] font-medium text-zinc-400">
-                  Luau
-                </span>
-              </div>
-              <h3 class="mt-5 text-lg font-bold text-white">Scripting</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Programación de mecánicas, sistemas de juego, interfaces funcionales,
-                herramientas y lógica mediante Luau.
-              </p>
-              <p class="mt-5 text-xs font-medium text-red-400">Desarrollo y programación</p>
-            </article>
 
-            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
-                <Icon name="lucide:mountain" class="h-6 w-6" />
-              </div>
-              <h3 class="mt-5 text-lg font-bold text-white">Building</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Construcción de mapas, escenarios, estructuras y entornos que
-                den vida al universo de cada juego.
-              </p>
-              <p class="mt-5 text-xs font-medium text-red-400">Construcción de mundos</p>
-            </article>
-
-            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
-                <Icon name="lucide:palette" class="h-6 w-6" />
-              </div>
-              <h3 class="mt-5 text-lg font-bold text-white">UI/UX Design</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Diseño de menús, HUD, inventarios, pantallas y experiencias
-                visuales claras y agradables para los jugadores.
-              </p>
-              <p class="mt-5 text-xs font-medium text-red-400">Diseño de interfaces</p>
-            </article>
-
-            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
-                <Icon name="lucide:box" class="h-6 w-6" />
-              </div>
-              <h3 class="mt-5 text-lg font-bold text-white">Modelado 3D</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Creación de objetos, accesorios, props y recursos visuales
-                para enriquecer nuestros juegos.
-              </p>
-              <p class="mt-5 text-xs font-medium text-red-400">Assets y modelado</p>
-            </article>
-
-            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
-                <Icon name="lucide:clapperboard" class="h-6 w-6" />
-              </div>
-              <h3 class="mt-5 text-lg font-bold text-white">Animación y VFX</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Animaciones de personajes, efectos visuales y detalles
-                que hagan que el gameplay se sienta vivo.
-              </p>
-              <p class="mt-5 text-xs font-medium text-red-400">Movimiento y efectos</p>
-            </article>
-
-            <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 transition hover:-translate-y-1 hover:border-red-500/40">
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-yellow-400">
-                <Icon name="lucide:gamepad-2" class="h-6 w-6" />
-              </div>
-              <h3 class="mt-5 text-lg font-bold text-white">Game Design y Testing</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Proponer mecánicas, probar versiones, encontrar errores
-                y ayudar a mejorar la experiencia de juego.
-              </p>
-              <p class="mt-5 text-xs font-medium text-red-400">Ideas, pruebas y calidad</p>
-            </article>
-
-          </div>
-
-          <div class="mt-7 rounded-2xl border border-zinc-800 bg-zinc-950/50 p-5 sm:p-6">
-            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-zinc-800 text-zinc-300">
-                <Icon name="lucide:sparkles" class="h-6 w-6" />
-              </div>
-              <div class="flex-1">
-                <h3 class="font-bold text-white">¿Tu talento no aparece en la lista?</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-400">
-                  También valoramos la música, el sonido, la escritura, la creación
-                  de historias, la gestión de proyectos y otras habilidades útiles.
-                </p>
-              </div>
-              <a href="#postulacion" class="inline-flex items-center gap-2 text-sm font-semibold text-red-400 transition hover:text-red-300">
-                Cuéntanos tu idea
-                <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
-              </a>
-            </div>
+                <div class="mt-6 pt-4 border-t border-zinc-800/60">
+                  <p class="text-xs font-mono text-zinc-400 bg-zinc-900 p-2.5 rounded-lg border border-zinc-800/80">
+                    ⚠️ {area.requirement}
+                  </p>
+                </div>
+              </article>
+            ))}
           </div>
 
         </div>
@@ -410,71 +342,28 @@ import { Icon } from "astro-icon/components";
 
           <div>
             <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
-              Lo que valoramos
+              Lo que exigimos
             </p>
             <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              No necesitas saberlo todo para comenzar.
+              Profesionalismo y compromiso ante todo.
             </h2>
             <p class="mt-5 leading-7 text-zinc-400">
-              Las habilidades se desarrollan con práctica. Lo que buscamos
-              es una actitud que permita aprender, avanzar y trabajar de manera
-              saludable con los demás.
+              Para garantizar el éxito de nuestros proyectos corporativos y propios, requerimos un nivel mínimo de destreza técnica y responsabilidad.
             </p>
-
-            <a href="#postulacion" class="mt-7 inline-flex items-center gap-2 font-semibold text-red-400 transition hover:text-red-300">
-              Postularme ahora
-              <Icon name="lucide:arrow-right" class="h-4 w-4" />
-            </a>
           </div>
 
           <div class="space-y-4">
-
-            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
-              <Icon name="lucide:check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
-              <div>
-                <h3 class="font-bold text-white">Ganas de aprender</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-400">
-                  Si eres principiante, puedes postularte. La curiosidad y
-                  la disposición para mejorar son importantes.
-                </p>
+            {requirementsData.map((req) => (
+              <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+                <Icon name={req.icon} class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+                <div>
+                  <h3 class="font-bold text-white">{req.title}</h3>
+                  <p class="mt-2 text-sm leading-6 text-zinc-400">{req.description}</p>
+                </div>
               </div>
-            </div>
-
-            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
-              <Icon name="lucide:messages-square" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
-              <div>
-                <h3 class="font-bold text-white">Comunicación responsable</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-400">
-                  Mantener al equipo informado, preguntar cuando haya dudas
-                  y avisar con tiempo si no puedes continuar una tarea.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
-              <Icon name="lucide:calendar-check" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
-              <div>
-                <h3 class="font-bold text-white">Compromiso realista</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-400">
-                  No esperamos disponibilidad las 24 horas. Sí valoramos
-                  acordar objetivos realistas y cumplirlos o comunicar
-                  a tiempo cualquier dificultad.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
-              <Icon name="lucide:handshake" class="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
-              <div>
-                <h3 class="font-bold text-white">Respeto y colaboración</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-400">
-                  Aceptar comentarios constructivos, respetar el trabajo
-                  de los demás y contribuir a un ambiente de equipo positivo.
-                </p>
-              </div>
-            </div>
-
+            ))}
           </div>
+
         </div>
       </section>
 
@@ -484,109 +373,101 @@ import { Icon } from "astro-icon/components";
 
           <div class="mx-auto mb-14 max-w-2xl text-center">
             <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
-              Cómo participar
+              Cómo trabajamos
             </p>
             <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               Tres pasos para empezar.
             </h2>
             <p class="mt-5 leading-7 text-zinc-400">
-              Queremos conocerte, descubrir qué te interesa y encontrar
-              la mejor manera de que puedas aportar.
+              Ya sea que busques contratar nuestros servicios o postularte como colaborador, el flujo es directo y transparente.
             </p>
           </div>
 
           <div class="grid gap-5 md:grid-cols-3">
-
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
-              <span class="font-mono text-sm font-bold text-red-400">01 / CONÓCENOS</span>
-              <div class="my-5 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-900 text-white">
-                <Icon name="lucide:users" class="h-6 w-6" />
-              </div>
-              <h3 class="text-lg font-bold text-white">Únete a la comunidad</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Entra a nuestro Discord y conoce al equipo, los proyectos
-                y las oportunidades disponibles.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
-              <span class="font-mono text-sm font-bold text-red-400">02 / CUÉNTANOS</span>
-              <div class="my-5 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-900 text-white">
-                <Icon name="lucide:clipboard-list" class="h-6 w-6" />
-              </div>
-              <h3 class="text-lg font-bold text-white">Presenta tu perfil</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Dinos qué sabes hacer, qué te gustaría aprender y cuánto
-                tiempo puedes dedicar de forma realista.
-              </p>
-            </article>
-
-            <article class="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
-              <span class="font-mono text-sm font-bold text-red-400">03 / COLABORA</span>
-              <div class="my-5 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-900 text-white">
-                <Icon name="lucide:rocket" class="h-6 w-6" />
-              </div>
-              <h3 class="text-lg font-bold text-white">Empieza a crear</h3>
-              <p class="mt-3 text-sm leading-7 text-zinc-400">
-                Si encontramos una buena oportunidad para ti, hablaremos
-                de las tareas, expectativas y siguientes pasos.
-              </p>
-            </article>
-
+            {processSteps.map((p) => (
+              <article class="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
+                <span class="font-mono text-sm font-bold text-red-400">{p.step} / PASO</span>
+                <h3 class="mt-5 text-lg font-bold text-white">{p.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-zinc-400">{p.description}</p>
+              </article>
+            ))}
           </div>
+
         </div>
       </section>
-
-      <!-- CTA -->
-      <section id="postulacion" class="scroll-mt-24 py-24">
-        <div class="mx-auto max-w-5xl px-5 sm:px-8">
-          <div class="relative isolate overflow-hidden rounded-3xl border border-red-500/20 bg-zinc-900 p-8 text-center sm:p-14">
-
-            <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.18),transparent_65%)]"></div>
-
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 text-red-400">
-              <Icon name="lucide:rat" class="h-8 w-8" />
-            </div>
-
-            <p class="mt-7 text-xs font-bold uppercase tracking-[0.25em] text-red-400">
-              Tu historia comienza aquí
+<!-- CTA / Contacto (Dividido en Servicios y Empleo) -->
+      <section id="contacto" class="scroll-mt-24 py-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          
+          <div class="mx-auto mb-12 max-w-2xl text-center">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-red-400">
+              ¿Cómo podemos ayudarte?
             </p>
-
-            <h2 class="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-5xl">
-              El próximo gran juego podría empezar contigo.
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Da el siguiente paso con nosotros.
             </h2>
-
-            <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-400">
-              Si tienes experiencia, queremos ver lo que sabes hacer.
-              Si estás empezando, queremos conocer tus ganas de aprender.
-              Comparte tus ideas, descubre nuevas oportunidades y ayúdanos
-              a construir algo que valga la pena.
+            <p class="mt-4 text-sm text-zinc-400">
+              Selecciona la opción que mejor se adapte a lo que estás buscando.
             </p>
+          </div>
 
-            <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
-                href="/quest"
-    
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-7 py-4 font-bold text-white transition hover:bg-red-500"
-              >
-                <Icon name="lucide:message-circle" class="h-5 w-5" />
-                Unete
-                <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
-              </a>
+          <div class="grid gap-8 md:grid-cols-2">
 
-              <a
-                href="#areas"
-                class="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950/50 px-7 py-4 font-semibold text-zinc-300 transition hover:border-zinc-600 hover:text-white"
-              >
-                Ver áreas de trabajo
-              </a>
+            <!-- Opción 1: Empresas / Contratar Servicios -->
+            <div class="relative isolate overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/90 p-8 sm:p-10 flex flex-col justify-between transition hover:border-red-500/30">
+              <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.12),transparent_70%)]"></div>
+
+              <div>
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 text-red-400">
+                  <Icon name="lucide:building-2" class="h-7 w-7" />
+                </div>
+
+                <span class="text-xs font-bold uppercase tracking-wider text-red-400">Para Empresas y Agencias</span>
+                <h3 class="mt-2 text-2xl font-bold text-white">Contratar Servicios B2B</h3>
+                <p class="mt-4 text-sm leading-7 text-zinc-400">
+                  ¿Buscas crear una experiencia personalizada en Roblox para tu marca o proyecto? Desarrollamos juegos, mapas y sistemas con estándares corporativos y entregas a tiempo.
+                </p>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-zinc-800/80">
+                <a
+                  href="/servicios-contact"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 font-bold text-white shadow-lg shadow-red-950/30 transition hover:bg-red-500"
+                >
+                  <Icon name="lucide:briefcase" class="h-5 w-5" />
+                  Solicitar Cotización
+                  <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+                </a>
+              </div>
             </div>
 
-            <p class="mt-6 text-xs leading-5 text-zinc-500">
-              No necesitas ser un experto. Necesitas ganas de aprender,
-              comunicarte y construir junto a los demás.
-            </p>
+            <!-- Opción 2: Desarrolladores / Solicitar Trabajo -->
+            <div class="relative isolate overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/90 p-8 sm:p-10 flex flex-col justify-between transition hover:border-red-500/30">
+              <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(239,68,68,0.08),transparent_70%)]"></div>
+
+              <div>
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-zinc-700 bg-zinc-800/60 text-zinc-300">
+                  <Icon name="lucide:user-check" class="h-7 w-7" />
+                </div>
+
+                <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Para Desarrolladores (Experiencia requerida)</span>
+                <h3 class="mt-2 text-2xl font-bold text-white">Unirse al Equipo Técnico</h3>
+                <p class="mt-4 text-sm leading-7 text-zinc-400">
+                  ¿Tienes experiencia demostrable en Luau, modelado 3D, UI/UX o construcción en Roblox Studio? Presenta tu portafolio y participa en proyectos de alto impacto.
+                </p>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-zinc-800/80">
+                <a
+                  href="/quest"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950/60 px-6 py-3.5 font-bold text-zinc-200 transition hover:border-zinc-600 hover:bg-zinc-900 hover:text-white"
+                >
+                  <Icon name="lucide:file-text" class="h-5 w-5" />
+                  Enviar Portafolio
+                  <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+                </a>
+              </div>
+            </div>
 
           </div>
         </div>
@@ -597,28 +478,8 @@ import { Icon } from "astro-icon/components";
     <!-- Footer -->
     <footer class="border-t border-zinc-900 bg-zinc-950 py-8">
       <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-center sm:px-8 md:flex-row md:text-left">
-
-        <a href="#inicio" class="flex items-center gap-2 text-sm font-bold text-zinc-300 transition hover:text-white">
-          <Icon name="lucide:rat" class="h-5 w-5 text-red-400" />
-          BEWARE OF THE RAT
-        </a>
-
-        <p class="text-xs text-zinc-500">
-          Creado con pasión, construido en equipo.
-        </p>
-
-        <a href="#inicio" class="inline-flex items-center gap-2 text-xs text-zinc-500 transition hover:text-white">
-          Volver arriba
-          <Icon name="lucide:arrow-up" class="h-3.5 w-3.5" />
-        </a>
-
-      </div>
-
-      <div class="mx-auto mt-7 max-w-6xl border-t border-zinc-900 px-5 pt-5 text-center sm:px-8">
-        <p class="text-xs text-zinc-600">
-          © {new Date().getFullYear()} Beware of the Rat. Todos los derechos reservados.
-          Roblox es una marca de Roblox Corporation.
-        </p>
+        <span class="text-sm font-bold text-zinc-300">{siteConfig.name}</span>
+        <p class="text-xs text-zinc-500">© {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.</p>
       </div>
     </footer>
 
@@ -630,7 +491,6 @@ import { Icon } from "astro-icon/components";
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
   }
-
   body {
     overflow-x: hidden;
   }
