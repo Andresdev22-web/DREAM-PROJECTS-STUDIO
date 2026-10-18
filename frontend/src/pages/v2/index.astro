@@ -1,0 +1,2234 @@
+---
+import "../../style/global.css";
+import { Icon } from "astro-icon/components";
+
+const projects = [
+  {
+    number: "01",
+    title: "Desarrollo web",
+    description:
+      "Interfaces modernas, rápidas y adaptables para llevar tus ideas a internet.",
+    icon: "lucide:code-2",
+    tags: ["Astro", "TypeScript"],
+  },
+  {
+    number: "02",
+    title: "Infraestructura",
+    description:
+      "Despliegues, servidores Linux, Docker y configuraciones listas para producción.",
+    icon: "lucide:server",
+    tags: ["Docker", "Linux"],
+  },
+  {
+    number: "03",
+    title: "Desarrollo de juegos",
+    description:
+      "Experiencias interactivas y sistemas personalizados para proyectos de videojuegos.",
+    icon: "lucide:gamepad-2",
+    tags: ["Roblox", "Lua"],
+  },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demostración de una interfaz moderna con una paleta oscura, roja y naranja."
+    />
+    <meta name="theme-color" content="#080808" />
+    <title>Diseño de marca | Demo</title>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <a href="#inicio" class="brand" aria-label="Inicio">
+        <span class="brand-icon">
+          <Icon name="lucide:zap" class="icon" />
+        </span>
+        <span>YOUR<span class="brand-accent">BRAND</span></span>
+        <span class="brand-dot">.</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#colores" class="nav-link">Colores</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+
+      <a href="#contacto" class="button button-small button-primary nav-cta">
+        Hablemos
+        <Icon name="lucide:arrow-up-right" class="icon icon-small" />
+      </a>
+
+      <button
+        class="mobile-menu"
+        id="mobile-menu"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <Icon name="lucide:menu" class="icon" />
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Menú móvil">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#colores">Colores</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero section-container" id="inicio">
+        <div class="hero-content">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            <span>DISEÑO · TECNOLOGÍA · INNOVACIÓN</span>
+          </div>
+
+          <h1>
+            Ideas que se convierten en
+            <span class="gradient-text">realidad.</span>
+          </h1>
+
+          <p class="hero-description">
+            Creamos experiencias digitales con personalidad, tecnología y
+            atención a cada detalle. Un diseño pensado para destacar.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#servicios" class="button button-primary">
+              Explorar servicios
+              <Icon name="lucide:arrow-right" class="icon" />
+            </a>
+
+            <a href="#colores" class="button button-outline">
+              Ver identidad visual
+              <Icon name="lucide:palette" class="icon" />
+            </a>
+          </div>
+
+          <div class="hero-proof">
+            <div class="proof-icon">
+              <Icon name="lucide:check-circle-2" class="icon" />
+            </div>
+            <div>
+              <strong>Diseñado con propósito</strong>
+              <span>Cada detalle tiene una razón de ser.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-glow"></div>
+
+          <div class="visual-card">
+            <div class="visual-topbar">
+              <div class="window-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <span class="visual-label">BRAND / 001</span>
+              <Icon name="lucide:ellipsis" class="icon" />
+            </div>
+
+            <div class="visual-main">
+              <div class="visual-badge">
+                <Icon name="lucide:sparkles" class="icon icon-small" />
+                DESIGN SYSTEM
+              </div>
+
+              <div class="visual-symbol">
+                <Icon name="lucide:zap" class="symbol-icon" />
+              </div>
+
+              <h2>Make it<br /> <span>stand out.</span></h2>
+
+              <p>Minimal design. Maximum impact.</p>
+
+              <div class="visual-line"></div>
+
+              <div class="visual-footer">
+                <span>CREATIVITY / 2026</span>
+                <span>001 — 003</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-card floating-card-top">
+            <span class="floating-icon red">
+              <Icon name="lucide:flame" class="icon" />
+            </span>
+            <div>
+              <strong>Bold identity</strong>
+              <span>Diseño con carácter</span>
+            </div>
+          </div>
+
+          <div class="floating-card floating-card-bottom">
+            <span class="floating-icon orange">
+              <Icon name="lucide:palette" class="icon" />
+            </span>
+            <div>
+              <strong>3 colores</strong>
+              <span>Una identidad coherente</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BARRA DE TECNOLOGÍAS -->
+      <section class="tech-strip" aria-label="Tecnologías">
+        <div class="section-container tech-inner">
+          <span class="tech-heading">HECHO PARA CONSTRUIR</span>
+          <div class="tech-item">
+            <Icon name="lucide:code-2" class="icon" />
+            <span>Desarrollo</span>
+          </div>
+          <div class="tech-item">
+            <Icon name="lucide:layers-3" class="icon" />
+            <span>Diseño UI/UX</span>
+          </div>
+          <div class="tech-item">
+            <Icon name="lucide:cloud" class="icon" />
+            <span>Infraestructura</span>
+          </div>
+          <div class="tech-item">
+            <Icon name="lucide:rocket" class="icon" />
+            <span>Innovación</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section class="section-container content-section" id="servicios">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">01 / LO QUE HACEMOS</span>
+            <h2>Soluciones para <span class="gradient-text">crear más.</span></h2>
+          </div>
+
+          <p>
+            Tecnología y creatividad trabajando juntas para construir
+            productos digitales útiles y atractivos.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          {projects.map((project) => (
+            <article class="project-card">
+              <div class="project-card-top">
+                <div class="project-icon">
+                  <Icon name={project.icon} class="icon icon-large" />
+                </div>
+                <span class="project-number">{project.number}</span>
+              </div>
+
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+
+              <div class="tag-list">
+                {project.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+
+              <a href="#contacto" class="card-link">
+                Saber más
+                <Icon name="lucide:arrow-up-right" class="icon icon-small" />
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- PALETA -->
+      <section class="palette-section" id="colores">
+        <div class="section-container palette-layout">
+          <div class="palette-copy">
+            <span class="section-kicker">02 / IDENTIDAD VISUAL</span>
+            <h2>
+              Menos colores.<br />
+              <span class="gradient-text">Más personalidad.</span>
+            </h2>
+
+            <p>
+              Una paleta reducida ayuda a mantener la coherencia visual.
+              El rojo atrae la atención, el naranja aporta energía y el
+              negro sirve como base para toda la experiencia.
+            </p>
+
+            <div class="palette-note">
+              <Icon name="lucide:info" class="icon" />
+              <span>Todos los colores se controlan desde variables CSS.</span>
+            </div>
+          </div>
+
+          <div class="palette-cards">
+            <article class="swatch swatch-primary">
+              <div class="swatch-top">
+                <span class="swatch-label">PRIMARY</span>
+                <Icon name="lucide:arrow-up-right" class="icon" />
+              </div>
+              <div class="swatch-bottom">
+                <span class="swatch-name">Electric Red</span>
+                <span class="swatch-hex">#FF1744</span>
+              </div>
+            </article>
+
+            <article class="swatch swatch-secondary">
+              <div class="swatch-top">
+                <span class="swatch-label">SECONDARY</span>
+                <Icon name="lucide:arrow-up-right" class="icon" />
+              </div>
+              <div class="swatch-bottom">
+                <span class="swatch-name">Vibrant Orange</span>
+                <span class="swatch-hex">#FF6D00</span>
+              </div>
+            </article>
+
+            <article class="swatch swatch-background">
+              <div class="swatch-top">
+                <span class="swatch-label">BACKGROUND</span>
+                <Icon name="lucide:arrow-up-right" class="icon" />
+              </div>
+              <div class="swatch-bottom">
+                <span class="swatch-name">Almost Black</span>
+                <span class="swatch-hex">#080808</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPONENTES -->
+      <section class="section-container content-section" id="componentes">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">03 / COMPONENTES</span>
+            <h2>Detalles que <span class="gradient-text">importan.</span></h2>
+          </div>
+
+          <p>
+            Los mismos colores pueden funcionar en botones, formularios,
+            etiquetas y estados sin perder la identidad de la marca.
+          </p>
+        </div>
+
+        <div class="components-grid">
+          <article class="demo-panel">
+            <div class="panel-heading">
+              <h3>Botones</h3>
+              <span class="panel-caption">INTERACTIVE</span>
+            </div>
+
+            <div class="button-demo">
+              <button type="button" class="button button-primary">
+                Acción principal
+                <Icon name="lucide:arrow-right" class="icon" />
+              </button>
+
+              <button type="button" class="button button-secondary">
+                Acción secundaria
+              </button>
+
+              <button type="button" class="button button-outline">
+                Botón alternativo
+              </button>
+            </div>
+
+            <div class="button-demo button-demo-small">
+              <button type="button" class="icon-button" aria-label="Buscar">
+                <Icon name="lucide:search" class="icon" />
+              </button>
+              <button type="button" class="icon-button" aria-label="Configuración">
+                <Icon name="lucide:settings-2" class="icon" />
+              </button>
+              <button type="button" class="icon-button" aria-label="Favoritos">
+                <Icon name="lucide:heart" class="icon" />
+              </button>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="panel-heading">
+              <h3>Etiquetas y estados</h3>
+              <span class="panel-caption">STATUS</span>
+            </div>
+
+            <div class="status-list">
+              <div class="status-row">
+                <span class="status-pill status-live">
+                  <span></span> En línea
+                </span>
+                <span class="status-description">Sistema operativo</span>
+              </div>
+
+              <div class="status-row">
+                <span class="status-pill status-progress">
+                  <Icon name="lucide:loader-circle" class="icon icon-small" />
+                  En progreso
+                </span>
+                <span class="status-description">Trabajo en curso</span>
+              </div>
+
+              <div class="status-row">
+                <span class="status-pill status-alert">
+                  <Icon name="lucide:alert-circle" class="icon icon-small" />
+                  Atención
+                </span>
+                <span class="status-description">Requiere revisión</span>
+              </div>
+            </div>
+
+            <div class="tag-list demo-tags">
+              <span class="tag tag-red">Destacado</span>
+              <span class="tag tag-orange">Nuevo</span>
+              <span class="tag">Predeterminado</span>
+            </div>
+          </article>
+
+          <article class="demo-panel">
+            <div class="panel-heading">
+              <h3>Campos de formulario</h3>
+              <span class="panel-caption">INPUTS</span>
+            </div>
+
+            <form class="demo-form" id="demo-form">
+              <label for="demo-name">Nombre</label>
+              <input
+                type="text"
+                id="demo-name"
+                name="name"
+                placeholder="Escribe tu nombre"
+                required
+              />
+
+              <label for="demo-email">Correo electrónico</label>
+              <input
+                type="email"
+                id="demo-email"
+                name="email"
+                placeholder="tu@correo.com"
+                required
+              />
+
+              <button type="submit" class="button button-primary form-button">
+                Probar formulario
+                <Icon name="lucide:arrow-right" class="icon" />
+              </button>
+
+              <p class="form-feedback" id="form-feedback" aria-live="polite">
+                Este formulario es solo una demostración local.
+              </p>
+            </form>
+          </article>
+
+          <article class="demo-panel dashboard-panel">
+            <div class="panel-heading">
+              <h3>Vista de ejemplo</h3>
+              <span class="live-indicator"><span></span> LIVE DEMO</span>
+            </div>
+
+            <div class="dashboard-stat">
+              <div>
+                <span class="stat-label">Proyectos completados</span>
+                <strong>24<span>+</span></strong>
+              </div>
+              <div class="stat-icon">
+                <Icon name="lucide:layers-3" class="icon icon-large" />
+              </div>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="dashboard-stat">
+              <div>
+                <span class="stat-label">Disponibilidad</span>
+                <strong class="stat-availability">99.9%</strong>
+              </div>
+              <span class="availability-badge">ESTABLE</span>
+            </div>
+
+            <div class="mini-bars" aria-label="Gráfico decorativo">
+              <span style="--bar-height: 34%"></span>
+              <span style="--bar-height: 52%"></span>
+              <span style="--bar-height: 43%"></span>
+              <span style="--bar-height: 75%"></span>
+              <span style="--bar-height: 60%"></span>
+              <span style="--bar-height: 88%"></span>
+              <span style="--bar-height: 68%"></span>
+              <span style="--bar-height: 100%"></span>
+              <span style="--bar-height: 79%"></span>
+              <span style="--bar-height: 92%"></span>
+              <span style="--bar-height: 72%"></span>
+              <span style="--bar-height: 100%"></span>
+            </div>
+
+            <span class="chart-caption">ACTIVIDAD RECIENTE · DATOS ILUSTRATIVOS</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section-container contact-section" id="contacto">
+        <div class="contact-card">
+          <div class="contact-decoration decoration-one"></div>
+          <div class="contact-decoration decoration-two"></div>
+
+          <div class="contact-content">
+            <span class="section-kicker">04 / SIGUIENTE PASO</span>
+            <h2>¿Listo para crear algo <span>increíble?</span></h2>
+            <p>
+              Una identidad sólida comienza con una buena idea y una
+              experiencia visual coherente.
+            </p>
+            <a href="mailto:hola@ejemplo.com" class="button button-light">
+              Hablemos de tu proyecto
+              <Icon name="lucide:arrow-up-right" class="icon" />
+            </a>
+          </div>
+
+          <div class="contact-symbol" aria-hidden="true">
+            <Icon name="lucide:zap" class="contact-zap" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="section-container footer-inner">
+        <a href="#inicio" class="brand footer-brand">
+          <span class="brand-icon">
+            <Icon name="lucide:zap" class="icon" />
+          </span>
+          <span>YOUR<span class="brand-accent">BRAND</span></span>
+          <span class="brand-dot">.</span>
+        </a>
+
+        <p>Una identidad. Tres colores. Infinitas posibilidades.</p>
+
+        <a href="#inicio" class="back-to-top">
+          Volver arriba
+          <Icon name="lucide:arrow-up" class="icon icon-small" />
+        </a>
+      </div>
+
+      <div class="section-container footer-bottom">
+        <span>© 2026 · Demo de identidad visual</span>
+        <span>Diseñado con <span class="footer-heart">♥</span> y código.</span>
+      </div>
+    </footer>
+
+    <script>
+      const menuButton = document.querySelector<HTMLButtonElement>("#mobile-menu");
+      const mobileNav = document.querySelector<HTMLElement>("#mobile-nav");
+
+      menuButton?.addEventListener("click", () => {
+        if (!mobileNav) return;
+
+        const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+
+        menuButton.setAttribute("aria-expanded", String(!isExpanded));
+        menuButton.setAttribute(
+          "aria-label",
+          isExpanded ? "Abrir menú" : "Cerrar menú",
+        );
+        mobileNav.hidden = isExpanded;
+
+        const icon = menuButton.querySelector("svg");
+        icon?.setAttribute(
+          "data-lucide-state",
+          isExpanded ? "menu" : "close",
+        );
+      });
+
+      mobileNav?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileNav.hidden = true;
+          menuButton?.setAttribute("aria-expanded", "false");
+          menuButton?.setAttribute("aria-label", "Abrir menú");
+        });
+      });
+
+      const demoForm = document.querySelector<HTMLFormElement>("#demo-form");
+      const feedback = document.querySelector<HTMLElement>("#form-feedback");
+
+      demoForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!demoForm.reportValidity()) return;
+
+        const formData = new FormData(demoForm);
+        const name = String(formData.get("name") || "").trim();
+
+        if (feedback) {
+          feedback.textContent = `¡Perfecto, ${name}! La validación funciona correctamente. Este formulario no envía datos a ningún servidor.`;
+          feedback.classList.add("feedback-success");
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  :global(body) {
+    overflow-x: hidden;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+
+  :global(body::before) {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    background-image: radial-gradient(#ffffff0b 0.7px, transparent 0.7px);
+    background-size: 6px 6px;
+  }
+
+  :global(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :global(button),
+  :global(input) {
+    font: inherit;
+  }
+
+  :global(button:focus-visible),
+  :global(a:focus-visible),
+  :global(input:focus-visible) {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+  }
+
+  .section-container {
+    width: min(1160px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .icon-small {
+    width: 16px;
+    height: 16px;
+  }
+
+  .icon-large {
+    width: 27px;
+    height: 27px;
+  }
+
+  /* NAVEGACIÓN */
+
+  .navbar {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    display: flex;
+    height: 76px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-inline: max(24px, calc((100% - 1160px) / 2));
+    border-bottom: 1px solid #ffffff0d;
+    background: #080808eF;
+    backdrop-filter: blur(18px);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 15px;
+    font-weight: 850;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+  }
+
+  .brand-icon {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    margin-right: 3px;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .brand-accent {
+    color: var(--color-primary);
+  }
+
+  .brand-dot {
+    margin-left: -7px;
+    color: var(--color-secondary);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    font-size: 13px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #fff;
+  }
+
+  .nav-link.active {
+    position: relative;
+  }
+
+  .nav-link.active::after {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    left: 0;
+    height: 2px;
+    background: var(--color-primary);
+    content: "";
+  }
+
+  .button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 19px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .button-primary {
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 6px 25px #ff174426;
+  }
+
+  .button-primary:hover {
+    background: #e5103a;
+    box-shadow: 0 8px 30px #ff17444d;
+  }
+
+  .button-secondary {
+    background: var(--color-secondary);
+    color: #080808;
+  }
+
+  .button-secondary:hover {
+    background: #ff8529;
+  }
+
+  .button-outline {
+    border-color: #ffffff25;
+    background: #ffffff05;
+    color: #fff;
+  }
+
+  .button-outline:hover {
+    border-color: var(--color-primary);
+    background: #ff17440c;
+  }
+
+  .button-small {
+    min-height: 40px;
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  .mobile-menu,
+  .mobile-nav {
+    display: none;
+  }
+
+  /* HERO */
+
+  .hero {
+    display: grid;
+    min-height: 630px;
+    grid-template-columns: 1.04fr 0.96fr;
+    align-items: center;
+    gap: 55px;
+    padding-block: 80px 94px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border: 1px solid #ffffff16;
+    border-radius: 100px;
+    background: #ffffff04;
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+  }
+
+  .status-dot,
+  .live-indicator span,
+  .status-pill > span {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 12px #22c55e66;
+  }
+
+  .hero h1 {
+    max-width: 600px;
+    margin: 28px 0 20px;
+    font-size: clamp(43px, 5.1vw, 65px);
+    font-weight: 850;
+    letter-spacing: -3.8px;
+    line-height: 1.07;
+  }
+
+  .gradient-text {
+    background: linear-gradient(100deg, #ff1744 5%, #ff6d00 95%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-description {
+    max-width: 470px;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .hero-proof {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 38px;
+  }
+
+  .proof-icon {
+    display: grid;
+    width: 39px;
+    height: 39px;
+    place-items: center;
+    border: 1px solid #ff17442b;
+    border-radius: 10px;
+    background: #ff174410;
+    color: var(--color-primary);
+  }
+
+  .proof-icon .icon {
+    width: 19px;
+    height: 19px;
+  }
+
+  .hero-proof strong,
+  .hero-proof span {
+    display: block;
+  }
+
+  .hero-proof strong {
+    font-size: 12px;
+  }
+
+  .hero-proof span {
+    margin-top: 2px;
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    min-height: 420px;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .visual-glow {
+    position: absolute;
+    z-index: -1;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, #ff174420, #ff6d000c 42%, transparent 70%);
+    filter: blur(20px);
+  }
+
+  .visual-card {
+    width: min(100%, 390px);
+    overflow: hidden;
+    border: 1px solid #ffffff20;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #191919, #0d0d0d 70%);
+    box-shadow: 0 35px 100px #0009;
+    transform: rotate(2deg);
+  }
+
+  .visual-topbar {
+    display: flex;
+    height: 49px;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 17px;
+    border-bottom: 1px solid #ffffff12;
+    color: var(--text-muted);
+  }
+
+  .window-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .window-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #555;
+  }
+
+  .window-dots span:first-child {
+    background: var(--color-primary);
+  }
+
+  .window-dots span:nth-child(2) {
+    background: var(--color-secondary);
+  }
+
+  .visual-label,
+  .visual-footer,
+  .swatch-label,
+  .swatch-hex,
+  .section-kicker,
+  .panel-caption {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
+
+  .visual-main {
+    position: relative;
+    padding: 34px 30px 23px;
+  }
+
+  .visual-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--color-secondary);
+    font-family: ui-monospace, monospace;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  .visual-symbol {
+    display: grid;
+    width: 100px;
+    height: 100px;
+    margin: 28px auto 20px;
+    place-items: center;
+    border: 1px solid #ffffff12;
+    border-radius: 26px;
+    background:
+      radial-gradient(circle at 25% 15%, #ff6d0033, transparent 50%),
+      linear-gradient(145deg, #242424, #111111);
+    box-shadow: 0 0 50px #ff17440e;
+    transform: rotate(-8deg);
+  }
+
+  .symbol-icon {
+    width: 52px;
+    height: 52px;
+    color: var(--color-primary);
+    filter: drop-shadow(0 0 15px #ff174455);
+  }
+
+  .visual-main h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 37px;
+    font-weight: 850;
+    letter-spacing: -1.9px;
+    line-height: 1.15;
+  }
+
+  .visual-main h2 span {
+    color: var(--color-primary);
+  }
+
+  .visual-main > p {
+    margin: 12px 0 25px;
+    color: var(--text-muted);
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .visual-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffffff20, transparent);
+  }
+
+  .visual-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    color: var(--text-muted);
+    font-size: 8px;
+  }
+
+  .floating-card {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid #ffffff1a;
+    border-radius: 12px;
+    background: #171717ed;
+    box-shadow: 0 12px 40px #0008;
+    backdrop-filter: blur(15px);
+  }
+
+  .floating-card-top {
+    top: 12%;
+    right: -15px;
+  }
+
+  .floating-card-bottom {
+    bottom: 10%;
+    left: -22px;
+  }
+
+  .floating-icon {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border-radius: 9px;
+  }
+
+  .floating-icon.red {
+    background: #ff174419;
+    color: var(--color-primary);
+  }
+
+  .floating-icon.orange {
+    background: #ff6d0019;
+    color: var(--color-secondary);
+  }
+
+  .floating-card strong,
+  .floating-card span:not(.floating-icon) {
+    display: block;
+  }
+
+  .floating-card strong {
+    font-size: 11px;
+  }
+
+  .floating-card div span {
+    margin-top: 3px;
+    color: var(--text-muted);
+    font-size: 10px;
+  }
+
+  /* BARRA TECNOLÓGICA */
+
+  .tech-strip {
+    border-block: 1px solid #ffffff10;
+    background: #ffffff03;
+  }
+
+  .tech-inner {
+    display: flex;
+    min-height: 94px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .tech-heading {
+    color: var(--text-muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+  }
+
+  .tech-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #b3b3b3;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .tech-item .icon {
+    color: var(--color-primary);
+  }
+
+  /* SECCIONES Y TARJETAS */
+
+  .content-section {
+    padding-block: 105px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 35px;
+    margin-bottom: 38px;
+  }
+
+  .section-kicker {
+    color: var(--color-secondary);
+    font-weight: 700;
+  }
+
+  .section-heading h2,
+  .palette-copy h2 {
+    margin: 14px 0 0;
+    font-size: clamp(32px, 4vw, 43px);
+    font-weight: 820;
+    letter-spacing: -2px;
+    line-height: 1.17;
+  }
+
+  .section-heading > p {
+    max-width: 400px;
+    margin: 0 0 3px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px;
+  }
+
+  .project-card {
+    position: relative;
+    display: flex;
+    min-height: 295px;
+    flex-direction: column;
+    padding: 25px;
+    overflow: hidden;
+    border: 1px solid #ffffff13;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #151515, #101010);
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  .project-card::before {
+    position: absolute;
+    top: 0;
+    right: 20%;
+    left: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff174466, transparent);
+    content: "";
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff17444d;
+    background: linear-gradient(145deg, #1b1517, #101010);
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .project-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .project-icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid #ff174426;
+    border-radius: 11px;
+    background: #ff17440c;
+    color: var(--color-primary);
+  }
+
+  .project-number {
+    color: #555;
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+  }
+
+  .project-card h3 {
+    margin: 0 0 9px;
+    font-size: 18px;
+    font-weight: 750;
+    letter-spacing: -0.4px;
+  }
+
+  .project-card > p {
+    margin: 0 0 20px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border: 1px solid #ffffff15;
+    border-radius: 5px;
+    background: #ffffff05;
+    color: #c5c5c5;
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: auto;
+    padding-top: 23px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    transition: color 0.2s ease;
+  }
+
+  .card-link:hover {
+    color: var(--color-primary);
+  }
+
+  /* PALETA DE COLORES */
+
+  .palette-section {
+    padding-block: 86px;
+    border-block: 1px solid #ffffff0d;
+    background:
+      radial-gradient(ellipse at 5% 50%, #ff17440a, transparent 45%),
+      #ffffff02;
+  }
+
+  .palette-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+    gap: 85px;
+  }
+
+  .palette-copy h2 {
+    margin-bottom: 19px;
+    font-size: clamp(34px, 4vw, 44px);
+  }
+
+  .palette-copy > p {
+    max-width: 440px;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.95;
+  }
+
+  .palette-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    color: #bcbcbc;
+    font-size: 11px;
+  }
+
+  .palette-note .icon {
+    color: var(--color-secondary);
+  }
+
+  .palette-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .swatch {
+    display: flex;
+    min-height: 165px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    overflow: hidden;
+    border: 1px solid #ffffff15;
+    border-radius: 11px;
+    transition: transform 0.2s ease;
+  }
+
+  .swatch:hover {
+    transform: translateY(-3px);
+  }
+
+  .swatch-primary {
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .swatch-secondary {
+    background: var(--color-secondary);
+    color: #080808;
+  }
+
+  .swatch-background {
+    min-height: 110px;
+    grid-column: 1 / -1;
+    border-color: #343434;
+    background: #080808;
+    color: #fff;
+  }
+
+  .swatch-top,
+  .swatch-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .swatch-label {
+    font-weight: 800;
+  }
+
+  .swatch-name {
+    font-size: 12px;
+    font-weight: 750;
+  }
+
+  .swatch-hex {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* COMPONENTES DE DEMOSTRACIÓN */
+
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+  }
+
+  .demo-panel {
+    min-width: 0;
+    padding: 25px;
+    border: 1px solid #ffffff13;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #151515, #101010);
+  }
+
+  .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .panel-heading h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 750;
+  }
+
+  .panel-caption {
+    color: #777;
+    font-size: 9px;
+  }
+
+  .button-demo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button-demo .button {
+    font-size: 11px;
+  }
+
+  .button-demo-small {
+    margin-top: 21px;
+    padding-top: 19px;
+    border-top: 1px solid #ffffff10;
+  }
+
+  .icon-button {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid #ffffff18;
+    border-radius: 9px;
+    background: #ffffff05;
+    color: #ddd;
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .icon-button:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .status-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    min-height: 27px;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 9px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .status-live {
+    border-color: #22c55e30;
+    background: #22c55e12;
+    color: #4ade80;
+  }
+
+  .status-progress {
+    border-color: #ff6d0035;
+    background: #ff6d0012;
+    color: var(--color-secondary);
+  }
+
+  .status-alert {
+    border-color: #ff174435;
+    background: #ff174412;
+    color: #ff647f;
+  }
+
+  .status-description {
+    color: var(--text-muted);
+    font-size: 11px;
+    text-align: right;
+  }
+
+  .demo-tags {
+    margin-top: 24px;
+    padding-top: 19px;
+    border-top: 1px solid #ffffff10;
+  }
+
+  .tag-red {
+    border-color: #ff17443b;
+    background: #ff174414;
+    color: #ff647f;
+  }
+
+  .tag-orange {
+    border-color: #ff6d003b;
+    background: #ff6d0014;
+    color: var(--color-secondary);
+  }
+
+  .demo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .demo-form label {
+    margin-bottom: 7px;
+    color: #ddd;
+    font-size: 11px;
+    font-weight: 650;
+  }
+
+  .demo-form input {
+    width: 100%;
+    min-height: 45px;
+    margin-bottom: 18px;
+    padding: 11px 13px;
+    border: 1px solid #ffffff1c;
+    border-radius: 8px;
+    background: #0b0b0b;
+    color: #fff;
+    font-size: 12px;
+    transition: border-color 0.2s ease;
+  }
+
+  .demo-form input::placeholder {
+    color: #696969;
+  }
+
+  .demo-form input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px #ff174414;
+  }
+
+  .form-button {
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  .form-feedback {
+    margin: 12px 0 0;
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .form-feedback.feedback-success {
+    color: #4ade80;
+  }
+
+  .dashboard-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #4ade80;
+    font-family: ui-monospace, monospace;
+    font-size: 9px;
+  }
+
+  .live-indicator span {
+    width: 6px;
+    height: 6px;
+  }
+
+  .dashboard-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .stat-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    font-size: 11px;
+  }
+
+  .dashboard-stat strong {
+    display: block;
+    font-size: 31px;
+    font-weight: 800;
+    letter-spacing: -1.3px;
+  }
+
+  .dashboard-stat strong > span {
+    color: var(--color-primary);
+  }
+
+  .stat-icon {
+    display: grid;
+    width: 47px;
+    height: 47px;
+    place-items: center;
+    border: 1px solid #ff17442a;
+    border-radius: 10px;
+    background: #ff17440c;
+    color: var(--color-primary);
+  }
+
+  .stat-divider {
+    height: 1px;
+    margin-block: 20px;
+    background: #ffffff12;
+  }
+
+  .dashboard-stat .stat-availability {
+    color: #4ade80;
+    font-size: 25px;
+  }
+
+  .availability-badge {
+    padding: 5px 8px;
+    border: 1px solid #22c55e35;
+    border-radius: 5px;
+    background: #22c55e10;
+    color: #4ade80;
+    font-family: ui-monospace, monospace;
+    font-size: 9px;
+  }
+
+  .mini-bars {
+    display: flex;
+    height: 80px;
+    align-items: end;
+    gap: 7px;
+    margin-top: 23px;
+    padding-top: 5px;
+    border-bottom: 1px solid #ffffff14;
+  }
+
+  .mini-bars span {
+    flex: 1;
+    min-width: 0;
+    height: var(--bar-height);
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(to top, #ff1744, #ff6d00);
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+
+  .mini-bars span:hover {
+    opacity: 1;
+  }
+
+  .chart-caption {
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-family: ui-monospace, monospace;
+    font-size: 9px;
+  }
+
+  /* CTA FINAL */
+
+  .contact-section {
+    padding-bottom: 100px;
+  }
+
+  .contact-card {
+    position: relative;
+    display: flex;
+    min-height: 320px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 55px 60px;
+    overflow: hidden;
+    border: 1px solid #ff174433;
+    border-radius: 17px;
+    background:
+      radial-gradient(ellipse at 100% 0%, #ff6d0021, transparent 47%),
+      linear-gradient(120deg, #201014, #110d0e 65%, #160e0b);
+  }
+
+  .contact-content {
+    position: relative;
+    z-index: 2;
+    max-width: 590px;
+  }
+
+  .contact-content h2 {
+    margin: 15px 0;
+    font-size: clamp(31px, 4vw, 43px);
+    font-weight: 850;
+    letter-spacing: -2px;
+    line-height: 1.17;
+  }
+
+  .contact-content h2 span {
+    color: var(--color-primary);
+  }
+
+  .contact-content p {
+    max-width: 480px;
+    margin: 0 0 25px;
+    color: #b3a8aa;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .button-light {
+    background: #fff;
+    color: #111;
+  }
+
+  .button-light:hover {
+    background: #f0f0f0;
+  }
+
+  .contact-symbol {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 190px;
+    height: 190px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid #ff174433;
+    border-radius: 43px;
+    background: linear-gradient(145deg, #ff17441a, #ff6d0012);
+    transform: rotate(-10deg);
+  }
+
+  .contact-zap {
+    width: 105px;
+    height: 105px;
+    color: var(--color-primary);
+    filter: drop-shadow(0 0 25px #ff174455);
+  }
+
+  .contact-decoration {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border: 1px solid #ff174412;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .decoration-one {
+    right: -90px;
+    bottom: -180px;
+  }
+
+  .decoration-two {
+    right: -45px;
+    bottom: -135px;
+  }
+
+  /* FOOTER */
+
+  .footer {
+    border-top: 1px solid #ffffff12;
+    background: #050505;
+  }
+
+  .footer-inner {
+    display: flex;
+    min-height: 95px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .footer-inner > p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #ccc;
+    font-size: 11px;
+  }
+
+  .back-to-top:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    display: flex;
+    min-height: 53px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid #ffffff0d;
+    color: #737373;
+    font-size: 10px;
+  }
+
+  .footer-heart {
+    color: var(--color-primary);
+  }
+
+  /* RESPONSIVE */
+
+  @media (min-width: 1440px) {
+    .hero {
+      min-height: 690px;
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .navbar {
+      gap: 16px;
+    }
+
+    .nav-links {
+      gap: 20px;
+    }
+
+    .hero {
+      gap: 30px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 5.2vw, 57px);
+      letter-spacing: -2.8px;
+    }
+
+    .floating-card-top {
+      right: -5px;
+    }
+
+    .palette-layout {
+      gap: 40px;
+    }
+
+    .contact-card {
+      padding-inline: 40px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .section-container {
+      width: calc(100% - 36px);
+    }
+
+    .navbar {
+      height: 68px;
+      padding-inline: 18px;
+    }
+
+    .nav-links,
+    .nav-cta {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: grid;
+      width: 41px;
+      height: 41px;
+      place-items: center;
+      border: 1px solid #ffffff20;
+      border-radius: 9px;
+      background: #ffffff05;
+      color: #fff;
+    }
+
+    .mobile-nav:not([hidden]) {
+      position: sticky;
+      z-index: 19;
+      top: 68px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 10px 18px 16px;
+      border-bottom: 1px solid #ffffff15;
+      background: #080808f5;
+      backdrop-filter: blur(18px);
+    }
+
+    .mobile-nav a {
+      padding: 13px 6px;
+      border-bottom: 1px solid #ffffff0d;
+      color: #ddd;
+      font-size: 13px;
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: 0;
+    }
+
+    .hero {
+      min-height: auto;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      padding-block: 68px 60px;
+    }
+
+    .hero h1 {
+      max-width: 580px;
+      margin-top: 23px;
+      font-size: clamp(43px, 9vw, 63px);
+      letter-spacing: -2.8px;
+    }
+
+    .hero-description {
+      max-width: 530px;
+      font-size: 14px;
+    }
+
+    .hero-visual {
+      min-height: 390px;
+      margin-top: 5px;
+    }
+
+    .visual-card {
+      width: min(82%, 360px);
+    }
+
+    .floating-card-top {
+      top: 10%;
+      right: 0;
+    }
+
+    .floating-card-bottom {
+      bottom: 9%;
+      left: 0;
+    }
+
+    .tech-inner {
+      min-height: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px 25px;
+      padding-block: 25px;
+    }
+
+    .tech-heading {
+      width: 100%;
+      text-align: center;
+    }
+
+    .tech-item {
+      font-size: 11px;
+    }
+
+    .content-section {
+      padding-block: 72px;
+    }
+
+    .section-heading {
+      align-items: start;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 27px;
+    }
+
+    .section-heading > p {
+      max-width: 540px;
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr;
+      gap: 13px;
+    }
+
+    .project-card {
+      min-height: 260px;
+    }
+
+    .palette-section {
+      padding-block: 70px;
+    }
+
+    .palette-layout {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .palette-copy h2 {
+      font-size: 38px;
+    }
+
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-section {
+      padding-bottom: 70px;
+    }
+
+    .contact-card {
+      min-height: 0;
+      padding: 36px 25px;
+    }
+
+    .contact-symbol {
+      position: absolute;
+      right: -55px;
+      bottom: -60px;
+      width: 150px;
+      height: 150px;
+      opacity: 0.35;
+    }
+
+    .contact-zap {
+      width: 80px;
+      height: 80px;
+    }
+
+    .contact-content {
+      max-width: 100%;
+    }
+
+    .contact-content h2 {
+      max-width: 450px;
+      font-size: 36px;
+    }
+
+    .footer-inner {
+      min-height: 0;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-block: 25px;
+    }
+
+    .footer-inner > p {
+      order: 3;
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .section-container {
+      width: calc(100% - 30px);
+    }
+
+    .hero {
+      padding-top: 48px;
+    }
+
+    .eyebrow {
+      font-size: 8px;
+      letter-spacing: 0.6px;
+    }
+
+    .hero h1 {
+      font-size: 43px;
+      letter-spacing: -2.5px;
+    }
+
+    .hero-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .hero-actions .button {
+      width: 100%;
+    }
+
+    .hero-visual {
+      min-height: 355px;
+    }
+
+    .visual-main {
+      padding: 27px 20px 19px;
+    }
+
+    .visual-main h2 {
+      font-size: 32px;
+    }
+
+    .visual-symbol {
+      width: 80px;
+      height: 80px;
+      margin-block: 22px 17px;
+    }
+
+    .symbol-icon {
+      width: 43px;
+      height: 43px;
+    }
+
+    .floating-card {
+      gap: 7px;
+      padding: 9px;
+    }
+
+    .floating-card strong {
+      font-size: 10px;
+    }
+
+    .floating-card div span {
+      font-size: 9px;
+    }
+
+    .floating-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .tech-inner {
+      gap: 16px;
+    }
+
+    .tech-item {
+      gap: 6px;
+      font-size: 10px;
+    }
+
+    .section-heading h2,
+    .palette-copy h2 {
+      font-size: 33px;
+    }
+
+    .palette-cards {
+      gap: 8px;
+    }
+
+    .swatch {
+      min-height: 145px;
+      padding: 12px;
+    }
+
+    .swatch-background {
+      min-height: 90px;
+    }
+
+    .swatch-name {
+      font-size: 10px;
+    }
+
+    .swatch-hex {
+      font-size: 9px;
+    }
+
+    .demo-panel {
+      padding: 18px;
+    }
+
+    .button-demo {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .button-demo .button {
+      width: 100%;
+    }
+
+    .button-demo-small {
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .status-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .status-description {
+      text-align: left;
+    }
+
+    .contact-card {
+      padding: 30px 20px;
+    }
+
+    .contact-content h2 {
+      font-size: 32px;
+    }
+
+    .contact-content .button {
+      width: 100%;
+    }
+
+    .footer-inner {
+      gap: 18px;
+    }
+
+    .footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      padding-block: 13px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    :global(*),
+    :global(*::before),
+    :global(*::after) {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

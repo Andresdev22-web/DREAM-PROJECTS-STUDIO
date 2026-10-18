@@ -1,0 +1,70 @@
+
+/* src/styles/global.css */
+@import "tailwindcss";
+
+/* --- PALETA DE COLORES --- */
+:root {
+  /* Marca */
+  --color-primary: #FF6D00;
+  --color-secondary: #FF1744;
+  --color-background: #080808;
+
+  /* Superficies */
+  --bg-primary: #080808;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1C1C1C;
+  --bg-hover: #252525;
+
+  /* Textos */
+  --text-primary: #F2F2F2;
+  --text-secondary: #B0B0B0;
+  --text-muted: #777777;
+
+  /* Interfaz */
+  --accent: var(--color-primary);
+  --accent-hover: #FF8124;
+  --border-color: #2B2B2B;
+  --border-accent: #66340F;
+
+  /* Estados */
+  --color-success: #22C55E;
+  --color-error: #FF1744;
+}
+
+/* --- ESTILOS BASE --- */
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: #080808;
+  }
+
+  a {
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+}
