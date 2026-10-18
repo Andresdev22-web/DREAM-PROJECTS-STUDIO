@@ -89,7 +89,6 @@ def crear_solicitud(solicitud: SolicitudCrear):
     finally:
         conexion.close()
 
-
 # Consultar todas las solicitudes
 @app.get("/solicitudes")
 def listar_solicitudes(
@@ -97,9 +96,12 @@ def listar_solicitudes(
         default=None
     )
 ):
-    conexion = conectar_db()
+    conexion = None
+    cursor = None
 
     try:
+        # Conectar dentro del try para capturar errores de conexión
+        conexion = conectar_db()
         cursor = conexion.cursor(dictionary=True)
 
         if estado:
@@ -125,14 +127,28 @@ def listar_solicitudes(
 
         return cursor.fetchall()
 
-    except Error:
+    except HTTPException:
+        # Mantener los errores HTTP generados por conectar_db()
+        raise
+
+    except Exception as e:
+        print(f"ERROR EN GET /solicitudes: {type(e).__name__}: {e}")
+
         raise HTTPException(
             status_code=500,
-            detail="No fue posible consultar las solicitudes",
+            detail={
+                "mensaje": "No fue posible consultar las solicitudes",
+                "tipo_error": type(e).__name__,
+                "error": str(e),
+            },
         )
-    finally:
-        conexion.close()
 
+    finally:
+        if cursor is not None:
+            cursor.close()
+
+        if conexion is not None and conexion.is_connected():
+            conexion.close()
 
 # Consultar una solicitud por su ID
 @app.get("/solicitudes/{numero}")
