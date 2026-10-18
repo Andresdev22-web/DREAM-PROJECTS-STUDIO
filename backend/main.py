@@ -1,14 +1,17 @@
 
 import os
 import time
+from typing import Literal
 
 import mysql.connector
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
+from pydantic import BaseModel, Field
 from mysql.connector import Error
 
-app = FastAPI(title="API de registros")
+app = FastAPI(title="API de solicitudes de trabajo")
 
 
+# Conexion a MySQL
 def conectar_db():
     for intento in range(10):
         try:
@@ -17,7 +20,7 @@ def conectar_db():
                 port=int(os.getenv("DB_PORT", "3306")),
                 user=os.getenv("DB_USER", "api_user"),
                 password=os.getenv("DB_PASSWORD", ""),
-                database=os.getenv("DB_NAME", "registros_db"),
+                database=os.getenv("DB_NAME", "reclutamiento"),
             )
         except Error:
             if intento == 9:
@@ -28,84 +31,188 @@ def conectar_db():
             time.sleep(2)
 
 
+# Datos que se reciben al crear una solicitud
+class SolicitudCrear(BaseModel):
+    nombre: str = Field(min_length=1, max_length=100)
+    correo: str = Field(min_length=1, max_length=150)
+    telefono: str | None = Field(default=None, max_length=20)
+    experiencia: str | None = None
+
+
+# Estados permitidos para una solicitud
+class CambiarEstado(BaseModel):
+    estado: Literal["aceptada", "rechazada"]
+
+
 @app.get("/")
 def inicio():
-    return {"mensaje": "API funcionando"}
+    return {"mensaje": "API de solicitudes funcionando"}
 
 
-@app.get("/crear/{dato}")
-def crear(dato: str):
+# Crear una solicitud de trabajo
+@app.post("/solicitudes", status_code=201)
+def crear_solicitud(solicitud: SolicitudCrear):
     conexion = conectar_db()
 
     try:
         cursor = conexion.cursor()
+
         cursor.execute(
-            "INSERT INTO registros (dato) VALUES (%s)",
-            (dato,),
+            """
+            INSERT INTO solicitudes_trabajo
+                (nombre, correo, telefono, experiencia)
+            VALUES (%s, %s, %s, %s)
+            """,
+            (
+                solicitud.nombre,
+                solicitud.correo,
+                solicitud.telefono,
+                solicitud.experiencia,
+            ),
         )
+
         conexion.commit()
+        nuevo_id = cursor.lastrowid
 
         return {
-            "mensaje": "Registro creado",
-            "id": cursor.lastrowid,
-            "dato": dato,
+            "mensaje": "Solicitud creada correctamente",
+            "id": nuevo_id,
+            "estado": "pendiente",
         }
+
     except Error:
         conexion.rollback()
         raise HTTPException(
             status_code=500,
-            detail="No fue posible crear el registro",
+            detail="No fue posible crear la solicitud",
         )
     finally:
         conexion.close()
 
 
-@app.get("/lista")
-def lista():
+# Consultar todas las solicitudes
+@app.get("/solicitudes")
+def listar_solicitudes(
+    estado: Literal["pendiente", "aceptada", "rechazada"] | None = Query(
+        default=None
+    )
+):
     conexion = conectar_db()
 
     try:
         cursor = conexion.cursor(dictionary=True)
-        cursor.execute(
-            "SELECT id, dato FROM registros ORDER BY id DESC"
-        )
+
+        if estado:
+            cursor.execute(
+                """
+                SELECT id, nombre, correo, telefono, experiencia,
+                       estado, fecha_solicitud
+                FROM solicitudes_trabajo
+                WHERE estado = %s
+                ORDER BY fecha_solicitud DESC
+                """,
+                (estado,),
+            )
+        else:
+            cursor.execute(
+                """
+                SELECT id, nombre, correo, telefono, experiencia,
+                       estado, fecha_solicitud
+                FROM solicitudes_trabajo
+                ORDER BY fecha_solicitud DESC
+                """
+            )
+
         return cursor.fetchall()
+
     except Error:
         raise HTTPException(
             status_code=500,
-            detail="No fue posible consultar los registros",
+            detail="No fue posible consultar las solicitudes",
         )
     finally:
         conexion.close()
 
 
-@app.get("/eliminar/{numero}")
-def eliminar(numero: int):
+# Consultar una solicitud por su ID
+@app.get("/solicitudes/{numero}")
+def obtener_solicitud(numero: int):
+    conexion = conectar_db()
+
+    try:
+        cursor = conexion.cursor(dictionary=True)
+
+        cursor.execute(
+            """
+            SELECT id, nombre, correo, telefono, experiencia,
+                   estado, fecha_solicitud
+            FROM solicitudes_trabajo
+            WHERE id = %s
+            """,
+            (numero,),
+        )
+
+        solicitud = cursor.fetchone()
+
+        if solicitud is None:
+            raise HTTPException(
+                status_code=404,
+                detail="La solicitud no existe",
+            )
+
+        return solicitud
+
+    except Error:
+        raise HTTPException(
+            status_code=500,
+            detail="No fue posible consultar la solicitud",
+        )
+    finally:
+        conexion.close()
+
+
+# Aceptar o rechazar una solicitud
+@app.patch("/solicitudes/{numero}/estado")
+def cambiar_estado(numero: int, cambio: CambiarEstado):
     conexion = conectar_db()
 
     try:
         cursor = conexion.cursor()
+
         cursor.execute(
-            "DELETE FROM registros WHERE id = %s",
-            (numero,),
+            """
+            UPDATE solicitudes_trabajo
+            SET estado = %s
+            WHERE id = %s
+            """,
+            (cambio.estado, numero),
         )
-        conexion.commit()
 
         if cursor.rowcount == 0:
-            raise HTTPException(
-                status_code=404,
-                detail="El registro no existe",
+            cursor.execute(
+                "SELECT id FROM solicitudes_trabajo WHERE id = %s",
+                (numero,),
             )
 
+            if cursor.fetchone() is None:
+                raise HTTPException(
+                    status_code=404,
+                    detail="La solicitud no existe",
+                )
+
+        conexion.commit()
+
         return {
-            "mensaje": "Registro eliminado",
+            "mensaje": "Estado actualizado correctamente",
             "id": numero,
+            "estado": cambio.estado,
         }
+
     except Error:
         conexion.rollback()
         raise HTTPException(
             status_code=500,
-            detail="No fue posible eliminar el registro",
+            detail="No fue posible actualizar el estado",
         )
     finally:
         conexion.close()
