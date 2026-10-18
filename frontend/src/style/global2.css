@@ -2,28 +2,27 @@
 /* src/styles/global.css */
 @import "tailwindcss";
 
-/* --- PALETA DE COLORES --- */
 :root {
   /* Marca */
   --color-primary: #FF6D00;
   --color-secondary: #FF1744;
-  --color-background: #080808;
+  --color-background: #1A1A1A;
 
-  /* Superficies */
-  --bg-primary: #080808;
-  --bg-secondary: #141414;
-  --bg-tertiary: #1C1C1C;
-  --bg-hover: #252525;
+  /* Fondos */
+  --bg-primary: #1A1A1A;
+  --bg-secondary: #202020;
+  --bg-tertiary: #292929;
+  --bg-hover: #333333;
 
   /* Textos */
   --text-primary: #F2F2F2;
   --text-secondary: #B0B0B0;
-  --text-muted: #777777;
+  --text-muted: #858585;
 
   /* Interfaz */
   --accent: var(--color-primary);
   --accent-hover: #FF8124;
-  --border-color: #2B2B2B;
+  --border-color: #383838;
   --border-accent: #66340F;
 
   /* Estados */
@@ -31,7 +30,6 @@
   --color-error: #FF1744;
 }
 
-/* --- ESTILOS BASE --- */
 @layer base {
   html {
     color-scheme: dark;

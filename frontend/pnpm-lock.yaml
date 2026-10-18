@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@iconify-json/lucide':
-        specifier: ^1.2.144
-        version: 1.2.144
+        specifier: ^1.2.145
+        version: 1.2.145
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1))
@@ -20,6 +20,9 @@ importers:
       astro-icon:
         specifier: ^1.2.0
         version: 1.2.0
+      lity-ui:
+        specifier: github:Andresdev22-web/lity-ui
+        version: https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a(astro@7.4.0(jiti@2.7.0)(yaml@2.9.1))(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1))
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -213,8 +216,8 @@ packages:
   '@emnapi/wasi-threads@1.2.3':
     resolution: {integrity: sha512-ELEBe8PsLvvJ6QMr0zLt8ffvOHW/dc1m3CEzNMg7aJUv3bMaoDtw2TXyDAwkYBuroxxuHEwhRTLJSe5sya547g==}
 
-  '@iconify-json/lucide@1.2.144':
-    resolution: {integrity: sha512-b1+e91RGPd4lLck6nTXeoQFiu8z/G3pXNl/tbsqfleTSzDdI9hUzKYQSGiA6T86NmaI0FtrCDM9MjMhoCwtTMg==}
+  '@iconify-json/lucide@1.2.145':
+    resolution: {integrity: sha512-eYBZipY6g4bbJNyKBAEq1wBy3mJ2jKtI4O2K30ArO2lMpVDOEuQfu5aDZhiimj1+Q/mIrn3ZxnDeX1BbILxkwQ==}
 
   '@iconify/tools@5.0.14':
     resolution: {integrity: sha512-wJ4ZE3/HZh2iBqLwG+8FOMHe7CMJAJqwSXZSpPwMdj1gZM3Z4t2hbQMVw4Vm45oQ985qn0g89PUIcDEdKTheBA==}
@@ -811,8 +814,8 @@ packages:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
 
-  es-module-lexer@3.0.3:
-    resolution: {integrity: sha512-yWGe1O/j+almnV4hOYrmZo8u58JdnmXEMneRQAYkWtqSiT86yoMIEKF4rpqEDj52tbYl3xceBD3DQIBwcsC9Pw==}
+  es-module-lexer@3.0.4:
+    resolution: {integrity: sha512-BldNY5mwkVu+cQ5Ymn3e6hB9Sx8XHx4ZevWbiUyZbfKxJxYO27Hf0wfzkxIaD5CAJMaGl3YspKELj0ff/7nCMA==}
 
   eventemitter3@5.0.4:
     resolution: {integrity: sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==}
@@ -1057,6 +1060,13 @@ packages:
   lightningcss@1.33.0:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
+
+  lity-ui@https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a:
+    resolution: {gitHosted: true, integrity: sha512-XUByHvwfq7KflpFF5w8bH+CebEzcPWPSjt+691qqN8b5NbSelkm2rmUS9dgPz4tn961opyOzQrjJY4lq5hqmQw==, tarball: https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a}
+    version: 0.0.1
+    engines: {node: '>=22.12.0'}
+    peerDependencies:
+      astro: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
 
   lru-cache@11.5.3:
     resolution: {integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==}
@@ -1308,8 +1318,8 @@ packages:
   uncrypto@0.1.3:
     resolution: {integrity: sha512-Ql87qFHB3s/De2ClA9e0gsnS6zXG27SkTiSJwjCc9MebbfapQfuPzumMIUMi38ezPZVNFcHI9sUIepeQfw8J8Q==}
 
-  undici@8.12.1:
-    resolution: {integrity: sha512-usz3OVQBeh1LxNn0DzU0voLXMgn5CU/WUdpBsY6Ti5afNao+vTkmn4H/NxoXolc10cOqe2+YIG0Hspq2rsl64w==}
+  undici@8.12.2:
+    resolution: {integrity: sha512-XtuDWVdqTLr3NAxm2ly9/hU6kUsJOgGh1RASzMBbsw6aWCOaQzHdW+QQDfdERjfJ2V5vL5pRPa4RetO9UfivDg==}
     engines: {node: '>=22.19.0'}
 
   unified@11.0.5:
@@ -1661,7 +1671,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@iconify-json/lucide@1.2.144':
+  '@iconify-json/lucide@1.2.145':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -2045,7 +2055,7 @@ snapshots:
       devalue: 6.0.3
       diff: 9.0.0
       dset: 3.1.4
-      es-module-lexer: 3.0.3
+      es-module-lexer: 3.0.4
       flattie: 1.1.1
       fontace: 0.4.1
       get-tsconfig: 5.0.0-beta.6
@@ -2216,7 +2226,7 @@ snapshots:
 
   entities@4.5.0: {}
 
-  es-module-lexer@3.0.3: {}
+  es-module-lexer@3.0.4: {}
 
   eventemitter3@5.0.4: {}
 
@@ -2406,6 +2416,16 @@ snapshots:
       lightningcss-linux-x64-musl: 1.33.0
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
+
+  lity-ui@https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a(astro@7.4.0(jiti@2.7.0)(yaml@2.9.1))(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1)):
+    dependencies:
+      '@iconify-json/lucide': 1.2.145
+      '@tailwindcss/vite': 4.3.3(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1))
+      astro: 7.4.0(jiti@2.7.0)(yaml@2.9.1)
+      astro-icon: 1.2.0
+      tailwindcss: 4.3.3
+    transitivePeerDependencies:
+      - vite
 
   lru-cache@11.5.3: {}
 
@@ -2693,7 +2713,7 @@ snapshots:
 
   uncrypto@0.1.3: {}
 
-  undici@8.12.1: {}
+  undici@8.12.2: {}
 
   unified@11.0.5:
     dependencies:
@@ -2710,7 +2730,7 @@ snapshots:
       css-tree: 3.2.1
       fnv1a-64: 0.1.2
       std-env: 4.3.0
-      undici: 8.12.1
+      undici: 8.12.2
 
   unist-util-is@6.0.1:
     dependencies:
