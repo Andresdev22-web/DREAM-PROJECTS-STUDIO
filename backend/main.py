@@ -15,7 +15,7 @@ app = FastAPI(title="API de solicitudes de trabajo")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://dreamProjectsStudio.nanadev.online",
+        "https://dreamprojectsstudioapi.nanadev.online",
         "http://localhost:4321",
     ],
     allow_credentials=False,
