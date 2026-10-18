@@ -1,7 +1,7 @@
 
-CREATE DATABASE reclutamiento;
+CREATE DATABASE registros_db;
 
-USE reclutamiento;
+USE registros_db;
 
 CREATE TABLE solicitudes_trabajo (
     id INT AUTO_INCREMENT PRIMARY KEY,

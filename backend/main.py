@@ -20,7 +20,7 @@ def conectar_db():
                 port=int(os.getenv("DB_PORT", "3306")),
                 user=os.getenv("DB_USER", "api_user"),
                 password=os.getenv("DB_PASSWORD", ""),
-                database=os.getenv("DB_NAME", "reclutamiento"),
+                database=os.getenv("DB_NAME", "registros_db"),
             )
         except Error:
             if intento == 9:
