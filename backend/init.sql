@@ -1,6 +1,4 @@
 
-CREATE DATABASE registros_db;
-
 USE registros_db;
 
 CREATE TABLE solicitudes_trabajo (
