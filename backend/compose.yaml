@@ -1,10 +1,10 @@
 
-name: api-registros
+name: api-dreamProjectsStudio
 
 services:
   api:
     build: .
-    container_name: api_registros_app
+    container_name: api_dreamProjectsStudio_app
     restart: unless-stopped
     environment:
       DB_HOST: mysql
@@ -21,15 +21,15 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.http.routers.api-registros.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.api-registros.entrypoints=${ENTRYPOINT}"
-      - "traefik.http.routers.api-registros.tls=true"
-      - "traefik.http.routers.api-registros.tls.certresolver=${CERTRESOLVER}"
-      - "traefik.http.services.api-registros.loadbalancer.server.port=8000"
+      - "traefik.http.routers.api-dreamProjectsStudio.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.api-dreamProjectsStudio.entrypoints=${ENTRYPOINT}"
+      - "traefik.http.routers.api-dreamProjectsStudio.tls=true"
+      - "traefik.http.routers.api-dreamProjectsStudio.tls.certresolver=${CERTRESOLVER}"
+      - "traefik.http.services.api-dreamProjectsStudio.loadbalancer.server.port=8000"
 
   mysql:
     image: mysql:8.4
-    container_name: api_registros_mysql
+    container_name: api_dreamProjectsStudio_mysql
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_NAME}

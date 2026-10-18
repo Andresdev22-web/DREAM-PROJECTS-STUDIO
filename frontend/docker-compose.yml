@@ -1,19 +1,19 @@
-name: bewareOfTheRat
+name: dreamProjectsStudio
 
 services:
   frontend:
     build: .
-    container_name: bewareOfTheRat_app
+    container_name: dreamProjectsStudio_app
     restart: unless-stopped
     networks:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bewareOfTheRat.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.bewareOfTheRat.entrypoints=${ENTRYPOINT}"
+      - "traefik.http.routers.dreamProjectsStudio.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.dreamProjectsStudio.entrypoints=${ENTRYPOINT}"
       # Comentar la linea de abajo si estas en local y descomentarla si estas en produccion
-      - "traefik.http.routers.bewareOfTheRat.tls.certresolver=${CERTRESOLVER}"
-      - "traefik.http.services.bewareOfTheRat.loadbalancer.server.port=80"
+      - "traefik.http.routers.dreamProjectsStudio.tls.certresolver=${CERTRESOLVER}"
+      - "traefik.http.services.dreamProjectsStudio.loadbalancer.server.port=80"
 
 networks:
   web:

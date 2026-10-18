@@ -1,5 +1,5 @@
 
-USE registros_db;
+USE dreamProjectsStudio_db;
 
 CREATE TABLE solicitudes_trabajo (
     id INT AUTO_INCREMENT PRIMARY KEY,
