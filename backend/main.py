@@ -8,8 +8,20 @@ from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel, Field
 from mysql.connector import Error
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title="API de solicitudes de trabajo")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://bewareOfTheRat.nanadev.online",
+        "http://localhost:4321",
+    ],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
+    allow_headers=["Content-Type"],
+)
 
 # Conexion a MySQL
 def conectar_db():
