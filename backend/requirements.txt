@@ -1,8 +1,2 @@
-
 fastapi
 uvicorn[standard]
-mysql-connector-python
-authlib
-itsdangerous
-httpx
-python-dotenv
