@@ -1,0 +1,422 @@
+---
+import "../../style/global.css"
+import { LayoutLandingPage, Header } from "lity-ui";
+
+const apiUrl = import.meta.env.PUBLIC_API_URL;
+---
+
+<LayoutLandingPage titlePage="Postulación | DREAM PROJECTS STUDIO">
+  <Header
+    slot="header"
+    title="DREAM PROJECTS STUDIO"
+    logoIcon="lucide:gamepad-2"
+    showNavigation={true}
+    navigationTitle="Navegación"
+    navigationLinks={[
+      { label: "Inicio", href: "/", icon: "lucide:house" },
+      { label: "Postulación", href: "/apply", icon: "lucide:clipboard-list" },
+    ]}
+    sticky={true}
+  />
+
+  <main class="w-full px-4 py-12 sm:px-6 lg:py-16">
+    <div class="mx-auto w-full max-w-4xl">
+      <header class="mb-10 text-center">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          Únete al equipo
+        </p>
+
+        <h1 class="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl">
+          Formulario de postulación
+        </h1>
+
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
+          Cuéntanos sobre tu experiencia, tus habilidades y el área en la que
+          te gustaría colaborar en DREAM PROJECTS STUDIO.
+        </p>
+      </header>
+
+      <form
+        id="application-form"
+        data-api-url={apiUrl}
+        class="space-y-8"
+      >
+        <!-- 1. Datos personales -->
+        <section class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] p-5 sm:p-8">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold text-[var(--text-primary)]">
+              1. Datos personales
+            </h2>
+            <p class="mt-2 text-sm text-[var(--text-secondary)]">
+              Usaremos estos datos para identificarte y comunicarnos contigo.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Nombre o alias profesional *</span>
+              <input name="display_name" required maxlength="100" autocomplete="name"
+                placeholder="Tu nombre o alias"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Usuario de Roblox *</span>
+              <input name="roblox_username" required maxlength="100"
+                placeholder="Tu usuario de Roblox"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Correo electrónico *</span>
+              <input name="email" type="email" required maxlength="254" autocomplete="email"
+                placeholder="tu@correo.com"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Usuario de Discord</span>
+              <input name="discord_username" maxlength="100"
+                placeholder="Tu usuario de Discord (opcional)"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+            </label>
+          </div>
+        </section>
+
+        <!-- 2. Puesto y experiencia -->
+        <section class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] p-5 sm:p-8">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold text-[var(--text-primary)]">
+              2. Puesto y experiencia
+            </h2>
+            <p class="mt-2 text-sm text-[var(--text-secondary)]">
+              Selecciona un puesto principal por cada solicitud.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Puesto principal *</span>
+              <select name="position" required
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]">
+                <option value="">Selecciona un puesto</option>
+                <option value="roblox_scripter">Scripter de Roblox (Luau)</option>
+                <option value="map_builder">Builder / Diseñador de mapas</option>
+                <option value="ui_ux_designer">Diseñador UI/UX</option>
+                <option value="animator_2d_3d">Animador 2D / 3D</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Nivel de experiencia *</span>
+              <select name="experience_level" required
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]">
+                <option value="">Selecciona tu nivel</option>
+                <option value="beginner">Principiante</option>
+                <option value="intermediate">Intermedio</option>
+                <option value="advanced">Avanzado</option>
+                <option value="professional">Profesional</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Zona horaria *</span>
+              <input name="timezone" required maxlength="100"
+                placeholder="Ej. America/Bogota"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Horas disponibles por semana *</span>
+              <input name="weekly_hours" type="number" min="1" max="168" required
+                placeholder="Ej. 10"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+            </label>
+
+            <label class="block sm:col-span-2">
+              <span class="mb-2 block text-sm font-medium">Puestos secundarios</span>
+              <input name="secondary_positions" maxlength="300"
+                placeholder="Otros puestos que te interesan (opcional)"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+            </label>
+
+            <label class="block sm:col-span-2">
+              <span class="mb-2 block text-sm font-medium">Días u horarios no disponibles *</span>
+              <textarea name="unavailable_times" required rows="2" maxlength="1000"
+                placeholder="Indica cuándo normalmente no puedes colaborar."
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block sm:col-span-2">
+              <span class="mb-2 block text-sm font-medium">Herramientas que dominas *</span>
+              <textarea name="tools" required rows="2" maxlength="2000"
+                placeholder="Ej. Roblox Studio, Luau, Blender, Figma..."
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block sm:col-span-2">
+              <span class="mb-2 block text-sm font-medium">Portafolio, demos o proyectos</span>
+              <input name="portfolio_url" type="url" maxlength="2000"
+                placeholder="https://... (opcional)"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]" />
+              <span class="mt-2 block text-xs text-[var(--text-muted)]">
+                Si no tienes portafolio, puedes explicarlo en la siguiente respuesta.
+              </span>
+            </label>
+
+            <label class="block sm:col-span-2">
+              <span class="mb-2 block text-sm font-medium">Experiencia relevante *</span>
+              <textarea name="relevant_experience" required rows="4" maxlength="5000"
+                placeholder="Describe proyectos en los que participaste, qué hiciste tú y qué herramientas utilizaste."
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Tipo de colaboración *</span>
+              <select name="collaboration_type" required
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]">
+                <option value="">Selecciona una opción</option>
+                <option value="volunteer">Voluntaria</option>
+                <option value="paid">Remunerada</option>
+                <option value="commission">Por comisión</option>
+                <option value="other">Otra / por conversar</option>
+              </select>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">¿Puedes realizar una prueba práctica? *</span>
+              <select name="practical_test_availability" required
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]">
+                <option value="">Selecciona una opción</option>
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+                <option value="discuss">Necesito conversar sobre el plazo</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <!-- 3. Preguntas comunes -->
+        <section class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] p-5 sm:p-8">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold text-[var(--text-primary)]">
+              3. Preguntas generales
+            </h2>
+            <p class="mt-2 text-sm text-[var(--text-secondary)]">
+              Queremos conocer cómo trabajas y colaboras con otras personas.
+            </p>
+          </div>
+
+          <div class="space-y-5">
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">¿Por qué quieres participar y qué puedes aportar? *</span>
+              <textarea name="motivation" required rows="3" maxlength="3000"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">¿Qué herramienta o habilidad estás aprendiendo actualmente? *</span>
+              <textarea name="current_learning" required rows="2" maxlength="2000"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Si no llegas a una fecha acordada, ¿cómo lo comunicarías? *</span>
+              <textarea name="deadline_response" required rows="3" maxlength="3000"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">¿Qué canal prefieres para coordinarte y con qué frecuencia revisas mensajes? *</span>
+              <textarea name="communication" required rows="2" maxlength="2000"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">¿Cómo reaccionarías si el equipo rechaza una propuesta tuya? *</span>
+              <textarea name="feedback_response" required rows="3" maxlength="3000"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Describe una situación de colaboración, desacuerdo o en la que pediste ayuda. *</span>
+              <textarea name="teamwork_example" required rows="3" maxlength="3000"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">¿Qué condiciones necesitas aclarar antes de aceptar una colaboración? *</span>
+              <textarea name="collaboration_conditions" required rows="3" maxlength="3000"
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">¿Hay algo más que debamos saber sobre la autoría o licencias de tus recursos? *</span>
+              <textarea name="authorship_details" required rows="3" maxlength="3000"
+                placeholder="Indica si tus trabajos son propios, compartidos o utilizan recursos de terceros."
+                class="w-full rounded-lg border border-[var(--border-color)] bg-[var(--bg-primary)] px-4 py-3 text-[var(--text-primary)] outline-none focus:border-[var(--accent)]"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <!-- 4. Consentimiento -->
+        <section class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)] p-5 sm:p-8">
+          <h2 class="text-xl font-bold text-[var(--text-primary)]">
+            4. Privacidad y declaración
+          </h2>
+
+          <div class="mt-5 space-y-4 text-sm leading-6 text-[var(--text-secondary)]">
+            <label class="flex items-start gap-3">
+              <input name="authorship_confirmed" type="checkbox" value="true" required class="mt-1 accent-[var(--accent)]" />
+              <span>Confirmo que la información presentada es veraz y que soy autor de mis trabajos o declaro claramente las contribuciones compartidas y los permisos de los recursos utilizados. *</span>
+            </label>
+
+            <label class="flex items-start gap-3">
+              <input name="privacy_consent" type="checkbox" value="true" required class="mt-1 accent-[var(--accent)]" />
+              <span>Autorizo el uso de estos datos para gestionar y evaluar mi postulación. Entiendo que debo poder consultar cómo solicitar acceso o eliminación de mis datos. *</span>
+            </label>
+          </div>
+
+          <p class="mt-4 text-xs leading-5 text-[var(--text-muted)]">
+            Antes de publicar el formulario, completa esta información con la
+            política de privacidad real del equipo: responsable del tratamiento,
+            finalidad, quién accederá a los datos, plazo de conservación y canal
+            para solicitar su eliminación.
+          </p>
+        </section>
+
+        <div
+          id="form-message"
+          role="status"
+          aria-live="polite"
+          class="hidden rounded-xl border p-4 text-sm"
+        ></div>
+
+        <button
+          id="submit-button"
+          type="submit"
+          class="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-6 py-4 font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <span id="button-label">Enviar postulación</span>
+          <span id="button-spinner" class="hidden">Enviando...</span>
+        </button>
+
+        <p class="text-center text-xs text-[var(--text-muted)]">
+          Revisa tus respuestas antes de enviar. El envío no garantiza la aceptación.
+        </p>
+      </form>
+    </div>
+  </main>
+</LayoutLandingPage>
+
+<script define:vars={{}}>
+  const form = document.querySelector("#application-form");
+  const message = document.querySelector("#form-message");
+  const submitButton = document.querySelector("#submit-button");
+  const buttonLabel = document.querySelector("#button-label");
+  const buttonSpinner = document.querySelector("#button-spinner");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const apiUrl = form.dataset.apiUrl;
+
+    if (!apiUrl) {
+      showMessage(
+        "error",
+        "No se ha configurado la API. Define PUBLIC_API_URL en tu archivo .env."
+      );
+      return;
+    }
+
+    const data = new FormData(form);
+
+    const payload = {
+      candidate: {
+        display_name: data.get("display_name")?.toString().trim(),
+        roblox_username: data.get("roblox_username")?.toString().trim(),
+        email: data.get("email")?.toString().trim(),
+        discord_username: data.get("discord_username")?.toString().trim() || null,
+      },
+      profile: {
+        position: data.get("position"),
+        secondary_positions: data.get("secondary_positions")?.toString().trim() || null,
+        experience_level: data.get("experience_level"),
+        timezone: data.get("timezone")?.toString().trim(),
+        weekly_hours: Number(data.get("weekly_hours")),
+        unavailable_times: data.get("unavailable_times")?.toString().trim(),
+        tools: data.get("tools")?.toString().trim(),
+        portfolio_url: data.get("portfolio_url")?.toString().trim() || null,
+        relevant_experience: data.get("relevant_experience")?.toString().trim(),
+        collaboration_type: data.get("collaboration_type"),
+        practical_test_availability: data.get("practical_test_availability"),
+      },
+      answers: {
+        motivation: data.get("motivation")?.toString().trim(),
+        current_learning: data.get("current_learning")?.toString().trim(),
+        deadline_response: data.get("deadline_response")?.toString().trim(),
+        communication: data.get("communication")?.toString().trim(),
+        feedback_response: data.get("feedback_response")?.toString().trim(),
+        teamwork_example: data.get("teamwork_example")?.toString().trim(),
+        collaboration_conditions: data.get("collaboration_conditions")?.toString().trim(),
+        authorship_details: data.get("authorship_details")?.toString().trim(),
+      },
+      declarations: {
+        authorship_confirmed: data.get("authorship_confirmed") === "true",
+        privacy_consent: data.get("privacy_consent") === "true",
+      },
+    };
+
+    submitButton.disabled = true;
+    buttonLabel.classList.add("hidden");
+    buttonSpinner.classList.remove("hidden");
+    message.classList.add("hidden");
+
+    try {
+      const response = await fetch(`${apiUrl.replace(/\/$/, "")}/api/applications`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const detail = typeof result.detail === "string"
+          ? result.detail
+          : "No se pudo registrar tu postulación. Revisa los datos e inténtalo nuevamente.";
+
+        throw new Error(detail);
+      }
+
+      showMessage(
+        "success",
+        `¡Tu postulación fue recibida! Número de solicitud: ${result.application_id ?? result.id ?? "confirmado"}.`
+      );
+
+      form.reset();
+    } catch (error) {
+      showMessage(
+        "error",
+        error instanceof Error
+          ? error.message
+          : "No fue posible conectar con el servidor. Inténtalo nuevamente."
+      );
+    } finally {
+      submitButton.disabled = false;
+      buttonLabel.classList.remove("hidden");
+      buttonSpinner.classList.add("hidden");
+    }
+  });
+
+  function showMessage(type, text) {
+    message.textContent = text;
+    message.classList.remove("hidden");
+    message.classList.toggle("border-green-500", type === "success");
+    message.classList.toggle("text-green-500", type === "success");
+    message.classList.toggle("border-red-500", type === "error");
+    message.classList.toggle("text-red-500", type === "error");
+  }
+</script>

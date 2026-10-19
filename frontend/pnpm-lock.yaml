@@ -22,7 +22,7 @@ importers:
         version: 1.2.0
       lity-ui:
         specifier: github:Andresdev22-web/lity-ui
-        version: https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a(astro@7.4.0(jiti@2.7.0)(yaml@2.9.1))(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1))
+        version: https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/e86814ef7479366732c6d64d5f4408aa76920a36(astro@7.4.0(jiti@2.7.0)(yaml@2.9.1))(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1))
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -1061,8 +1061,8 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
-  lity-ui@https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a:
-    resolution: {gitHosted: true, integrity: sha512-XUByHvwfq7KflpFF5w8bH+CebEzcPWPSjt+691qqN8b5NbSelkm2rmUS9dgPz4tn961opyOzQrjJY4lq5hqmQw==, tarball: https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a}
+  lity-ui@https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/e86814ef7479366732c6d64d5f4408aa76920a36:
+    resolution: {gitHosted: true, integrity: sha512-Z0xdgLc5liQg+Gv2xYEXMRdy3hYmCnd4AwBBQit6Gx1HU3+XY6PTz/ckUN3v5mNF1/aWLxVw1a9PRMyEuVWlBw==, tarball: https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/e86814ef7479366732c6d64d5f4408aa76920a36}
     version: 0.0.1
     engines: {node: '>=22.12.0'}
     peerDependencies:
@@ -2417,7 +2417,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
 
-  lity-ui@https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/3e790c23cf04ee6713a794e13ff11ff69a3fc41a(astro@7.4.0(jiti@2.7.0)(yaml@2.9.1))(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1)):
+  lity-ui@https://codeload.github.com/Andresdev22-web/lity-ui/tar.gz/e86814ef7479366732c6d64d5f4408aa76920a36(astro@7.4.0(jiti@2.7.0)(yaml@2.9.1))(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1)):
     dependencies:
       '@iconify-json/lucide': 1.2.145
       '@tailwindcss/vite': 4.3.3(vite@8.3.4(jiti@2.7.0)(yaml@2.9.1))

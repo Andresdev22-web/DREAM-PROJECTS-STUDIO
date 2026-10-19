@@ -1,41 +1,250 @@
 ---
-import "../style/global.css"
-import { LayoutLandingPage, Header } from 'lity-ui';
-
-
-const links = [
-  { label: "Inicio", href: "/", icon: "🏠" },
-  { label: "Componentes", href: "/components", icon: "🧩" },
-  { label: "Documentación", href: "/docs", icon: "📚" },
-];
-
+import "../style/global.css";
+import { LayoutLandingPage, Header } from "lity-ui";
 ---
-<LayoutLandingPage titlePage="titulo">
 
-<Header
-slot="header"
-  title="Lity UI"
-  logoIcon="lucide:layers"
+<LayoutLandingPage titlePage="DREAM PROJECTS STUDIO | Roblox Game Development">
+  <Header
+    slot="header"
+    title="DREAM PROJECTS STUDIO"
+    logoIcon="lucide:gamepad-2"
+    showNavigation={true}
+    navigationTitle="Navegación"
+    navigationLinks={[
+      { label: "Inicio", href: "#inicio", icon: "lucide:house" },
+      { label: "Servicios", href: "#servicios", icon: "lucide:layers" },
+      { label: "Únete al equipo", href: "#equipo", icon: "lucide:users" },
+      { label: "Contacto", href: "#contacto", icon: "lucide:mail" },
+    ]}
+    
+    showThemeSelector={false}
+    sticky={true}
+  />
 
-  showNavigation={true}
-  navigationTitle="Secciones"
-  navigationLinks={[
-    { label: "Inicio", href: "/", icon: "lucide:house" },
-    { label: "Componentes", href: "/components", icon: "lucide:blocks" },
-    { label: "Documentación", href: "/docs", icon: "lucide:book-open" },
-  ]}
+  <main >
+    <!-- Hero -->
+    <section
+      id="inicio"
+      class="relative overflow-hidden px-6 py-28 md:py-40"
+    >
+      <div class="mx-auto max-w-6xl">
+        <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--border-color)] px-4 py-2 text-sm text-[var(--text-secondary)]">
+          <span class="h-2 w-2 rounded-full bg-[var(--accent)]"></span>
+          Desarrollo de experiencias en Roblox
+        </span>
 
-  optionsTitle="Más opciones"
-  optionsLinks={[
-    { label: "GitHub", href: "https://github.com/Andresdev22-web/lity-ui", icon: "lucide:github" },
-    { label: "Contacto", href: "/contact", icon: "lucide:mail" },
-  ]}
+        <h1 class="max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[var(--text-primary)] md:text-7xl">
+          Creamos experiencias que llevan
+          <span class="text-[var(--accent)]">Roblox más allá del juego.</span>
+        </h1>
 
-  showThemeSelector={false}
-  sticky={true}
-/>
-<div class="hidden items-center gap-4 rounded-lg bg-green-900 p-4 min-[900px]:flex">
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[var(--text-secondary)]">
+          Diseñamos y desarrollamos videojuegos y experiencias interactivas
+          para marcas, empresas y comunidades. Transformamos ideas en mundos
+          digitales que conectan con los jugadores.
+        </p>
 
-</div>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-2 rounded-xl bg-[var(--accent)] px-6 py-3.5 font-semibold text-white transition hover:opacity-90"
+          >
+            Solicitar un proyecto
+            <span aria-hidden="true">→</span>
+          </a>
 
+          <a
+            href="#equipo"
+            class="inline-flex items-center gap-2 rounded-xl border border-[var(--border-color)] px-6 py-3.5 font-semibold text-[var(--text-primary)] transition hover:bg-[var(--bg-tertiary)]"
+          >
+            Trabaja con nosotros
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section
+      id="servicios"
+      class="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] px-6 py-24"
+    >
+      <div class="mx-auto max-w-6xl">
+        <span class="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          Qué hacemos
+        </span>
+
+        <h2 class="mt-4 max-w-3xl text-3xl font-bold text-[var(--text-primary)] md:text-5xl">
+          Convertimos ideas en experiencias jugables.
+        </h2>
+
+        <p class="mt-5 max-w-2xl leading-7 text-[var(--text-secondary)]">
+          Nuestro producto es el desarrollo de videojuegos y experiencias
+          personalizadas en Roblox, adaptadas a los objetivos de cada cliente.
+        </p>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)] p-6">
+            <span class="text-[var(--accent)]">01</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text-primary)]">
+              Videojuegos en Roblox
+            </h3>
+            <p class="mt-3 leading-7 text-[var(--text-secondary)]">
+              Desarrollo de juegos con mecánicas, objetivos y sistemas
+              adaptados a cada concepto.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)] p-6">
+            <span class="text-[var(--accent)]">02</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text-primary)]">
+              Experiencias para marcas
+            </h3>
+            <p class="mt-3 leading-7 text-[var(--text-secondary)]">
+              Espacios interactivos que permiten a marcas y empresas
+              conectar con sus audiencias.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)] p-6">
+            <span class="text-[var(--accent)]">03</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text-primary)]">
+              Mundos virtuales
+            </h3>
+            <p class="mt-3 leading-7 text-[var(--text-secondary)]">
+              Entornos digitales creados para comunidades, actividades
+              y experiencias multijugador.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)] p-6">
+            <span class="text-[var(--accent)]">04</span>
+            <h3 class="mt-5 text-xl font-bold text-[var(--text-primary)]">
+              Sistemas personalizados
+            </h3>
+            <p class="mt-3 leading-7 text-[var(--text-secondary)]">
+              Mecánicas, funcionalidades e interacciones que dan
+              personalidad a cada proyecto.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipo -->
+    <section id="equipo" class="px-6 py-24">
+      <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-center">
+        <div>
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+            Forma parte del estudio
+          </span>
+
+          <h2 class="mt-4 text-3xl font-bold text-[var(--text-primary)] md:text-5xl">
+            Tu talento también puede construir nuevos mundos.
+          </h2>
+
+          <p class="mt-6 leading-8 text-[var(--text-secondary)]">
+            Buscamos personas con conocimientos previos en su especialidad,
+            ganas de aprender y motivación para participar en proyectos
+            de desarrollo de videojuegos en Roblox.
+          </p>
+
+          <p class="mt-4 leading-8 text-[var(--text-secondary)]">
+            Si tienes experiencia en programación, construcción de mapas,
+            diseño, modelado 3D u otra área relacionada, puedes enviarnos
+            tu solicitud para que evaluemos tu perfil.
+          </p>
+
+          <a
+            href="/contratacion/"
+            class="mt-8 inline-flex items-center gap-2 rounded-xl bg-[var(--accent)] px-6 py-3.5 font-semibold text-white transition hover:opacity-90"
+          >
+            Solicitar ingreso al equipo
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <p class="mt-4 text-sm text-[var(--text-muted)]">
+            Las solicitudes serán revisadas por el equipo. Enviar una
+            solicitud no garantiza la aceptación.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-secondary)] p-8 md:p-10">
+          <h3 class="text-xl font-bold text-[var(--text-primary)]">
+            ¿Qué valoramos?
+          </h3>
+
+          <ul class="mt-6 space-y-5">
+            <li class="flex gap-3">
+              <span class="text-[var(--accent)]">✓</span>
+              <div>
+                <h4 class="font-semibold text-[var(--text-primary)]">
+                  Conocimientos prácticos
+                </h4>
+                <p class="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
+                  Una base de experiencia en tu área y disposición para
+                  seguir desarrollando tus habilidades.
+                </p>
+              </div>
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-[var(--accent)]">✓</span>
+              <div>
+                <h4 class="font-semibold text-[var(--text-primary)]">
+                  Creatividad y compromiso
+                </h4>
+                <p class="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
+                  Interés por crear experiencias de calidad y cumplir
+                  los objetivos acordados.
+                </p>
+              </div>
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-[var(--accent)]">✓</span>
+              <div>
+                <h4 class="font-semibold text-[var(--text-primary)]">
+                  Trabajo en equipo
+                </h4>
+                <p class="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
+                  Comunicación, colaboración y apertura a recibir
+                  comentarios sobre el trabajo.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section
+      id="contacto"
+      class="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] px-6 py-24"
+    >
+      <div class="mx-auto max-w-4xl text-center">
+        <span class="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          Hagamos algo extraordinario
+        </span>
+
+        <h2 class="mt-4 text-3xl font-bold text-[var(--text-primary)] md:text-5xl">
+          ¿Tienes una idea para Roblox?
+        </h2>
+
+        <p class="mx-auto mt-5 max-w-2xl leading-8 text-[var(--text-secondary)]">
+          Cuéntanos qué tienes en mente. Podemos explorar cómo convertir
+          tu propuesta en una experiencia interactiva para tu marca,
+          empresa o comunidad.
+        </p>
+
+        <a
+          href="mailto:contacto@tudominio.com"
+          class="mt-8 inline-flex items-center gap-2 rounded-xl bg-[var(--accent)] px-6 py-3.5 font-semibold text-white transition hover:opacity-90"
+        >
+          Hablemos de tu proyecto
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
 </LayoutLandingPage>
