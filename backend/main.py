@@ -274,3 +274,26 @@ def crear_tarea(
     tarea_id = cursor.lastrowid
     conn.close()
     return {"id": tarea_id, "titulo": tarea.titulo, "completada": False}
+
+
+
+
+@app.get("/admin/usuarios", response_model=List[UserResponse])
+def listar_usuarios(current_user: dict = Depends(get_current_user)):
+    """Lista todos los usuarios registrados en la base de datos."""
+    conn = sqlite3.connect("app.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, email, nombre, picture, rol FROM usuarios ORDER BY id DESC")
+    filas = cursor.fetchall()
+    conn.close()
+    return [{"id": f[0], "email": f[1], "nombre": f[2], "picture": f[3], "rol": f[4]} for f in filas]
+
+@app.delete("/admin/usuarios/{email}")
+def eliminar_usuario(email: str, current_user: dict = Depends(get_current_user)):
+    """Elimina un usuario de la base de datos por email."""
+    conn = sqlite3.connect("app.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM usuarios WHERE email = ?", (email,))
+    conn.commit()
+    conn.close()
+    return {"mensaje": f"Usuario {email} eliminado con éxito"}
