@@ -1,6 +1,12 @@
 
-.env
-__pycache__/
-*.py[cod]
+# Entorno virtual de Python
 .venv/
 venv/
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+
+# Variables y secretos
+.env
+.env.*

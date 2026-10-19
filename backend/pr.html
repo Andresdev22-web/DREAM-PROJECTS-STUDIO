@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Google Auth</title>
+    <!-- Carga la librería oficial de Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <h2>Prueba de Autenticación con Google</h2>
+
+    <!-- Configuración del botón de Google -->
+    <div id="g_id_onload"
+         data-client_id="711422571578-b9s5pq7oi0gtgmml3s1dk44fbhfj9663.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+
+    <!-- Renderizado del botón físico -->
+    <div class="g_id_signin" data-type="standard"></div>
+
+    <h3>Respuesta del Token (JWT):</h3>
+    <pre id="token-output" style="background: #f4f4f4; padding: 10px; border-radius: 5px; word-wrap: break-word;"></pre>
+
+    <script>
+        // Función que se ejecuta cuando el usuario inicia sesión exitosamente
+        function handleCredentialResponse(response) {
+            console.log("Token ID recibido:", response.credential);
+            
+            // Muestra el token de respuesta en la pantalla
+            document.getElementById("token-output").innerText = response.credential;
+            
+            // Este token `response.credential` es el que debes enviar a tu backend (FastAPI)
+            // para que lo verifique con Google y autentique al usuario.
+        }
+    </script>
+</body>
+</html>
