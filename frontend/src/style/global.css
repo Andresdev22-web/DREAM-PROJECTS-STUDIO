@@ -3,4 +3,78 @@
 /* Detectar las clases de Tailwind de lity-ui */
 @source "../../node_modules/lity-ui";
 
-@source "../../node_modules/lity-ui/src/styles/global.css"
+
+/* --- TEMAS DE LITY UI --- */
+
+/* 1. Dark — Oscuro profesional */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-primary: #0c0c0e;
+  --bg-secondary: #151518;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --accent: #a78bfa;
+  --border-color: #29292e;
+}
+
+/* 2. Light — Claro limpio */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --accent: #6d4aff;
+  --border-color: #e4e4e7;
+}
+
+/* 3. Pink — Rosa elegante */
+[data-theme="pink"] {
+  color-scheme: dark;
+
+  --bg-primary: #120d12;
+  --bg-secondary: #1d141d;
+  --text-primary: #faf4f8;
+  --text-secondary: #c4a8ba;
+  --accent: #f472b6;
+  --border-color: #382438;
+}
+
+/* 4. Blue — Azul tecnológico */
+[data-theme="blue"] {
+  color-scheme: dark;
+
+  --bg-primary: #0a1018;
+  --bg-secondary: #111d2b;
+  --text-primary: #f0f6fc;
+  --text-secondary: #a1b3c7;
+  --accent: #67c8f3;
+  --border-color: #26384b;
+}
+
+/* --- ESTILOS BASE --- */
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
