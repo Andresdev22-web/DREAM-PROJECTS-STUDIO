@@ -4,69 +4,107 @@
 @source "../../node_modules/lity-ui";
 
 
-/* --- TEMAS DE LITY UI --- */
 
-/* 1. Dark — Oscuro profesional */
+/* ==================================================
+   TEMAS — VARIABLES GLOBALES
+   ================================================== */
+
+/* Tema oscuro por defecto */
 :root,
 [data-theme="dark"] {
   color-scheme: dark;
 
   --bg-primary: #0c0c0e;
   --bg-secondary: #151518;
+  --bg-tertiary: #202024;
   --text-primary: #f4f4f5;
   --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
   --accent: #a78bfa;
   --border-color: #29292e;
 }
 
-/* 2. Light — Claro limpio */
+/* Tema claro */
 [data-theme="light"] {
   color-scheme: light;
 
   --bg-primary: #fafafa;
   --bg-secondary: #ffffff;
+  --bg-tertiary: #f4f4f5;
   --text-primary: #18181b;
   --text-secondary: #52525b;
+  --text-muted: #71717a;
   --accent: #6d4aff;
   --border-color: #e4e4e7;
 }
 
-/* 3. Pink — Rosa elegante */
+/* Tema rosa */
 [data-theme="pink"] {
   color-scheme: dark;
 
   --bg-primary: #120d12;
   --bg-secondary: #1d141d;
+  --bg-tertiary: #291b29;
   --text-primary: #faf4f8;
   --text-secondary: #c4a8ba;
+  --text-muted: #9f8296;
   --accent: #f472b6;
   --border-color: #382438;
 }
 
-/* 4. Blue — Azul tecnológico */
+/* Tema azul */
 [data-theme="blue"] {
   color-scheme: dark;
 
   --bg-primary: #0a1018;
   --bg-secondary: #111d2b;
+  --bg-tertiary: #192a3c;
   --text-primary: #f0f6fc;
   --text-secondary: #a1b3c7;
+  --text-muted: #8096ad;
   --accent: #67c8f3;
   --border-color: #26384b;
 }
 
-/* --- ESTILOS BASE --- */
+/* ==================================================
+   ESTILOS BASE — SIEMPRE ACTIVOS
+   ================================================== */
+
 @layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
-    color-scheme: dark;
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
   }
 
   body {
+    margin: 0;
+    min-height: 100vh;
     background-color: var(--bg-primary);
     color: var(--text-primary);
+    font-family: Arial, Helvetica, sans-serif;
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
   }
 
   ::selection {
@@ -75,6 +113,40 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* ==================================================
+   UTILIDADES PERSONALIZADAS
+   ================================================== */
+
+@layer utilities {
+  .theme-bg-primary {
+    background-color: var(--bg-primary);
+  }
+
+  .theme-bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+
+  .theme-bg-tertiary {
+    background-color: var(--bg-tertiary);
+  }
+
+  .theme-text-primary {
+    color: var(--text-primary);
+  }
+
+  .theme-text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .theme-text-muted {
+    color: var(--text-muted);
+  }
+
+  .theme-accent {
+    color: var(--accent);
+  }
+
+  .theme-border {
+    border-color: var(--border-color);
+  }
 }
