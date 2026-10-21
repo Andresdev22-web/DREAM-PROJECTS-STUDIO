@@ -60,3 +60,30 @@ class UserUpdate(BaseModel):
     nombre: Optional[str] = None
     picture: Optional[str] = None
     rol: Optional[RoleEnum] = None
+
+
+
+
+
+
+
+# ==================================================
+# TAREAS
+# ==================================================
+
+
+
+class TaskCreate(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+    description: str = Field(min_length=1)
+
+
+class TaskUpdate(BaseModel):
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    description: str | None = Field(default=None, min_length=1)
+
+
+class TaskResponse(BaseModel):
+    id: int
+    title: str
+    description: str
