@@ -39,3 +39,22 @@ class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: UserResponse
+
+
+
+
+# ==================================================
+# AUTENTICACIÓN Y USUARIOS
+# ==================================================
+
+
+class UserCreate(BaseModel):
+    email: str
+    nombre: str
+    picture: Optional[str] = None
+
+
+class UserUpdate(BaseModel):
+    email: Optional[str] = None
+    nombre: Optional[str] = None
+    picture: Optional[str] = None
