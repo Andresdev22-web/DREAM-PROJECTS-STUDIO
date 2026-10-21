@@ -144,6 +144,34 @@ def crear_solicitud(
     payload: SolicitudCreate,
     current_user=Depends(get_current_user),
 ):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        # 1. Asignar el rol SOLICITANTE al usuario autenticado.
+        cursor.execute(
+            """
+            UPDATE usuarios
+            SET rol = ?
+            WHERE id = ?
+            """,
+            ("SOLICITANTE", current_user["id"]),
+        )
+
+        # 2. Aquí debes insertar la solicitud.
+        # Conserva aquí tu INSERT actual de solicitudes_trabajo,
+        # usando current_user["id"] como usuario_id.
+
+        conn.commit()
+
+        # Devuelve aquí la respuesta de tu endpoint actual.
+
+    except Exception:
+        conn.rollback()
+        raise
+
+    finally:
+        conn.close()
     usuario_id = get_user_id(current_user)
 
     # Comprobar las declaraciones obligatorias.
@@ -375,7 +403,7 @@ def listar_solicitudes_abierta():
 # RUTA 4: ACEPTAR O RECHAZAR UNA SOLICITUD
 # Método: PATCH
 # Ruta: /solicitudes/{solicitud_id}/estado
-# Acceso: ADMINISTRADOR
+# Acceso: SOLICITANTE
 #
 # Recibe el ID por la URL y el nuevo estado en el JSON.
 # Solo permite cambiar solicitudes que sigan pendientes.
@@ -388,7 +416,7 @@ def listar_solicitudes_abierta():
 def actualizar_estado_solicitud(
     solicitud_id: int,
     datos: SolicitudEstadoUpdate,
-    admin=Depends(require_role("ADMINISTRADOR")),
+    admin=Depends(require_role("SOLICITANTE")),
 ):
     conn = None
 
@@ -474,7 +502,7 @@ def actualizar_estado_solicitud(
 # RUTA 5: REGISTRAR EL RESULTADO DEL EXAMEN
 # Método: PATCH
 # Ruta: /solicitudes/{solicitud_id}/examen
-# Acceso: ADMINISTRADOR
+# Acceso: SOLICITANTE
 #
 # Se utiliza más adelante, cuando el candidato haya terminado
 # su examen.
@@ -494,7 +522,7 @@ def actualizar_estado_solicitud(
 def actualizar_resultado_examen(
     solicitud_id: int,
     datos: ExamenResultadoUpdate,
-    admin=Depends(require_role("ADMINISTRADOR")),
+    admin=Depends(require_role("SOLICITANTE")),
 ):
     conn = None
 
