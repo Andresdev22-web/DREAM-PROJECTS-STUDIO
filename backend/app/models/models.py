@@ -52,9 +52,11 @@ class UserCreate(BaseModel):
     email: str
     nombre: str
     picture: Optional[str] = None
+    rol: Optional[RoleEnum] = None
 
 
 class UserUpdate(BaseModel):
     email: Optional[str] = None
     nombre: Optional[str] = None
     picture: Optional[str] = None
+    rol: Optional[RoleEnum] = None

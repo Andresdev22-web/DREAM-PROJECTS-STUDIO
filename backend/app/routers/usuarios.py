@@ -119,7 +119,7 @@ def actualizar_usuario(usuario_id: int, datos: UserUpdate):
             )
 
         # Solo permitimos modificar estos campos.
-        campos_permitidos = {"email", "nombre", "picture"}
+        campos_permitidos = {"email", "nombre", "picture", "rol"}
         cambios = {
             campo: valor
             for campo, valor in cambios.items()
