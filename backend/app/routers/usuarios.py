@@ -2,7 +2,7 @@ import sqlite3
 
 from fastapi import APIRouter, HTTPException
 from app.database import get_db_connection
-from app.models import UserCreate, UserUpdate, UserResponse
+from app.models.models import UserCreate, UserUpdate, UserResponse
 
 router = APIRouter(prefix="/usuarios", tags=["Usuarios"])
 
