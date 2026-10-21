@@ -57,14 +57,58 @@ def get_current_user(
 
 
 def require_role(required_role: str) -> Callable:
+    print("\n" + "=" * 60)
+    print("[AUTH DEBUG] Creando verificador de rol")
+    print(f"[AUTH DEBUG] Rol requerido: {required_role!r}")
+    print("=" * 60)
+
     def role_checker(
         user: dict = Depends(get_current_user),
     ) -> dict:
-        if user["rol"] != required_role:
+        print("\n" + "=" * 60)
+        print("[AUTH DEBUG] EJECUTANDO VERIFICACIÓN DE ROL")
+        print("-" * 60)
+
+        print(f"[AUTH DEBUG] Rol requerido: {required_role!r}")
+        print(f"[AUTH DEBUG] Tipo de usuario: {type(user).__name__}")
+        print(f"[AUTH DEBUG] Usuario recibido: {user!r}")
+
+        if not isinstance(user, dict):
+            print("[AUTH DEBUG] ERROR: El usuario no es un diccionario.")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Error interno al obtener el usuario.",
+            )
+
+        print(f"[AUTH DEBUG] ID: {user.get('id')!r}")
+        print(f"[AUTH DEBUG] Email: {user.get('email')!r}")
+        print(f"[AUTH DEBUG] Nombre: {user.get('nombre')!r}")
+        print(f"[AUTH DEBUG] Rol del usuario: {user.get('rol')!r}")
+        print(f"[AUTH DEBUG] Rol esperado: {required_role!r}")
+
+        user_role = user.get("rol")
+
+        if user_role != required_role:
+            print("[AUTH DEBUG] RESULTADO: ACCESO DENEGADO")
+            print(
+                f"[AUTH DEBUG] Comparación: "
+                f"{user_role!r} != {required_role!r}"
+            )
+            print("=" * 60 + "\n")
+
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail="No tienes permisos para realizar esta operación.",
+                detail={
+                    "mensaje": "No tienes permisos para realizar esta operación.",
+                    "rol_requerido": required_role,
+                    "rol_usuario": user_role,
+                    "usuario_id": user.get("id"),
+                    "usuario_email": user.get("email"),
+                },
             )
+
+        print("[AUTH DEBUG] RESULTADO: ACCESO AUTORIZADO")
+        print("=" * 60 + "\n")
 
         return user
 
