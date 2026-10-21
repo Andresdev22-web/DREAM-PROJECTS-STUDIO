@@ -170,7 +170,7 @@ def crear_solicitud(
     response_model=list[SolicitudResponse],
 )
 def listar_solicitudes(
-    admin=Depends(require_role("ADMIN")),
+    admin=Depends(require_role("ADMINISTRADOR")),
 ):
     """Lista todas las solicitudes. Solo para administradores."""
     conn = None
@@ -250,7 +250,7 @@ def listar_solicitudes():
 )
 def obtener_solicitud(
     solicitud_id: int,
-    admin=Depends(require_role("ADMIN")),
+    admin=Depends(require_role("ADMINISTRADOR")),
 ):
     """Consulta una solicitud concreta. Solo para administradores."""
     conn = None
