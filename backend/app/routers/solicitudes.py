@@ -2,7 +2,7 @@
 import sqlite3
 
 from fastapi import APIRouter, Depends, HTTPException, status
-
+from app.database import get_db_connection
 from app.config import DB_NAME
 from app.models.models import (
     SolicitudCreate,
