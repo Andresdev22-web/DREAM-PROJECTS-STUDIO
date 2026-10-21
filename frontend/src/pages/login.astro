@@ -1,0 +1,408 @@
+
+---
+import "../style/global.css";
+import { LayoutLandingPage, Header } from "lity-ui";
+
+const GOOGLE_CLIENT_ID =
+  "711422571578-b9s5pq7oi0gtgmml3s1dk44fbhfj9663.apps.googleusercontent.com";
+---
+
+<LayoutLandingPage titlePage="Iniciar sesión | DREAM PROJECTS STUDIO">
+  <Header
+    slot="header"
+    title="DREAM PROJECTS STUDIO"
+    logoIcon="lucide:gamepad-2"
+    showNavigation={true}
+    navigationTitle="Navegación"
+    navigationLinks={[
+      { label: "Inicio", href: "/#inicio", icon: "lucide:house" },
+      { label: "Servicios", href: "/#servicios", icon: "lucide:layers" },
+      { label: "Únete al equipo", href: "/#equipo", icon: "lucide:users" },
+      { label: "Contacto", href: "/#contacto", icon: "lucide:mail" },
+    ]}
+    showThemeSelector={false}
+    sticky={true}
+  />
+
+  <main
+    class="relative flex min-h-[calc(100vh-5rem)] items-center justify-center overflow-hidden bg-[#080808] px-4 py-12 text-white sm:px-6 lg:px-8"
+  >
+    <!-- Decoración del fondo -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-[#FF1744]/10 blur-[100px]"
+    ></div>
+
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -right-32 bottom-10 h-80 w-80 rounded-full bg-[#FF6D00]/10 blur-[100px]"
+    ></div>
+
+    <section class="relative z-10 grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#111111] shadow-2xl shadow-black/50 lg:grid-cols-2">
+      <!-- Panel informativo -->
+      <div
+        class="relative hidden flex-col justify-between overflow-hidden border-r border-white/10 bg-gradient-to-br from-[#1c0a10] via-[#111111] to-[#080808] p-10 lg:flex xl:p-14"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-20 top-20 h-56 w-56 rounded-full border border-[#FF1744]/20"
+        ></div>
+
+        <div
+          aria-hidden="true"
+          class="absolute -right-10 top-30 h-36 w-36 rounded-full border border-[#FF1744]/20"
+        ></div>
+
+        <div class="relative">
+          <span class="inline-flex items-center gap-2 rounded-full border border-[#FF1744]/30 bg-[#FF1744]/10 px-3 py-1.5 text-xs font-semibold tracking-widest text-[#ff667f]">
+            <span class="h-2 w-2 rounded-full bg-[#FF1744]"></span>
+            ROBLOX GAME DEVELOPMENT
+          </span>
+
+          <h1 class="mt-8 text-4xl font-black leading-tight tracking-tight xl:text-5xl">
+            Construimos
+            <span class="block text-[#FF1744]">mundos.</span>
+            Creamos experiencias.
+          </h1>
+
+          <p class="mt-6 max-w-md text-sm leading-7 text-gray-400">
+            Accede a tu cuenta para continuar con tus solicitudes,
+            consultar tu proceso de selección y formar parte de
+            DREAM PROJECTS STUDIO.
+          </p>
+        </div>
+
+        <div class="relative mt-16">
+          <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-[#FF1744]/20 bg-[#FF1744]/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="23"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-[#FF1744]"
+                aria-hidden="true"
+              >
+                <path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+
+            <div>
+              <p class="text-sm font-semibold text-white">
+                Acceso seguro
+              </p>
+              <p class="mt-1 text-xs text-gray-500">
+                Autenticación con tu cuenta de Google
+              </p>
+            </div>
+          </div>
+
+          <p class="mt-8 text-xs tracking-wider text-gray-600">
+            DREAM PROJECTS STUDIO · BUILD SOMETHING DIFFERENT.
+          </p>
+        </div>
+      </div>
+
+      <!-- Formulario de inicio de sesión -->
+      <div class="flex flex-col justify-center p-6 sm:p-10 lg:p-12 xl:p-14">
+        <div class="mb-8">
+          <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#FF1744]/20 bg-[#FF1744]/10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="27"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-[#FF1744]"
+              aria-hidden="true"
+            >
+              <path d="M20 7h-9" />
+              <path d="M14 3h-3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3" />
+              <path d="m16 17 5-5-5-5" />
+              <path d="M21 12H9" />
+            </svg>
+          </div>
+
+          <p class="text-xs font-bold uppercase tracking-[0.25em] text-[#FF1744]">
+            Bienvenido de nuevo
+          </p>
+
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-white">
+            Iniciar sesión
+          </h2>
+
+          <p class="mt-3 text-sm leading-6 text-gray-400">
+            Accede con tu cuenta de Google para continuar.
+          </p>
+        </div>
+
+        <!-- Mensaje de redirección o error -->
+        <div
+          id="reason"
+          class="mb-5 hidden rounded-xl border border-[#FF6D00]/20 bg-[#FF6D00]/10 px-4 py-3 text-sm leading-6 text-orange-200"
+          role="alert"
+        ></div>
+
+        <div class="rounded-2xl border border-white/10 bg-[#080808] p-5">
+          <p class="mb-4 text-sm font-medium text-gray-300">
+            Continuar con Google
+          </p>
+
+          <div
+            id="google-button"
+            class="flex min-h-11 justify-center"
+          ></div>
+
+          <p
+            id="status"
+            class="mt-4 text-center text-xs leading-5 text-gray-500"
+            role="status"
+            aria-live="polite"
+          >
+            Cargando Google...
+          </p>
+        </div>
+
+        <div class="my-7 flex items-center gap-4">
+          <div class="h-px flex-1 bg-white/10"></div>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-600">
+            Tu cuenta
+          </span>
+          <div class="h-px flex-1 bg-white/10"></div>
+        </div>
+
+        <p class="text-center text-xs leading-6 text-gray-500">
+          Tu sesión se validará con DREAM PROJECTS STUDIO para
+          permitirte acceder a las funciones correspondientes a tu rol.
+        </p>
+
+        <a
+          href="/"
+          class="mt-8 inline-flex items-center justify-center gap-2 text-sm font-medium text-gray-400 transition hover:text-[#FF1744]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          Volver al inicio
+        </a>
+
+        <!-- Información técnica opcional para depuración -->
+        <details class="mt-8 border-t border-white/10 pt-4">
+          <summary class="cursor-pointer text-xs text-gray-600 transition hover:text-gray-400">
+            Información de la sesión
+          </summary>
+          <textarea
+            id="user-info"
+            rows="5"
+            readonly
+            aria-label="Información técnica de la sesión"
+            class="mt-3 w-full resize-y rounded-xl border border-white/10 bg-black/40 p-3 font-mono text-xs leading-5 text-gray-400 outline-none focus:border-[#FF1744]/50"
+          ></textarea>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <script define:vars={{ GOOGLE_CLIENT_ID }}>
+    const API = "https://dreamprojectsstudioapi.nanadev.online";
+
+    const params = new URLSearchParams(location.search);
+    const requiredRole = (params.get("requiredRole") ?? "")
+      .trim()
+      .toUpperCase();
+
+    const status = document.querySelector("#status");
+    const info = document.querySelector("#user-info");
+    const reasonElement = document.querySelector("#reason");
+
+    const requested = params.get("returnTo") || "/";
+
+    function safeDestination() {
+      try {
+        const url = new URL(requested, location.origin);
+
+        if (
+          url.origin !== location.origin ||
+          url.pathname === "/login"
+        ) {
+          return "/";
+        }
+
+        return url.pathname + url.search + url.hash;
+      } catch {
+        return "/";
+      }
+    }
+
+    const reason = params.get("reason");
+
+    if (reason === "role") {
+      reasonElement.textContent =
+        `Tu sesión existe, pero necesitas el rol ${
+          requiredRole || "requerido"
+        } para acceder.`;
+      reasonElement.classList.remove("hidden");
+    } else if (reason === "login") {
+      reasonElement.textContent =
+        "Debes iniciar sesión para continuar.";
+      reasonElement.classList.remove("hidden");
+    }
+
+    async function login(googleCredential) {
+      status.textContent = "Iniciando sesión...";
+      status.className =
+        "mt-4 text-center text-xs leading-5 text-gray-400";
+
+      try {
+        const response = await fetch(`${API}/auth/google`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: googleCredential,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            typeof result.detail === "string"
+              ? result.detail
+              : "No se pudo iniciar sesión."
+          );
+        }
+
+        if (!result.access_token) {
+          throw new Error(
+            "La API no devolvió access_token. Comprueba TokenResponse."
+          );
+        }
+
+        // Guardar el token de tu API, no el token de Google.
+        localStorage.setItem(
+          "api_access_token",
+          result.access_token
+        );
+
+        const meResponse = await fetch(`${API}/auth/me`, {
+          headers: {
+            Authorization: `Bearer ${result.access_token}`,
+          },
+        });
+
+        const user = await meResponse.json();
+
+        if (!meResponse.ok) {
+          throw new Error(
+            typeof user.detail === "string"
+              ? user.detail
+              : "No se pudo obtener el perfil del usuario."
+          );
+        }
+
+        localStorage.setItem(
+          "user_data",
+          JSON.stringify(user)
+        );
+
+        info.value = JSON.stringify(
+          {
+            token_type: result.token_type,
+            user,
+          },
+          null,
+          2
+        );
+
+        if (
+          requiredRole &&
+          String(user.rol ?? "").toUpperCase() !== requiredRole
+        ) {
+          status.textContent =
+            `Sesión iniciada, pero tu rol es ${user.rol}. ` +
+            `Necesitas el rol ${requiredRole}.`;
+
+          status.className =
+            "mt-4 text-center text-xs leading-5 text-orange-300";
+
+          return;
+        }
+
+        status.textContent = "Sesión iniciada. Redirigiendo...";
+        status.className =
+          "mt-4 text-center text-xs leading-5 text-green-400";
+
+        localStorage.removeItem("redirect_after_login");
+
+        location.replace(safeDestination());
+      } catch (error) {
+        console.error(error);
+
+        status.textContent =
+          "Error: " +
+          (error instanceof Error
+            ? error.message
+            : "No se pudo iniciar sesión.");
+
+        status.className =
+          "mt-4 text-center text-xs leading-5 text-red-400";
+      }
+    }
+
+    // Cargar Google Identity Services.
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+
+    script.onload = () => {
+      google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: (response) => login(response.credential),
+      });
+
+      google.accounts.id.renderButton(
+        document.querySelector("#google-button"),
+        {
+          theme: "filled_black",
+          size: "large",
+          text: "signin_with",
+          shape: "rectangular",
+          width: 280,
+        }
+      );
+
+      status.textContent = "Selecciona tu cuenta de Google.";
+    };
+
+    script.onerror = () => {
+      status.textContent = "No se pudo cargar Google.";
+      status.className =
+        "mt-4 text-center text-xs leading-5 text-red-400";
+    };
+
+    document.head.appendChild(script);
+  </script>
+</LayoutLandingPage>

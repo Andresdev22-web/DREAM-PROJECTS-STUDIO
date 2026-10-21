@@ -1,0 +1,94 @@
+
+---
+const API_URL = "https://dreamprojectsstudioapi.nanadev.online";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar resultado del examen</title>
+  </head>
+
+  <body>
+    <h1>Registrar resultado del examen</h1>
+
+    <form id="examen-form">
+      <label for="solicitud_id">ID de la solicitud:</label>
+      <input id="solicitud_id" type="number" min="1" required />
+
+      <br /><br />
+
+      <label for="puntaje_examen">Puntaje obtenido:</label>
+      <input
+        id="puntaje_examen"
+        type="number"
+        min="0"
+        step="any"
+        required
+      />
+
+      <br /><br />
+
+      <button type="submit">Guardar resultado</button>
+    </form>
+
+    <p id="mensaje" role="status"></p>
+
+    <script define:vars={{ API_URL }}>
+      const form = document.querySelector("#examen-form");
+      const mensaje = document.querySelector("#mensaje");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const solicitudId = document.querySelector("#solicitud_id").value;
+        const puntaje = Number(
+          document.querySelector("#puntaje_examen").value
+        );
+
+        const token = localStorage.getItem("api_access_token");
+
+        if (!token) {
+          mensaje.textContent = "Debes iniciar sesión.";
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `${API_URL}/solicitudes/${solicitudId}/examen`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                examen_completado: true,
+                puntaje_examen: puntaje,
+              }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(
+              data.detail || "No se pudo guardar el resultado."
+            );
+          }
+
+          mensaje.textContent =
+            `Resultado guardado. Solicitud: ${data.id}. ` +
+            `Puntaje: ${data.puntaje_examen}. ` +
+            `Examen completado: ${data.examen_completado}.`;
+
+          form.reset();
+        } catch (error) {
+          mensaje.textContent =
+            error.message || "Error de conexión con la API.";
+        }
+      });
+    </script>
+  </body>
+</html>

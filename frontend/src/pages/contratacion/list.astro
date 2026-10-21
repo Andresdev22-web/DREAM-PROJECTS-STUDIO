@@ -1,0 +1,834 @@
+
+---
+import "../../style/global.css";
+import AuthGuard from "../../components/AuthGuard.astro";
+
+const API_URL = "https://dreamprojectsstudioapi.nanadev.online";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Administración de solicitudes de DREAM PROJECTS STUDIO"
+    />
+    <title>Solicitudes | DREAM PROJECTS STUDIO</title>
+  </head>
+
+  <body class="min-h-screen bg-[#080808] text-white antialiased">
+    <AuthGuard role="ADMINISTRADOR" />
+
+    <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+      <!-- Encabezado -->
+      <header class="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
+        <div>
+          <div class="mb-3 flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-[#FF1744]"></span>
+            <p class="text-xs font-bold tracking-[0.2em] text-[#FF1744]">
+              PANEL DE ADMINISTRACIÓN
+            </p>
+          </div>
+
+          <h1 class="text-3xl font-black tracking-tight sm:text-4xl">
+            Solicitudes de trabajo
+          </h1>
+
+          <p class="mt-3 max-w-xl text-sm leading-6 text-gray-400">
+            Revisa los perfiles, consulta las respuestas y gestiona las
+            incorporaciones al equipo.
+          </p>
+        </div>
+
+        <button
+          id="refresh-button"
+          type="button"
+          class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#151515] px-5 py-3 text-sm font-semibold text-gray-200 transition hover:border-[#FF1744]/40 hover:bg-[#202020] disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <svg
+            id="refresh-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 7v5h-5" />
+            <path d="M4 17v-5h5" />
+            <path d="M5.6 9a7 7 0 0 1 11.6-2L20 12" />
+            <path d="M4 12l2.8 5a7 7 0 0 0 11.6-2" />
+          </svg>
+          Actualizar lista
+        </button>
+      </header>
+
+      <!-- Resumen -->
+      <section
+        class="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5"
+        aria-label="Resumen de solicitudes"
+      >
+        <article class="rounded-2xl border border-white/10 bg-[#111111] p-5">
+          <div class="mb-4 flex items-center justify-between gap-2">
+            <span class="text-xs font-medium text-gray-400 sm:text-sm">
+              Total
+            </span>
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-gray-300">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="10" cy="7" r="4" />
+                <path d="M20 8v6M23 11h-6" />
+              </svg>
+            </span>
+          </div>
+          <strong id="total-count" class="text-3xl font-bold">0</strong>
+          <p class="mt-1 text-xs text-gray-500">Solicitudes recibidas</p>
+        </article>
+
+        <article class="rounded-2xl border border-yellow-500/15 bg-[#111111] p-5">
+          <div class="mb-4 flex items-center justify-between gap-2">
+            <span class="text-xs font-medium text-gray-400 sm:text-sm">
+              Pendientes
+            </span>
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500/10 text-yellow-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+            </span>
+          </div>
+          <strong id="pending-count" class="text-3xl font-bold">0</strong>
+          <p class="mt-1 text-xs text-gray-500">Por revisar</p>
+        </article>
+
+        <article class="rounded-2xl border border-green-500/15 bg-[#111111] p-5">
+          <div class="mb-4 flex items-center justify-between gap-2">
+            <span class="text-xs font-medium text-gray-400 sm:text-sm">
+              Aceptadas
+            </span>
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-green-500/10 text-green-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+            </span>
+          </div>
+          <strong id="accepted-count" class="text-3xl font-bold">0</strong>
+          <p class="mt-1 text-xs text-gray-500">Aprobadas</p>
+        </article>
+
+        <article class="rounded-2xl border border-red-500/15 bg-[#111111] p-5">
+          <div class="mb-4 flex items-center justify-between gap-2">
+            <span class="text-xs font-medium text-gray-400 sm:text-sm">
+              Rechazadas
+            </span>
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-red-500/10 text-red-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="m15 9-6 6m0-6 6 6" />
+              </svg>
+            </span>
+          </div>
+          <strong id="rejected-count" class="text-3xl font-bold">0</strong>
+          <p class="mt-1 text-xs text-gray-500">No aprobadas</p>
+        </article>
+      </section>
+
+      <!-- Lista de solicitudes -->
+      <section class="overflow-hidden rounded-2xl border border-white/10 bg-[#111111]">
+        <div class="flex flex-col gap-4 border-b border-white/10 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div>
+            <h2 class="text-lg font-bold">Solicitudes recibidas</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Selecciona una solicitud para consultar toda su información.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <div class="relative">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Buscar solicitante..."
+                aria-label="Buscar solicitudes"
+                class="w-full rounded-xl border border-white/10 bg-[#080808] py-2.5 pl-10 pr-3 text-sm text-white outline-none placeholder:text-gray-600 focus:border-[#FF1744]/60 sm:w-56"
+              />
+            </div>
+
+            <select
+              id="status-filter"
+              aria-label="Filtrar por estado"
+              class="rounded-xl border border-white/10 bg-[#080808] px-3 py-2.5 text-sm text-gray-300 outline-none focus:border-[#FF1744]/60"
+            >
+              <option value="TODAS">Todos los estados</option>
+              <option value="PENDIENTE">Pendientes</option>
+              <option value="ACEPTADA">Aceptadas</option>
+              <option value="RECHAZADA">Rechazadas</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="border-b border-white/5 px-5 py-3 sm:px-6">
+          <p
+            id="message"
+            class="text-sm text-gray-400"
+            role="status"
+            aria-live="polite"
+          >
+            Cargando solicitudes...
+          </p>
+        </div>
+
+        <div id="applications-list" class="divide-y divide-white/5">
+          <!-- Las solicitudes se insertan aquí con JavaScript -->
+        </div>
+
+        <div class="border-t border-white/10 px-5 py-4 sm:px-6">
+          <p class="text-xs text-gray-600">
+            DREAM PROJECTS STUDIO · PANEL DE RECLUTAMIENTO
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal superpuesto con información completa -->
+    <div
+      id="details-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-sm sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <section class="my-auto w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-[#111111] shadow-2xl shadow-black/60">
+        <header class="flex items-start justify-between gap-4 border-b border-white/10 p-5 sm:p-6">
+          <div class="min-w-0">
+            <p class="mb-2 text-xs font-bold tracking-[0.2em] text-[#FF1744]">
+              PERFIL DEL SOLICITANTE
+            </p>
+            <h2 id="modal-title" class="break-words text-xl font-bold sm:text-2xl">
+              Detalles de la solicitud
+            </h2>
+            <p id="modal-subtitle" class="mt-2 text-sm text-gray-400"></p>
+          </div>
+
+          <button
+            id="close-modal"
+            type="button"
+            aria-label="Cerrar detalles"
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400 transition hover:bg-white/10 hover:text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m18 6-12 12M6 6l12 12" />
+            </svg>
+          </button>
+        </header>
+
+        <div
+          id="modal-content"
+          class="max-h-[65vh] space-y-3 overflow-y-auto p-5 sm:p-6"
+        ></div>
+
+        <footer class="flex justify-end border-t border-white/10 p-5 sm:p-6">
+          <button
+            id="close-modal-footer"
+            type="button"
+            class="rounded-xl border border-white/10 bg-[#202020] px-5 py-2.5 text-sm font-semibold text-gray-200 transition hover:bg-[#303030]"
+          >
+            Cerrar
+          </button>
+        </footer>
+      </section>
+    </div>
+
+    <script define:vars={{ API_URL }}>
+      const listElement = document.querySelector("#applications-list");
+      const messageElement = document.querySelector("#message");
+      const filterElement = document.querySelector("#status-filter");
+      const searchElement = document.querySelector("#search-input");
+      const refreshButton = document.querySelector("#refresh-button");
+      const refreshIcon = document.querySelector("#refresh-icon");
+
+      const modal = document.querySelector("#details-modal");
+      const modalTitle = document.querySelector("#modal-title");
+      const modalSubtitle = document.querySelector("#modal-subtitle");
+      const modalContent = document.querySelector("#modal-content");
+
+      const counters = {
+        total: document.querySelector("#total-count"),
+        pending: document.querySelector("#pending-count"),
+        accepted: document.querySelector("#accepted-count"),
+        rejected: document.querySelector("#rejected-count"),
+      };
+
+      let applications = [];
+      let loading = false;
+      let previouslyFocusedElement = null;
+
+      function getToken() {
+        return localStorage.getItem("api_access_token");
+      }
+
+      async function apiRequest(path, options = {}) {
+        const token = getToken();
+
+        if (!token) {
+          throw new Error(
+            "No se encontró tu token de acceso. Inicia sesión nuevamente."
+          );
+        }
+
+        const response = await fetch(`${API_URL}${path}`, {
+          ...options,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            ...(options.body ? { "Content-Type": "application/json" } : {}),
+            ...options.headers,
+          },
+        });
+
+        if (!response.ok) {
+          let detail = `Error HTTP ${response.status}`;
+
+          try {
+            const result = await response.json();
+            if (typeof result.detail === "string") {
+              detail = result.detail;
+            }
+          } catch {
+            // La respuesta no contenía JSON.
+          }
+
+          throw new Error(detail);
+        }
+
+        return response.json();
+      }
+
+      function normalizeStatus(status) {
+        return String(status ?? "").toUpperCase();
+      }
+
+      function formatDate(value) {
+        if (!value) return "Sin fecha";
+
+        const date = new Date(value);
+
+        if (Number.isNaN(date.getTime())) {
+          return String(value);
+        }
+
+        return date.toLocaleString("es-CO", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        });
+      }
+
+      function formatLabel(key) {
+        const labels = {
+          id: "ID de solicitud",
+          usuario_id: "ID de usuario",
+          display_name: "Nombre completo",
+          roblox_username: "Usuario de Roblox",
+          email: "Correo electrónico",
+          position: "Puesto solicitado",
+          experience_level: "Nivel de experiencia",
+          fecha_solicitud: "Fecha de solicitud",
+          estado: "Estado de la solicitud",
+          experiencia: "Experiencia",
+          telefono: "Teléfono",
+          mensaje: "Mensaje",
+          portfolio: "Portafolio",
+          examen_completado: "Examen completado",
+          puntaje_examen: "Puntaje del examen",
+        };
+
+        return labels[key] || key.replaceAll("_", " ").replace(/\b\w/g, (c) => c.toUpperCase());
+      }
+
+      function formatValue(value) {
+        if (value === null || value === undefined || value === "") {
+          return "No especificado";
+        }
+
+        if (typeof value === "boolean") {
+          return value ? "Sí" : "No";
+        }
+
+        if (Array.isArray(value)) {
+          return value.length ? value.map(formatValue).join(", ") : "Ninguno";
+        }
+
+        if (typeof value === "object") {
+          return JSON.stringify(value, null, 2);
+        }
+
+        return String(value);
+      }
+
+      function createButton(label, className, action) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = className;
+        button.textContent = label;
+        button.addEventListener("click", action);
+        return button;
+      }
+
+      function createStatusBadge(statusValue) {
+        const status = document.createElement("span");
+        const normalized = normalizeStatus(statusValue);
+
+        const classes = {
+          PENDIENTE: "border-yellow-500/20 bg-yellow-500/10 text-yellow-300",
+          ACEPTADA: "border-green-500/20 bg-green-500/10 text-green-400",
+          RECHAZADA: "border-red-500/20 bg-red-500/10 text-red-400",
+        };
+
+        status.className =
+          "inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-bold tracking-wide " +
+          (classes[normalized] || "border-white/10 bg-white/5 text-gray-400");
+
+        status.textContent = normalized || "SIN ESTADO";
+        return status;
+      }
+
+      function createInfoCard(label, value) {
+        const card = document.createElement("article");
+        card.className =
+          "min-w-0 rounded-xl border border-white/10 bg-[#080808] p-4";
+
+        const title = document.createElement("p");
+        title.className =
+          "mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500";
+        title.textContent = label;
+
+        const content = document.createElement("div");
+        content.className =
+          "break-words text-sm leading-6 text-gray-200";
+
+        const formatted = formatValue(value);
+
+        if (
+          typeof value === "string" &&
+          /^https?:\/\/\S+$/i.test(value)
+        ) {
+          const link = document.createElement("a");
+          link.href = value;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = value;
+          link.className = "break-all text-[#ff667f] underline hover:text-[#FF6D00]";
+          content.append(link);
+        } else {
+          content.textContent = formatted;
+          if (typeof value === "object" && value !== null) {
+            content.classList.add("whitespace-pre-wrap", "font-mono", "text-xs");
+          }
+        }
+
+        card.append(title, content);
+        return card;
+      }
+
+      function openDetails(application) {
+        previouslyFocusedElement = document.activeElement;
+
+        modalTitle.textContent =
+          application.display_name || "Solicitud sin nombre";
+
+        modalSubtitle.textContent =
+          `Solicitud #${application.id ?? "—"} · ${application.position || "Puesto no especificado"}`;
+
+        modalContent.replaceChildren();
+
+        // Información principal destacada.
+        const summary = document.createElement("div");
+        summary.className = "mb-5 grid gap-3 sm:grid-cols-2";
+
+        summary.append(
+          createInfoCard("Nombre", application.display_name),
+          createInfoCard("Usuario de Roblox", application.roblox_username),
+          createInfoCard("Correo electrónico", application.email),
+          createInfoCard("Puesto solicitado", application.position),
+          createInfoCard("Experiencia", application.experience_level),
+          createInfoCard("Fecha de solicitud", formatDate(application.fecha_solicitud))
+        );
+
+        modalContent.append(summary);
+
+        const separator = document.createElement("div");
+        separator.className = "mb-4 border-t border-white/10 pt-4";
+
+        const sectionTitle = document.createElement("h3");
+        sectionTitle.className = "mb-3 text-sm font-bold text-white";
+        sectionTitle.textContent = "Resto de la información";
+
+        separator.append(sectionTitle);
+        modalContent.append(separator);
+
+        const excluded = new Set([
+          "display_name",
+          "roblox_username",
+          "email",
+          "position",
+          "experience_level",
+          "fecha_solicitud",
+        ]);
+
+        const extraFields = Object.entries(application).filter(
+          ([key]) => !excluded.has(key)
+        );
+
+        if (extraFields.length === 0) {
+          const empty = document.createElement("p");
+          empty.className = "text-sm text-gray-500";
+          empty.textContent = "No hay información adicional.";
+          modalContent.append(empty);
+        } else {
+          const extraGrid = document.createElement("div");
+          extraGrid.className = "grid gap-3 sm:grid-cols-2";
+
+          for (const [key, value] of extraFields) {
+            extraGrid.append(createInfoCard(formatLabel(key), value));
+          }
+
+          modalContent.append(extraGrid);
+        }
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+        document.querySelector("#close-modal").focus();
+      }
+
+      function closeDetails() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+
+        if (previouslyFocusedElement instanceof HTMLElement) {
+          previouslyFocusedElement.focus();
+        }
+      }
+
+      function updateCounters() {
+        counters.total.textContent = applications.length;
+
+        counters.pending.textContent = applications.filter(
+          (item) => normalizeStatus(item.estado) === "PENDIENTE"
+        ).length;
+
+        counters.accepted.textContent = applications.filter(
+          (item) => normalizeStatus(item.estado) === "ACEPTADA"
+        ).length;
+
+        counters.rejected.textContent = applications.filter(
+          (item) => normalizeStatus(item.estado) === "RECHAZADA"
+        ).length;
+      }
+
+      function renderApplications() {
+        listElement.replaceChildren();
+
+        const filter = filterElement.value;
+        const query = searchElement.value.trim().toLowerCase();
+
+        const filtered = applications.filter((application) => {
+          const matchesStatus =
+            filter === "TODAS" ||
+            normalizeStatus(application.estado) === filter;
+
+          const searchableText = [
+            application.display_name,
+            application.roblox_username,
+            application.email,
+            application.position,
+          ]
+            .map((value) => String(value ?? ""))
+            .join(" ")
+            .toLowerCase();
+
+          return matchesStatus && searchableText.includes(query);
+        });
+
+        if (filtered.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "px-6 py-16 text-center";
+
+          const title = document.createElement("p");
+          title.className = "font-semibold text-gray-300";
+          title.textContent = "No se encontraron solicitudes";
+
+          const description = document.createElement("p");
+          description.className = "mt-2 text-sm text-gray-500";
+          description.textContent = applications.length
+            ? "Prueba cambiando los filtros o el término de búsqueda."
+            : "Todavía no se han recibido solicitudes.";
+
+          empty.append(title, description);
+          listElement.append(empty);
+          return;
+        }
+
+        for (const application of filtered) {
+          const card = document.createElement("article");
+          card.className =
+            "flex flex-col gap-4 px-5 py-5 transition hover:bg-white/[0.02] sm:px-6 lg:flex-row lg:items-center lg:justify-between";
+
+          const identityGroup = document.createElement("div");
+          identityGroup.className =
+            "flex min-w-0 flex-1 items-start gap-4";
+
+          const avatar = document.createElement("div");
+          avatar.className =
+            "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#FF1744]/20 bg-[#FF1744]/10 text-lg font-bold text-[#ff667f]";
+
+          const name = String(application.display_name || "S").trim();
+          avatar.textContent = name.charAt(0).toUpperCase();
+
+          const identity = document.createElement("div");
+          identity.className = "min-w-0 flex-1";
+
+          const applicantName = document.createElement("h3");
+          applicantName.className = "break-words font-bold text-white";
+          applicantName.textContent =
+            application.display_name || "Sin nombre";
+
+          const username = document.createElement("p");
+          username.className = "mt-1 break-words text-sm text-gray-400";
+          username.textContent =
+            `@${application.roblox_username || "Sin usuario de Roblox"}`;
+
+          const metadata = document.createElement("div");
+          metadata.className =
+            "mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-gray-500";
+
+          const position = document.createElement("span");
+          position.className =
+            "rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1.5 text-gray-300";
+          position.textContent = application.position || "Puesto no especificado";
+
+          const date = document.createElement("span");
+          date.textContent = formatDate(application.fecha_solicitud);
+
+          metadata.append(position, date);
+
+          if (application.experience_level) {
+            const experience = document.createElement("span");
+            experience.textContent =
+              `Experiencia: ${application.experience_level}`;
+            metadata.append(experience);
+          }
+
+          identity.append(applicantName, username, metadata);
+          identityGroup.append(avatar, identity);
+
+          const controls = document.createElement("div");
+          controls.className =
+            "flex flex-wrap items-center gap-2 lg:justify-end";
+
+          controls.append(createStatusBadge(application.estado));
+
+          const detailsButton = createButton(
+            "Ver detalles",
+            "rounded-xl border border-white/10 bg-[#202020] px-3.5 py-2.5 text-xs font-semibold text-gray-200 transition hover:border-[#FF1744]/40 hover:bg-[#292929]",
+            () => openDetails(application)
+          );
+
+          controls.append(detailsButton);
+
+          if (normalizeStatus(application.estado) === "PENDIENTE") {
+            controls.append(
+              createButton(
+                "Aceptar",
+                "rounded-xl bg-green-500/10 px-3.5 py-2.5 text-xs font-bold text-green-400 transition hover:bg-green-500/20",
+                () => updateStatus(application.id, "ACEPTADA")
+              ),
+              createButton(
+                "Rechazar",
+                "rounded-xl bg-red-500/10 px-3.5 py-2.5 text-xs font-bold text-red-400 transition hover:bg-red-500/20",
+                () => updateStatus(application.id, "RECHAZADA")
+              )
+            );
+          }
+
+          card.append(identityGroup, controls);
+          listElement.append(card);
+        }
+      }
+
+      async function loadApplications() {
+        if (loading) return;
+
+        loading = true;
+        refreshButton.disabled = true;
+        refreshIcon.classList.add("animate-spin");
+        messageElement.textContent = "Cargando solicitudes...";
+
+        try {
+          const data = await apiRequest("/solicitudes/");
+
+          applications = Array.isArray(data)
+            ? data
+            : Array.isArray(data.solicitudes)
+              ? data.solicitudes
+              : Array.isArray(data.items)
+                ? data.items
+                : [];
+
+          updateCounters();
+          renderApplications();
+
+          messageElement.textContent =
+            `Se encontraron ${applications.length} solicitudes.`;
+        } catch (error) {
+          messageElement.textContent =
+            error instanceof Error
+              ? error.message
+              : "No se pudieron cargar las solicitudes.";
+        } finally {
+          loading = false;
+          refreshButton.disabled = false;
+          refreshIcon.classList.remove("animate-spin");
+        }
+      }
+
+      async function updateStatus(id, estado) {
+        if (id === null || id === undefined) {
+          messageElement.textContent =
+            "La solicitud no tiene un identificador válido.";
+          return;
+        }
+
+        const action = estado === "ACEPTADA" ? "aceptar" : "rechazar";
+
+        if (!window.confirm(`¿Seguro que deseas ${action} esta solicitud?`)) {
+          return;
+        }
+
+        messageElement.textContent = "Actualizando solicitud...";
+
+        try {
+          await apiRequest(`/solicitudes/${id}/estado`, {
+            method: "PATCH",
+            body: JSON.stringify({ estado }),
+          });
+
+          messageElement.textContent =
+            `Solicitud #${id} ${estado.toLowerCase()} correctamente.`;
+
+          await loadApplications();
+        } catch (error) {
+          messageElement.textContent =
+            error instanceof Error
+              ? error.message
+              : "No se pudo actualizar la solicitud.";
+        }
+      }
+
+      refreshButton.addEventListener("click", loadApplications);
+      filterElement.addEventListener("change", renderApplications);
+      searchElement.addEventListener("input", renderApplications);
+
+      document
+        .querySelector("#close-modal")
+        .addEventListener("click", closeDetails);
+
+      document
+        .querySelector("#close-modal-footer")
+        .addEventListener("click", closeDetails);
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeDetails();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+          closeDetails();
+        }
+      });
+
+      loadApplications();
+    </script>
+  </body>
+</html>

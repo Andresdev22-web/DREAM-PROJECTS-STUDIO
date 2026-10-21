@@ -1,0 +1,761 @@
+---
+import "../../../style/global.css";
+
+const API_URL = "https://dreamprojectsstudioapi.nanadev.online";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Examen técnico y laboral para formar parte de DREAM PROJECTS STUDIO."
+    />
+    <title>Examen Scripter | DREAM PROJECTS STUDIO</title>
+  </head>
+
+  <body class="min-h-screen bg-[#080808] text-white">
+    <main class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-16">
+      <!-- Encabezado -->
+      <header class="mb-10">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm text-gray-400 transition hover:text-[#FF1744]"
+        >
+          <span aria-hidden="true">←</span>
+          Volver al inicio
+        </a>
+
+        <div class="mt-8">
+          <span
+            class="inline-flex rounded-full border border-[#FF1744]/30 bg-[#FF1744]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#FF1744]"
+          >
+            Proceso de selección
+          </span>
+
+          <h1 class="mt-5 text-3xl font-black tracking-tight sm:text-5xl">
+            Examen de selección
+            <span class="mt-2 block text-[#FF1744]">
+              Scripter de Roblox
+            </span>
+          </h1>
+
+          <p class="mt-4 max-w-2xl leading-7 text-gray-400">
+            Evaluaremos tus conocimientos de programación con Luau,
+            seguridad en el servidor, organización del código y trabajo
+            en equipo.
+          </p>
+        </div>
+      </header>
+
+      <!-- Mensajes de estado -->
+      <div
+        id="mensaje"
+        role="status"
+        aria-live="polite"
+        class="mb-8 rounded-xl border border-white/10 bg-[#151515] p-5 text-sm leading-6 text-gray-300"
+      >
+        Consultando tu solicitud...
+      </div>
+
+      <!-- Examen -->
+      <section id="examen" hidden>
+        <div
+          class="mb-8 rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#FF1744]/10 text-xl text-[#FF1744]"
+            >
+              &lt;/&gt;
+            </div>
+
+            <div>
+              <h2 class="text-lg font-bold">Antes de comenzar</h2>
+              <p
+                id="informacion-solicitud"
+                class="mt-1 text-sm text-gray-400"
+              ></p>
+
+              <ul class="mt-4 space-y-2 text-sm text-gray-400">
+                <li>• 10 preguntas de selección múltiple.</li>
+                <li>• Cada pregunta tiene una sola respuesta.</li>
+                <li>• Responde todas las preguntas antes de enviar.</li>
+                <li>
+                  • Después del envío no podrás volver a realizar el examen.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <form id="examen-form" class="space-y-8">
+          <!-- Preguntas técnicas -->
+          <section>
+            <div class="mb-5">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#FF1744]">
+                Parte 01
+              </p>
+              <h2 class="mt-2 text-2xl font-bold">Cuestionario técnico</h2>
+              <p class="mt-2 text-sm text-gray-400">
+                Conocimientos de Roblox Studio, Luau y arquitectura de sistemas.
+              </p>
+            </div>
+
+            <div class="space-y-5">
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  1. ¿Cuál es la diferencia entre Script, LocalScript y ModuleScript?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p1" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Los tres se ejecutan exclusivamente en el servidor.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p1" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Script se ejecuta en el servidor cuando corresponde, LocalScript en el cliente en contextos permitidos y ModuleScript permite reutilizar código mediante require.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p1" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">LocalScript es el único que puede utilizar módulos.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p1" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">ModuleScript siempre se ejecuta automáticamente al iniciar el juego.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  2. ¿Por qué el servidor debe validar el daño de un ataque?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p2" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Para que el cliente tenga menos archivos.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p2" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Porque el cliente puede manipularse y el servidor debe validar la distancia, el objetivo, el estado y el cooldown.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p2" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Porque el servidor dibuja todos los efectos gráficos.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p2" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Porque los RemoteEvents solo funcionan en el servidor.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  3. ¿Cómo evitarías que un jugador se salte un cooldown enviando repetidamente un RemoteEvent?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p3" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Ocultando el botón de ataque.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p3" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Añadiendo una espera únicamente en el LocalScript.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p3" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Guardando el último uso por jugador en el servidor y rechazando activaciones demasiado pronto.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p3" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Desactivando todos los RemoteEvents.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  4. ¿Qué información enviada por el cliente necesita validación?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p4" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Únicamente el nombre del jugador.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p4" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Solamente los colores de la interfaz.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p4" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Ninguna, porque Roblox confía en el cliente.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p4" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Daño, objetivo, distancia, cooldown, estado y recompensas.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  5. ¿Cómo evitarías estados incompatibles cuando dos ataques ocurren al mismo tiempo?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p5" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Usando una máquina de estados, prioridades y reglas claras de cancelación.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p5" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Creando un LocalScript para cada ataque sin coordinación.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p5" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Ignorando el estado actual del personaje.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p5" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Aumentando el daño de ambos ataques.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  6. ¿Cómo organizarías las habilidades para no copiar código al crear una nueva?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p6" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Duplicando todos los scripts y cambiando sus nombres.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p6" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Utilizando módulos reutilizables, configuración y responsabilidades separadas.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p6" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Colocando todo en un único script enorme.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p6" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Creando una variable global para cada habilidad.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  7. Una habilidad funciona en Studio, pero falla en el servidor publicado. ¿Qué revisarías?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p7" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Solamente el diseño de la interfaz.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p7" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Únicamente el nombre del juego.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p7" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Output, replicación, permisos, rutas, contexto de ejecución y pruebas multijugador.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p7" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Cambiar todos los RemoteEvents por variables locales.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  8. ¿Cómo reducirías el lag de una habilidad con muchos efectos?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p8" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Crear más partículas en cada fotograma.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p8" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Repetir todos los cálculos en el cliente y el servidor.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p8" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Eliminar todas las comprobaciones de seguridad.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p8" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Usar el perfilador, limitar instancias, reutilizar objetos y separar efectos visuales cuando sea seguro.</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+          </section>
+
+          <!-- Preguntas laborales -->
+          <section>
+            <div class="mb-5">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#FF1744]">
+                Parte 02
+              </p>
+              <h2 class="mt-2 text-2xl font-bold">Cuestionario laboral</h2>
+              <p class="mt-2 text-sm text-gray-400">
+                Comunicación, responsabilidad y mantenimiento del código.
+              </p>
+            </div>
+
+            <div class="space-y-5">
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  9. Si no puedes terminar una tarea para la fecha acordada, ¿qué haces?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p9" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Avisas pronto, explicas el impacto y propones alternativas y una nueva estimación.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p9" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Esperas hasta la fecha de entrega para decirlo.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p9" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Entregas cualquier cosa sin explicar los problemas.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p9" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Dejas de responder para evitar el conflicto.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset
+                class="rounded-2xl border border-white/10 bg-[#111111] p-5 sm:p-6"
+              >
+                <legend class="max-w-full px-2 text-base font-semibold leading-7">
+                  10. ¿Cómo entregarías un sistema para que otro scripter pueda mantenerlo?
+                </legend>
+
+                <div class="mt-4 space-y-3">
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input required type="radio" name="p10" value="0" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Entregando solamente una captura de pantalla.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p10" value="1" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Organizando el código, documentando lo necesario e incluyendo instrucciones de prueba y limitaciones conocidas.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p10" value="2" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Eliminando los nombres de las variables.</span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-[#080808] p-4 transition hover:border-[#FF1744]/50">
+                    <input type="radio" name="p10" value="3" class="mt-1 accent-[#FF1744]" />
+                    <span class="text-sm leading-6 text-gray-300">Entregando el código sin explicar cómo ejecutarlo.</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+          </section>
+
+          <!-- Envío definitivo -->
+          <section
+            class="rounded-2xl border border-[#FF1744]/30 bg-[#151515] p-5 sm:p-6"
+          >
+            <div class="flex items-start gap-3">
+              <span class="mt-0.5 text-xl text-[#FF1744]" aria-hidden="true">
+                !
+              </span>
+              <div>
+                <h2 class="font-bold">Envío definitivo</h2>
+                <p class="mt-2 text-sm leading-6 text-gray-400">
+                  Al pulsar el botón, tus respuestas se enviarán para su
+                  evaluación. No se mostrará una nota previa ni podrás volver
+                  a enviar el examen una vez registrado.
+                </p>
+              </div>
+            </div>
+
+            <button
+              id="enviar-btn"
+              type="submit"
+              class="mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-[#FF1744] px-6 py-4 font-bold text-white transition hover:bg-[#e9143d] focus:outline-none focus:ring-2 focus:ring-[#FF1744] focus:ring-offset-2 focus:ring-offset-[#151515] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <span id="texto-boton">Enviar examen</span>
+              <span aria-hidden="true">→</span>
+            </button>
+
+            <p class="mt-3 text-center text-xs text-gray-500">
+              Verifica tus respuestas antes de realizar el envío definitivo.
+            </p>
+          </section>
+        </form>
+      </section>
+
+      <footer class="mt-12 border-t border-white/10 pt-6 text-center">
+        <p class="text-xs tracking-widest text-gray-500">
+          DREAM PROJECTS STUDIO
+        </p>
+        <p class="mt-2 text-xs text-gray-600">
+          BUILD SOMETHING DIFFERENT.
+        </p>
+      </footer>
+    </main>
+
+    <script define:vars={{ API_URL }}>
+   
+const mensaje = document.querySelector("#mensaje");
+const examen = document.querySelector("#examen");
+const formulario = document.querySelector("#examen-form");
+const informacion = document.querySelector("#informacion-solicitud");
+const enviarBtn = document.querySelector("#enviar-btn");
+const textoBoton = document.querySelector("#texto-boton");
+
+let solicitudId = null;
+let enviando = false;
+
+const preguntas = [
+  "p1", "p2", "p3", "p4", "p5",
+  "p6", "p7", "p8", "p9", "p10"
+];
+
+// IMPORTANTE:
+// Confirma que estos índices sean las respuestas correctas
+// de las preguntas que muestras en el HTML.
+const respuestasCorrectas = {
+  p1: 0,
+  p2: 3,
+  p3: 3,
+  p4: 1,
+  p5: 0,
+  p6: 0,
+  p7: 0,
+  p8: 1,
+  p9: 1,
+  p10: 2,
+};
+
+function obtenerToken() {
+  return localStorage.getItem("api_access_token");
+}
+
+function mostrarMensaje(texto, tipo = "normal") {
+  if (!mensaje) return;
+
+  mensaje.textContent = texto;
+
+  mensaje.className =
+    "mb-8 rounded-xl border p-5 text-sm leading-6 " +
+    (tipo === "error"
+      ? "border-red-500/30 bg-red-500/10 text-red-300"
+      : tipo === "success"
+        ? "border-green-500/30 bg-green-500/10 text-green-300"
+        : "border-white/10 bg-[#151515] text-gray-300");
+}
+
+async function leerRespuesta(response, endpoint) {
+  const texto = await response.text();
+
+  let data = {};
+
+  try {
+    data = texto ? JSON.parse(texto) : {};
+  } catch {
+    data = { respuesta_original: texto };
+  }
+
+  if (!response.ok) {
+    console.error("Error de la API:", {
+      endpoint,
+      status: response.status,
+      respuesta: data,
+    });
+
+    let detalle;
+
+    if (Array.isArray(data.detail)) {
+      detalle = data.detail
+        .map((error) => {
+          const campo = Array.isArray(error.loc)
+            ? error.loc.join(".")
+            : "campo";
+
+          return `${campo}: ${error.msg ?? "Error de validación"}`;
+        })
+        .join("; ");
+    } else if (typeof data.detail === "string") {
+      detalle = data.detail;
+    } else if (typeof data.message === "string") {
+      detalle = data.message;
+    } else {
+      detalle = JSON.stringify(data);
+    }
+
+    throw new Error(
+      `${endpoint} respondió HTTP ${response.status}: ${detalle}`
+    );
+  }
+
+  return data;
+}
+
+async function consultarSolicitud() {
+  const token = obtenerToken();
+
+  if (!token) {
+    mostrarMensaje(
+      "Debes iniciar sesión para acceder al examen.",
+      "error"
+    );
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/solicitudes/mia`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await leerRespuesta(
+      response,
+      "GET /solicitudes/mia"
+    );
+
+    const solicitud = data.solicitud ?? data;
+    const id = Number(solicitud.id);
+
+    if (!Number.isSafeInteger(id) || id < 1) {
+      throw new Error(
+        "La API no devolvió un ID de solicitud válido."
+      );
+    }
+
+    solicitudId = id;
+
+    const completado =
+      solicitud.examen_completado === true ||
+      solicitud.examen_completado === 1 ||
+      solicitud.examen_completado === "true";
+
+    if (completado) {
+      mostrarMensaje(
+        "Tu examen ya fue completado. Serás redirigido a la página de tu solicitud.",
+        "success"
+      );
+
+      window.location.replace("/contratacion/mi-examen");
+      return;
+    }
+
+    if (informacion) {
+      informacion.textContent =
+        `Solicitud #${solicitudId}` +
+        (solicitud.position
+          ? ` · Puesto: ${solicitud.position}`
+          : "");
+    }
+
+    if (examen) {
+      examen.hidden = false;
+    }
+
+    mostrarMensaje(
+      "Tu solicitud está verificada. Completa todas las preguntas para enviar el examen."
+    );
+  } catch (error) {
+    mostrarMensaje(
+      error instanceof Error
+        ? error.message
+        : "No se pudo consultar tu solicitud.",
+      "error"
+    );
+  }
+}
+
+if (!formulario) {
+  console.error("No se encontró el formulario #examen-form.");
+} else {
+  formulario.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (enviando) return;
+
+    if (!solicitudId) {
+      mostrarMensaje(
+        "No se ha identificado tu solicitud. Recarga la página e inténtalo de nuevo.",
+        "error"
+      );
+      return;
+    }
+
+    if (!formulario.reportValidity()) {
+      mostrarMensaje(
+        "Debes responder todas las preguntas antes de enviar el examen.",
+        "error"
+      );
+      return;
+    }
+
+    const token = obtenerToken();
+
+    if (!token) {
+      mostrarMensaje(
+        "Tu sesión ha expirado. Inicia sesión de nuevo.",
+        "error"
+      );
+      return;
+    }
+
+    // 1. Obtener las respuestas seleccionadas.
+    const respuestas = {};
+
+    for (const pregunta of preguntas) {
+      const seleccionada = formulario.querySelector(
+        `input[name="${pregunta}"]:checked`
+      );
+
+      if (!seleccionada) {
+        mostrarMensaje(
+          "Debes responder todas las preguntas.",
+          "error"
+        );
+        return;
+      }
+
+      const valor = Number(seleccionada.value);
+
+      if (!Number.isInteger(valor)) {
+        mostrarMensaje(
+          `La respuesta de ${pregunta} no es válida.`,
+          "error"
+        );
+        return;
+      }
+
+      respuestas[pregunta] = valor;
+    }
+
+    // 2. Calcular la cantidad de respuestas correctas.
+    let aciertos = 0;
+
+    for (const pregunta of preguntas) {
+      if (
+        respuestas[pregunta] === respuestasCorrectas[pregunta]
+      ) {
+        aciertos++;
+      }
+    }
+
+    // 3. Convertir los aciertos en una nota de 0 a 100.
+    const puntajeExamen = Number(
+      ((aciertos / preguntas.length) * 100).toFixed(2)
+    );
+
+    // 4. Construir el cuerpo que espera ExamenResultadoUpdate.
+    const datosExamen = {
+      respuestas,
+      examen_completado: true,
+      puntaje_examen: puntajeExamen,
+    };
+
+    enviando = true;
+
+    if (enviarBtn) {
+      enviarBtn.disabled = true;
+    }
+
+    if (textoBoton) {
+      textoBoton.textContent = "Enviando examen...";
+    }
+
+    mostrarMensaje("Enviando tus respuestas para su evaluación...");
+
+    try {
+      const endpoint = `/solicitudes/${solicitudId}/examen`;
+
+      const response = await fetch(`${API_URL}${endpoint}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(datosExamen),
+      });
+
+      const resultado = await leerRespuesta(
+        response,
+        `PATCH ${endpoint}`
+      );
+
+      console.log("Examen guardado:", resultado);
+
+      mostrarMensaje(
+        `Examen enviado correctamente. Puntaje calculado: ${puntajeExamen}/100. Redirigiendo...`,
+        "success"
+      );
+
+      formulario.reset();
+
+      window.location.replace("/contratacion/mi-examen");
+    } catch (error) {
+      enviando = false;
+
+      if (enviarBtn) {
+        enviarBtn.disabled = false;
+      }
+
+      if (textoBoton) {
+        textoBoton.textContent = "Enviar examen";
+      }
+
+      mostrarMensaje(
+        error instanceof Error
+          ? error.message
+          : "No se pudo enviar el examen. Inténtalo nuevamente.",
+        "error"
+      );
+    }
+  });
+}
+
+consultarSolicitud();
+
+    </script>
+  </body>
+</html>
