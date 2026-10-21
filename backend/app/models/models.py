@@ -101,7 +101,7 @@ class CandidateCreate(BaseModel):
 
     display_name: str = Field(min_length=1, max_length=100)
     roblox_username: str = Field(min_length=1, max_length=100)
-    email: EmailStr
+    email: str
     discord_username: str | None = None
 
 
