@@ -113,7 +113,7 @@ class ProfileCreate(BaseModel):
     weekly_hours: int = Field(ge=1, le=168)
     unavailable_times: str | None = None
     tools: str | None = None
-    portfolio_url: HttpUrl | None = None
+    portfolio_url: str | None = None
     relevant_experience: str | None = None
     collaboration_type: str = Field(min_length=1, max_length=50)
 
