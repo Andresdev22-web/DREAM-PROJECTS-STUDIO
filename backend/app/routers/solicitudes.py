@@ -4,7 +4,7 @@ import sqlite3
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.config import DB_NAME
-from app.models.models import SolicitudCreate, SolicitudResponse
+from app.models.models import SolicitudCreate, SolicitudResponse , SolicitudEstadoUpdate
 from app.dependencies.auth import get_current_user, require_role
 
 router = APIRouter(
