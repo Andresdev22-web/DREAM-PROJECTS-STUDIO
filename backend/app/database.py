@@ -31,10 +31,10 @@ def init_db():
         CREATE TABLE IF NOT EXISTS tareas (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT UNIQUE NOT NULL,
-            description TEXT NOT NULL,
+            description TEXT NOT NULL
         )
     """)
-
+    
     # Tabla de solicitudes de trabajo.
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS solicitudes_trabajo (
