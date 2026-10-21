@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 
-from app.models import GoogleLoginRequest, TokenResponse, UserResponse
+from app.models.models import GoogleLoginRequest, TokenResponse, UserResponse
 from app.services.auth_service import authenticate_google_user
 from app.dependencies.auth import get_current_user
 
