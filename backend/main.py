@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import init_db
-from app.routers import auth, admin, tareas , solicitudes_trabajo
+from app.routers import auth, admin , solicitudes_trabajo
 
 app = FastAPI(
     title="API Dream Projects Studio - Modular",
