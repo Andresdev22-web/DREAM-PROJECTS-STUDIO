@@ -170,8 +170,17 @@ class SolicitudResponse(BaseModel):
     privacy_consent: bool
     estado: str
     fecha_solicitud: str
+    examen_completado: bool
+    puntaje_examen: float | None
+    fecha_completado_examen: str | None
 
 
 
 class SolicitudEstadoUpdate(BaseModel):
     estado: Literal["ACEPTADA", "RECHAZADA"]
+
+
+# Datos que se envían al registrar el examen terminado.
+class ExamenResultadoUpdate(BaseModel):
+    examen_completado: bool = True
+    puntaje_examen: float = Field(ge=0)

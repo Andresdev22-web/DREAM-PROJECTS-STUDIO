@@ -74,6 +74,11 @@ def init_db():
             fecha_solicitud DATETIME NOT NULL
                 DEFAULT CURRENT_TIMESTAMP,
 
+
+            examen_completado INTEGER NOT NULL DEFAULT 0,
+            puntaje_examen REAL,
+            fecha_completado_examen DATETIME,
+
             FOREIGN KEY (usuario_id)
                 REFERENCES usuarios(id)
                 ON DELETE CASCADE
