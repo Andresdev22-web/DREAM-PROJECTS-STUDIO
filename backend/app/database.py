@@ -1,4 +1,3 @@
-```python
 import sqlite3
 from app.config import DB_NAME
 
@@ -72,4 +71,3 @@ def init_db():
 
     conn.commit()
     conn.close()
-```
