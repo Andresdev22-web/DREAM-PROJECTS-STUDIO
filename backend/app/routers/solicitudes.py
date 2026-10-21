@@ -202,7 +202,7 @@ def listar_solicitudes(
 
 
 
-// borrar luego
+# borrar luego
 @router.get(
     "/abierta",
     response_model=list[SolicitudResponse],
