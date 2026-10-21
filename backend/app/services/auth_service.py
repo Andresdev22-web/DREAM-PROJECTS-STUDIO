@@ -11,7 +11,7 @@ from app.config import (
     ACCESS_TOKEN_EXPIRE_MINUTES,
 )
 from app.database import get_db_connection
-from app.models import RoleEnum
+from app.models.models import RoleEnum
 
 
 def get_user_by_email(email: str):
