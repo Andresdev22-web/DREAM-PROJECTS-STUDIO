@@ -76,6 +76,7 @@ def crear_solicitud(payload: SolicitudTrabajoCrear):
     try:
         cursor = conn.cursor()
 
+        usuario_id = payload.usuario_id
         candidate = payload.candidate
         profile = payload.profile
         answers = payload.answers
@@ -94,73 +95,76 @@ def crear_solicitud(payload: SolicitudTrabajoCrear):
                 detail="Debes aceptar el consentimiento de privacidad.",
             )
 
-  cursor.execute(
-    """
-    INSERT INTO solicitudes_trabajo (
-        usuario_id,
-        display_name,
-        roblox_username,
-        email,
-        discord_username,
-        position,
-        secondary_positions,
-        experience_level,
-        timezone,
-        weekly_hours,
-        unavailable_times,
-        tools,
-        portfolio_url,
-        relevant_experience,
-        collaboration_type,
-        motivation,
-        current_learning,
-        deadline_response,
-        communication,
-        feedback_response,
-        teamwork_example,
-        collaboration_conditions,
-        authorship_details,
-        authorship_confirmed,
-        privacy_consent
-    )
-    VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-        ?, ?, ?, ?, ?
-    )
-    """,
-    (
-        usuario_id,
-        candidate.display_name,
-        candidate.roblox_username,
-        candidate.email,
-        candidate.discord_username,
-        profile.position,
-        profile.secondary_positions,
-        profile.experience_level,
-        profile.timezone,
-        profile.weekly_hours,
-        profile.unavailable_times,
-        profile.tools,
-        profile.portfolio_url,
-        profile.relevant_experience,
-        profile.collaboration_type,
-        answers.motivation,
-        answers.current_learning,
-        answers.deadline_response,
-        answers.communication,
-        answers.feedback_response,
-        answers.teamwork_example,
-        answers.collaboration_conditions,
-        answers.authorship_details,
-        int(declarations.authorship_confirmed),
-        int(declarations.privacy_consent),
-    ),
-)
+        # Guardar la solicitud asociada al usuario indicado.
+        cursor.execute(
+            """
+            INSERT INTO solicitudes_trabajo (
+                usuario_id,
+                display_name,
+                roblox_username,
+                email,
+                discord_username,
+                position,
+                secondary_positions,
+                experience_level,
+                timezone,
+                weekly_hours,
+                unavailable_times,
+                tools,
+                portfolio_url,
+                relevant_experience,
+                collaboration_type,
+                motivation,
+                current_learning,
+                deadline_response,
+                communication,
+                feedback_response,
+                teamwork_example,
+                collaboration_conditions,
+                authorship_details,
+                authorship_confirmed,
+                privacy_consent
+            )
+            VALUES (
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                ?, ?, ?, ?, ?
+            )
+            """,
+            (
+                usuario_id,
+                candidate.display_name,
+                candidate.roblox_username,
+                candidate.email,
+                candidate.discord_username,
+                profile.position,
+                profile.secondary_positions,
+                profile.experience_level,
+                profile.timezone,
+                profile.weekly_hours,
+                profile.unavailable_times,
+                profile.tools,
+                profile.portfolio_url,
+                profile.relevant_experience,
+                profile.collaboration_type,
+                answers.motivation,
+                answers.current_learning,
+                answers.deadline_response,
+                answers.communication,
+                answers.feedback_response,
+                answers.teamwork_example,
+                answers.collaboration_conditions,
+                answers.authorship_details,
+                int(declarations.authorship_confirmed),
+                int(declarations.privacy_consent),
+            ),
+        )
 
+        # Obtener el ID generado automáticamente por SQLite.
         solicitud_id = cursor.lastrowid
         conn.commit()
 
+        # Consultar la solicitud recién creada.
         cursor.execute(
             """
             SELECT *
