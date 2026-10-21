@@ -7,7 +7,7 @@ router = APIRouter(prefix="/solicitudes", tags=["Solicitudes"])
 
 @router.get("/")
 def listar_solicitudes(
-    admin: dict = Depends(require_role("ADMIN")),
+    admin: dict = Depends(require_role("ADMINISTRADOR")),
 ):
     # Aquí llamarías al servicio que consulta las solicitudes.
     return {
