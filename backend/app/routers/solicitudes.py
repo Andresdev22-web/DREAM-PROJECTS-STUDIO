@@ -24,6 +24,10 @@ router = APIRouter(
 )
 
 
+
+
+
+
 # ============================================================
 # FUNCIONES AUXILIARES
 # ============================================================
@@ -35,6 +39,8 @@ def get_user_id(user):
         return user["id"]
 
     return user.id
+
+
 
 
 def row_to_response(row):
@@ -56,6 +62,65 @@ def row_to_response(row):
     )
 
     return result
+
+
+
+
+# ============================================================
+# RUTA: CONSULTAR MI SOLICITUD DE TRABAJO
+# Método: GET
+# Ruta: /solicitudes/mia
+# Acceso: usuario autenticado
+#
+# Devuelve únicamente la solicitud del usuario de la sesión.
+# ============================================================
+
+@router.get(
+    "/mia",
+    response_model=SolicitudResponse,
+)
+def obtener_mi_solicitud(
+    current_user=Depends(get_current_user),
+):
+    usuario_id = get_user_id(current_user)
+    conn = None
+
+    try:
+        conn = sqlite3.connect(DB_NAME)
+        conn.row_factory = sqlite3.Row
+
+        row = conn.execute(
+            """
+            SELECT *
+            FROM solicitudes_trabajo
+            WHERE usuario_id = ?
+            ORDER BY fecha_solicitud DESC, id DESC
+            LIMIT 1
+            """,
+            (usuario_id,),
+        ).fetchone()
+
+        if row is None:
+            raise HTTPException(
+                status_code=404,
+                detail="Todavía no has enviado una solicitud de trabajo.",
+            )
+
+        return row_to_response(row)
+
+    except HTTPException:
+        raise
+
+    except sqlite3.Error as error:
+        raise HTTPException(
+            status_code=500,
+            detail="Error al consultar tu solicitud.",
+        ) from error
+
+    finally:
+        if conn:
+            conn.close()
+
 
 
 # ============================================================
@@ -575,59 +640,3 @@ def obtener_solicitud(
             conn.close()
 
 
-
-
-# ============================================================
-# RUTA: CONSULTAR MI SOLICITUD DE TRABAJO
-# Método: GET
-# Ruta: /solicitudes/mia
-# Acceso: usuario autenticado
-#
-# Devuelve únicamente la solicitud del usuario de la sesión.
-# ============================================================
-
-@router.get(
-    "/mia",
-    response_model=SolicitudResponse,
-)
-def obtener_mi_solicitud(
-    current_user=Depends(get_current_user),
-):
-    usuario_id = get_user_id(current_user)
-    conn = None
-
-    try:
-        conn = sqlite3.connect(DB_NAME)
-        conn.row_factory = sqlite3.Row
-
-        row = conn.execute(
-            """
-            SELECT *
-            FROM solicitudes_trabajo
-            WHERE usuario_id = ?
-            ORDER BY fecha_solicitud DESC, id DESC
-            LIMIT 1
-            """,
-            (usuario_id,),
-        ).fetchone()
-
-        if row is None:
-            raise HTTPException(
-                status_code=404,
-                detail="Todavía no has enviado una solicitud de trabajo.",
-            )
-
-        return row_to_response(row)
-
-    except HTTPException:
-        raise
-
-    except sqlite3.Error as error:
-        raise HTTPException(
-            status_code=500,
-            detail="Error al consultar tu solicitud.",
-        ) from error
-
-    finally:
-        if conn:
-            conn.close()
