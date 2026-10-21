@@ -23,7 +23,7 @@ def upsert_google_user(email: str, nombre: str, picture: str):
     if not user:
         cursor.execute(
             "INSERT INTO usuarios (email, nombre, picture, rol) VALUES (?, ?, ?, ?)",
-            (email, nombre, picture, RoleEnum.USER.value)
+            (email, nombre, picture, RoleEnum.USUARIO.value)
         )
         conn.commit()
     else:

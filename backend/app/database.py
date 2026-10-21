@@ -18,11 +18,46 @@ def init_db():
             rol TEXT DEFAULT 'USER'
         )
     """)
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS tareas (
+     cursor.execute("""
+        CREATE TABLE IF NOT EXISTS solicitudes_trabajo (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            titulo TEXT NOT NULL,
-            completada BOOLEAN DEFAULT 0
+
+            usuario_id INTEGER NOT NULL,
+
+            display_name TEXT NOT NULL,
+            roblox_username TEXT NOT NULL,
+            email TEXT NOT NULL,
+            discord_username TEXT NOT NULL,
+
+            position TEXT NOT NULL,
+            secondary_positions TEXT,
+            experience_level TEXT NOT NULL,
+            timezone TEXT NOT NULL,
+            weekly_hours INTEGER NOT NULL,
+            unavailable_times TEXT,
+            tools TEXT,
+            portfolio_url TEXT,
+            relevant_experience TEXT,
+            collaboration_type TEXT NOT NULL,
+
+            motivation TEXT NOT NULL,
+            current_learning TEXT NOT NULL,
+            deadline_response TEXT NOT NULL,
+            communication TEXT NOT NULL,
+            feedback_response TEXT NOT NULL,
+            teamwork_example TEXT NOT NULL,
+            collaboration_conditions TEXT NOT NULL,
+            authorship_details TEXT NOT NULL,
+
+            authorship_confirmed BOOLEAN NOT NULL DEFAULT 0,
+            privacy_consent BOOLEAN NOT NULL DEFAULT 0,
+
+            estado TEXT NOT NULL DEFAULT 'pendiente',
+            fecha_solicitud DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+            FOREIGN KEY (usuario_id)
+                REFERENCES usuarios(id)
+                ON DELETE CASCADE
         )
     """)
     conn.commit()
