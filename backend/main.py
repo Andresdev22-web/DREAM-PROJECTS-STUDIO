@@ -22,7 +22,7 @@ init_db()
 # Registrar los Routers modularizados
 app.include_router(auth.router)
 app.include_router(tareas.router)
-app.include_router(usuario.router)
+app.include_router(usuarios.router)
 
 @app.get("/")
 def root():
