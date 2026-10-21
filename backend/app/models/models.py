@@ -170,3 +170,8 @@ class SolicitudResponse(BaseModel):
     privacy_consent: bool
     estado: str
     fecha_solicitud: str
+
+
+
+class SolicitudEstadoUpdate(BaseModel):
+    estado: Literal["ACEPTADA", "RECHAZADA"]

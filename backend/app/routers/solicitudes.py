@@ -239,6 +239,85 @@ def listar_solicitudes():
 
 
 
+@router.patch(
+    "/{solicitud_id}/estado",
+    response_model=SolicitudResponse,
+)
+def actualizar_estado_solicitud(
+    solicitud_id: int,
+    datos: SolicitudEstadoUpdate,
+    admin=Depends(require_role("ADMINISTRADOR")),
+):
+    """Acepta o rechaza una solicitud pendiente. Solo administradores."""
+
+    conn = None
+
+    try:
+        conn = sqlite3.connect(DB_NAME)
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA foreign_keys = ON")
+
+        # 1. Buscar la solicitud.
+        solicitud = conn.execute(
+            """
+            SELECT *
+            FROM solicitudes_trabajo
+            WHERE id = ?
+            """,
+            (solicitud_id,),
+        ).fetchone()
+
+        if solicitud is None:
+            raise HTTPException(
+                status_code=404,
+                detail="La solicitud no existe.",
+            )
+
+        # 2. Solo permitir modificar solicitudes pendientes.
+        if solicitud["estado"].upper() != "PENDIENTE":
+            raise HTTPException(
+                status_code=409,
+                detail="Esta solicitud ya fue gestionada.",
+            )
+
+        # 3. Guardar el nuevo estado.
+        conn.execute(
+            """
+            UPDATE solicitudes_trabajo
+            SET estado = ?
+            WHERE id = ?
+            """,
+            (datos.estado, solicitud_id),
+        )
+        conn.commit()
+
+        # 4. Devolver la solicitud actualizada.
+        solicitud_actualizada = conn.execute(
+            """
+            SELECT *
+            FROM solicitudes_trabajo
+            WHERE id = ?
+            """,
+            (solicitud_id,),
+        ).fetchone()
+
+        return row_to_response(solicitud_actualizada)
+
+    except HTTPException:
+        raise
+
+    except sqlite3.Error as error:
+        if conn:
+            conn.rollback()
+
+        raise HTTPException(
+            status_code=500,
+            detail="Error al actualizar el estado de la solicitud.",
+        ) from error
+
+    finally:
+        if conn:
+            conn.close()
 
 
 
